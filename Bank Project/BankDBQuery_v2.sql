@@ -66,6 +66,8 @@ CREATE TABLE `AccountSavings` (
   `WithdrawLimit` decimal(3,2) NOT NULL,
   `Interset` decimal(2,2) NOT NULL,
   `LastAccess` datetime NOT NULL,
+  `SNo` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`SNo`),
   UNIQUE KEY `Account_Number_UNIQUE` (`Account_Number`),
   KEY `Account_Number` (`Account_Number`),
   CONSTRAINT `Account_Number` FOREIGN KEY (`Account_Number`) REFERENCES `Accounts` (`AccountNumber`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -89,8 +91,10 @@ DROP TABLE IF EXISTS `AccountStatus`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AccountStatus` (
+  `SNo` int(11) NOT NULL AUTO_INCREMENT,
   `AccountNumber` int(11) NOT NULL,
   `Status` varchar(45) NOT NULL,
+  PRIMARY KEY (`SNo`),
   UNIQUE KEY `AccountNumber_UNIQUE` (`AccountNumber`),
   CONSTRAINT `AccountNumber` FOREIGN KEY (`AccountNumber`) REFERENCES `Accounts` (`AccountNumber`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -114,8 +118,8 @@ DROP TABLE IF EXISTS `Accounts`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Accounts` (
   `AccountNumber` int(11) NOT NULL AUTO_INCREMENT,
-  `OpenedOn` varchar(45) NOT NULL,
-  `ClosedOn` varchar(45) DEFAULT NULL,
+  `OpenedOn` datetime NOT NULL,
+  `ClosedOn` datetime DEFAULT NULL,
   `Cust_ID` int(11) NOT NULL,
   `Type` varchar(45) NOT NULL,
   PRIMARY KEY (`AccountNumber`),
@@ -146,6 +150,8 @@ CREATE TABLE `AccountsChecking` (
   `OverDraft` decimal(4,2) NOT NULL,
   `Interest` decimal(1,1) NOT NULL,
   `LastAccessed` datetime NOT NULL,
+  `SNo` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`SNo`),
   KEY `AccNumber_idx` (`AccNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -174,6 +180,8 @@ CREATE TABLE `AccountsLoan` (
   `Interest` decimal(2,2) NOT NULL,
   `EMICounter` int(11) NOT NULL DEFAULT '0',
   `amountPayed` decimal(8,2) NOT NULL DEFAULT '0.00',
+  `SNo` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`SNo`),
   KEY `ACC_NUM_idx` (`ACC_NUM`),
   CONSTRAINT `ACC_NUM` FOREIGN KEY (`ACC_NUM`) REFERENCES `Accounts` (`AccountNumber`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -397,4 +405,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-14 14:09:09
+-- Dump completed on 2017-12-14 14:35:16

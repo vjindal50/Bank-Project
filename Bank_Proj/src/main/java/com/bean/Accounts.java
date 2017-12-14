@@ -14,6 +14,7 @@ import org.joda.time.LocalDate;
 public class Accounts {
 	
 	@Id
+	@Column(name = "AccountNumber")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int AccountNumber;
 	
