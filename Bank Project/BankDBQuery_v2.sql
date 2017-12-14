@@ -141,13 +141,12 @@ DROP TABLE IF EXISTS `AccountsChecking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AccountsChecking` (
-  `AccNumber` int(11) NOT NULL,
+  `AccNumber` int(11) unsigned NOT NULL,
   `Balance` decimal(9,2) NOT NULL,
   `OverDraft` decimal(4,2) NOT NULL,
   `Interest` decimal(1,1) NOT NULL,
   `LastAccessed` datetime NOT NULL,
-  KEY `AccNumber_idx` (`AccNumber`),
-  CONSTRAINT `AccNumber` FOREIGN KEY (`AccNumber`) REFERENCES `Accounts` (`AccountNumber`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `AccNumber_idx` (`AccNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -212,6 +211,7 @@ CREATE TABLE `CustomerLog` (
   `Status` varchar(45) DEFAULT NULL,
   `DelDate` datetime DEFAULT NULL,
   `JoinDate` datetime DEFAULT NULL,
+  `DOB` datetime DEFAULT NULL,
   PRIMARY KEY (`CustLogID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -345,6 +345,7 @@ CREATE TABLE `EmployeeLog` (
   `Status` varchar(45) DEFAULT NULL,
   `LeftDate` datetime DEFAULT NULL,
   `JoinDate` datetime DEFAULT NULL,
+  `DOB` datetime DEFAULT NULL,
   PRIMARY KEY (`EmpLogID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -396,4 +397,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-13 20:47:28
+-- Dump completed on 2017-12-14 14:09:09
