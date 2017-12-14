@@ -1,32 +1,72 @@
 package com.bean;
 
 import java.io.Serializable;
-import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.joda.time.LocalDate;
 
 @Entity
 @Table(name = "AccountLog")
 public class AccountLog implements Serializable {
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int AccLogID;
+	
+	@Column(name = "Anum")
 	private int Anum;
-	private Double Balance;
-	private Double WithdrawLimit;
-	private Double OverDraft;
-	private Double Interset;
-	private Date LastAccess;
 	
-	public AccountLog(){
-		
+	@Column(name = "Balance")
+	private double Balance;
+	
+	@Column(name = "WithdrawLimit")
+	private double WithdrawLimit;
+	
+	@Column(name = "OverDraft")
+	private double OverDraft;
+	
+	@Column(name = "Interset")
+	private double Interset;
+	
+	@Column(name = "LastAccess")
+	private LocalDate LastAccess;
+	
+	@Column(name = "EMI")
+	private double EMI;
+	
+	@Column(name = "LastEMIPayed")
+	private LocalDate LastEMIPayed;
+	
+	@Column(name = "EMICounter")
+	private int EMICounter;
+	
+	@Column(name = "amountPayed")
+	private double amountPayed;
+	
+	@Column(name = "OpenedOn")
+	private LocalDate OpenedOn;
+	
+	@Column(name = "ClosedOn")
+	private LocalDate ClosedOn;
+	
+	@Column(name = "Cust_ID")
+	private int Cust_ID;
+	
+	@Column(name = "Type")
+	private String Type;
+
+	public int getAccLogID() {
+		return AccLogID;
 	}
-	
-	public AccountLog(Double Balance,  Double WithdrawLimit,Double OverDraft,Double Interest,Date LastAccess ){
-		this.Balance=Balance;
-		this.WithdrawLimit=WithdrawLimit;
-		this.OverDraft=OverDraft;
-		this.Interset=Interest;
-		this.LastAccess=LastAccess;
+
+	public void setAccLogID(int accLogID) {
+		AccLogID = accLogID;
 	}
 
 	public int getAnum() {
@@ -37,52 +77,125 @@ public class AccountLog implements Serializable {
 		Anum = anum;
 	}
 
-	public Double getBalance() {
+	public double getBalance() {
 		return Balance;
 	}
 
-	public void setBalance(Double balance) {
+	public void setBalance(double balance) {
 		Balance = balance;
 	}
 
-	public Double getWithdrawLimit() {
+	public double getWithdrawLimit() {
 		return WithdrawLimit;
 	}
 
-	public void setWithdrawLimit(Double withdrawLimit) {
+	public void setWithdrawLimit(double withdrawLimit) {
 		WithdrawLimit = withdrawLimit;
 	}
 
-	public Double getOverDraft() {
+	public double getOverDraft() {
 		return OverDraft;
 	}
 
-	public void setOverDraft(Double overDraft) {
+	public void setOverDraft(double overDraft) {
 		OverDraft = overDraft;
 	}
 
-	public Double getInterset() {
+	public double getInterset() {
 		return Interset;
 	}
 
-	public void setInterset(Double interset) {
+	public void setInterset(double interset) {
 		Interset = interset;
 	}
 
-	public Date getLastAccess() {
+	public LocalDate getLastAccess() {
 		return LastAccess;
 	}
 
-	public void setLastAccess(Date lastAccess) {
+	public void setLastAccess(LocalDate lastAccess) {
 		LastAccess = lastAccess;
+	}
+
+	public double getEMI() {
+		return EMI;
+	}
+
+	public void setEMI(double eMI) {
+		EMI = eMI;
+	}
+
+	public LocalDate getLastEMIPayed() {
+		return LastEMIPayed;
+	}
+
+	public void setLastEMIPayed(LocalDate lastEMIPayed) {
+		LastEMIPayed = lastEMIPayed;
+	}
+
+	public int getEMICounter() {
+		return EMICounter;
+	}
+
+	public void setEMICounter(int eMICounter) {
+		EMICounter = eMICounter;
+	}
+
+	public double getAmountPayed() {
+		return amountPayed;
+	}
+
+	public void setAmountPayed(double amountPayed) {
+		this.amountPayed = amountPayed;
+	}
+
+	public LocalDate getOpenedOn() {
+		return OpenedOn;
+	}
+
+	public void setOpenedOn(LocalDate openedOn) {
+		OpenedOn = openedOn;
+	}
+
+	public LocalDate getClosedOn() {
+		return ClosedOn;
+	}
+
+	public void setClosedOn(LocalDate closedOn) {
+		ClosedOn = closedOn;
+	}
+
+	public int getCust_ID() {
+		return Cust_ID;
+	}
+
+	public void setCust_ID(int cust_ID) {
+		Cust_ID = cust_ID;
+	}
+
+	public String getType() {
+		return Type;
+	}
+
+	public void setType(String type) {
+		Type = type;
 	}
 	
 	public String toString() {
-		return "AccountNumber : " + getAnum() 
-				+ " <br>\nBalance : " + getBalance()
-				+ " <br>\nWithdrawLimit : " + getWithdrawLimit()
-				+ " <br>\nOverDraft: " + getOverDraft()
-				+ " <br>\nInterset : " + getInterset()
-				+ " <br>\nLastAccess : " + getLastAccess();
+		return "Log ID : " + getAccLogID()
+				+ "\nAccount Number : " + getAnum()
+				+ "\nBalance : " + getBalance()
+				+ "\nWithdraw Limit : " + getWithdrawLimit()
+				+ "\nOver Draft : " + getOverDraft()
+				+ "\nInterest : " + getInterset()
+				+ "\nLast Access : " + getLastAccess()
+				+ "\nEMI : " + getEMI()
+				+ "\nLast EMI payed : " + getLastEMIPayed()
+				+ "\nEMI counter : " + getEMICounter()
+				+ "\nAmount Payed : " + getAmountPayed()
+				+ "\nOpened On : " + getOpenedOn()
+				+ "\nClosed On : " + getClosedOn()
+				+ "\nCustomer ID : " + getCust_ID()
+				+ "\nAccount type : " + getType();
 	}
 }
