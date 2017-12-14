@@ -1,15 +1,42 @@
 package com.bean;
 
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.joda.time.LocalDate;
+
+@Entity
+@Table(name = "AccountsLoan")
 public class AccountsLoan {
 	
+	@Id
+	@Column(name = "SNo")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int SNo;
+	
+	@Column(name = "ACC_NUM")
 	private int ACC_NUM;
+	
+	@Column(name = "Balance")
 	private double balance;
+	
+	@Column(name = "EMI")
 	private double EMI;
-	private Date lastEMIPayed;
+	
+	@Column(name = "LastEMIPayed")
+	private LocalDate lastEMIPayed;
+	
+	@Column(name = "Interset")
 	private double interest;
+	
+	@Column(name = "EMICounter")
 	private int EMIcounter;
+	
+	@Column(name = "amountPayed")
 	private double amountPayed;
 	
 	public AccountsLoan() {}
@@ -38,11 +65,11 @@ public class AccountsLoan {
 		EMI = eMI;
 	}
 
-	public Date getLastEMIPayed() {
+	public LocalDate getLastEMIPayed() {
 		return lastEMIPayed;
 	}
 
-	public void setLastEMIPayed(Date lastEMIPayed) {
+	public void setLastEMIPayed(LocalDate lastEMIPayed) {
 		this.lastEMIPayed = lastEMIPayed;
 	}
 
@@ -70,6 +97,14 @@ public class AccountsLoan {
 		this.amountPayed = amountPayed;
 	}
 	
+	public int getSNo() {
+		return SNo;
+	}
+
+	public void setSNo(int sNo) {
+		SNo = sNo;
+	}
+
 	public String toString() {
 		return "Account Number : " + getACC_NUM()
 				+ "\nBalance : " + getBalance()

@@ -15,7 +15,9 @@ import org.joda.time.LocalDate;
 @Table(name = "AccountLog")
 public class AccountLog implements Serializable {
 	
-	@Id
+	
+  @Id
+	@Column(name = "AccLogID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int AccLogID;
 	

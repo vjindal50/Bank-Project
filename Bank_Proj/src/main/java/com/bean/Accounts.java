@@ -1,13 +1,33 @@
 package com.bean;
 
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.joda.time.LocalDate;
+
+@Entity
+@Table(name = "Accounts")
 public class Accounts {
 	
+	@Id
+	@Column(name = "AccountNumber")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int AccountNumber;
-	private Date openedOn;
-	private Date closedOn;
+	
+	@Column(name = "OpenedOn")
+	private LocalDate openedOn;
+	
+	@Column(name = "ClosedOn")
+	private LocalDate closedOn;
+	
+	@Column(name = "Cust_ID")
 	private int Cust_ID;
+	
+	@Column(name = "Type")
 	private String type;
 	
 	public Accounts() {}
@@ -20,19 +40,19 @@ public class Accounts {
 		AccountNumber = accountNumber;
 	}
 
-	public Date getOpenedOn() {
+	public LocalDate getOpenedOn() {
 		return openedOn;
 	}
 
-	public void setOpenedOn(Date openedOn) {
+	public void setOpenedOn(LocalDate openedOn) {
 		this.openedOn = openedOn;
 	}
 
-	public Date getClosedOn() {
+	public LocalDate getClosedOn() {
 		return closedOn;
 	}
 
-	public void setClosedOn(Date closedOn) {
+	public void setClosedOn(LocalDate closedOn) {
 		this.closedOn = closedOn;
 	}
 
@@ -55,6 +75,7 @@ public class Accounts {
 	public String toString() {
 		return "Account Number : " + getAccountNumber()
 				+ "\nAccount Type : " + getType()
-				+ "\nOpened On : " + getOpenedOn();
+				+ "\nOpened On : " + getOpenedOn()
+				+ "\nType : " + getType();
 	}
 }
