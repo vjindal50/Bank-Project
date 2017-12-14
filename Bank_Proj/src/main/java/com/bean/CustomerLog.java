@@ -1,53 +1,50 @@
-package bean;
+package com.bean;
 
 import java.util.Date;
 
-public class EmployeeLog {
+public class CustomerLog {
 
-	private int EmpID; 
-	private String FirstName; 
-	private String LastName; 
-	private String MiddleName; 
-	private String Phone; 
-	private String AlternatePhone; 
-	private String Email; 
-	private String Address; 
-	private String Password; 
-	private String UserName; 
-	private String Command; 
+	private int CustID;
+	private String FirstName;
+	private String LastName;
+	private String MiddleName;
+	private String Phone;
+	private String AlternatePhone;
+	private String Email;
+	private String Address;
+	private String Password;
+	private String UserName;
+	private String Command;
 	private String Status;
-	private String LeftDate; 
-	private Date JoinDate;
+	private Date DelDate;
 	
-	public EmployeeLog(){
+	public CustomerLog(){
 		
 	}
 	
-	public EmployeeLog(String FirstName,String LastName,String MiddleName,String Phone,String AlternatePhone,String Email,String Address,String Password,String UserName,String Command,String Status,
-			String LeftDate,Date JoinDate){
+	public CustomerLog(String FirstName,String LastName,String MiddleName, String Phone,String AlternatePhone,
+			String Email,String Address,String Password,String UserName,String Command,String Status,Date DelDate){
 		this.FirstName=FirstName;
 		this.LastName=LastName;
 		this.MiddleName=MiddleName;
 		this.Phone=Phone;
 		this.AlternatePhone=AlternatePhone;
 		this.Email=Email;
-		this.Address=Address ;
+		this.Address=Address;
 		this.Password=Password;
 		this.UserName=UserName;
 		this.Command=Command;
 		this.Status=Status;
-		this.LeftDate=LeftDate;
-		this.JoinDate=JoinDate;
+		this.DelDate=DelDate;
 		
-				
 	}
 
-	public int getEmpID() {
-		return EmpID;
+	public int getCustID() {
+		return CustID;
 	}
 
-	public void setEmpID(int empID) {
-		EmpID = empID;
+	public void setCustID(int custID) {
+		CustID = custID;
 	}
 
 	public String getFirstName() {
@@ -138,20 +135,14 @@ public class EmployeeLog {
 		Status = status;
 	}
 
-	public String getLeftDate() {
-		return LeftDate;
+	public Date getDelDate() {
+		return DelDate;
 	}
 
-	public void setLeftDate(String leftDate) {
-		LeftDate = leftDate;
+	public void setDelDate(Date delDate) {
+		DelDate = delDate;
 	}
-
-	public Date getJoinDate() {
-		return JoinDate;
-	}
-
-	public void setJoinDate(Date joinDate) {
-		JoinDate = joinDate;
-	}
+	
+	
 	
 }

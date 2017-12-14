@@ -1,10 +1,10 @@
-package bean;
+package com.bean;
 
 import java.util.Date;
 
-public class CustomerLog {
-
-	private int CustID;
+public class Employee {
+	
+	private int EmpID;
 	private String FirstName;
 	private String LastName;
 	private String MiddleName;
@@ -14,37 +14,17 @@ public class CustomerLog {
 	private String Address;
 	private String Password;
 	private String UserName;
-	private String Command;
-	private String Status;
-	private Date DelDate;
+	private Date JoinDate;
+	private Date DOB;
 	
-	public CustomerLog(){
-		
-	}
-	
-	public CustomerLog(String FirstName,String LastName,String MiddleName, String Phone,String AlternatePhone,
-			String Email,String Address,String Password,String UserName,String Command,String Status,Date DelDate){
-		this.FirstName=FirstName;
-		this.LastName=LastName;
-		this.MiddleName=MiddleName;
-		this.Phone=Phone;
-		this.AlternatePhone=AlternatePhone;
-		this.Email=Email;
-		this.Address=Address;
-		this.Password=Password;
-		this.UserName=UserName;
-		this.Command=Command;
-		this.Status=Status;
-		this.DelDate=DelDate;
-		
+	public Employee() {}
+
+	public int getEmpID() {
+		return EmpID;
 	}
 
-	public int getCustID() {
-		return CustID;
-	}
-
-	public void setCustID(int custID) {
-		CustID = custID;
+	public void setEmpID(int empID) {
+		EmpID = empID;
 	}
 
 	public String getFirstName() {
@@ -119,30 +99,30 @@ public class CustomerLog {
 		UserName = userName;
 	}
 
-	public String getCommand() {
-		return Command;
+	public Date getJoinDate() {
+		return JoinDate;
 	}
 
-	public void setCommand(String command) {
-		Command = command;
-	}
-
-	public String getStatus() {
-		return Status;
-	}
-
-	public void setStatus(String status) {
-		Status = status;
-	}
-
-	public Date getDelDate() {
-		return DelDate;
-	}
-
-	public void setDelDate(Date delDate) {
-		DelDate = delDate;
+	public void setJoinDate(Date joinDate) {
+		JoinDate = joinDate;
 	}
 	
-	
-	
+	public Date getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(Date dOB) {
+		DOB = dOB;
+	}
+
+	public String toString() {
+		return "Emp ID : " + getEmpID()
+				+ "\n Employee Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
+				+"\n Phone Number : " + getPhone()
+				+"\n Alternate Phone : " + getAlternatePhone()
+				+"\n Email : " + getEmail()
+				+"\n DOB : " + getDOB()
+				+"\n Address : " + getAddress()
+				+"\n User Name : " + getUserName();
+	}
 }

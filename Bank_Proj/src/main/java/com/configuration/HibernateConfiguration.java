@@ -1,4 +1,4 @@
-package configuration;
+package com.configuration;
 
 import java.util.Properties;
 
@@ -37,10 +37,10 @@ public class HibernateConfiguration {
 	    @Bean
 	    public DataSource dataSource() {
 	        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-	        dataSource.setDriverClassName(environment.getRequiredProperty("com.mysql.jdbc.Driver"));
-	        dataSource.setUrl(environment.getRequiredProperty("jdbc:mysql://localhost:3306/Bank_Project"));
-	        dataSource.setUsername(environment.getRequiredProperty("root"));
-	        dataSource.setPassword(environment.getRequiredProperty("137115"));
+	        dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
+	        dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+	        dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
+	        dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
 	        return dataSource;
 	    }
 	    
