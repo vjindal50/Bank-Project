@@ -2,19 +2,53 @@ package com.bean;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Customers")
 public class Customer {
 	
+	@Id
+	@Column(name = "CustID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int CustID;
+	
+	@Column(name = "FirstName")
 	private String FirstName;
+	
+	@Column(name = "LastName")
 	private String LastName;
+	
+	@Column(name = "MiddleName")
 	private String MiddleName;
+
+	@Column(name = "Phone")
 	private String Phone;
+	
+	@Column(name = "AlternatePhone")
 	private String AlternatePhone;
+	
+	@Column(name = "Email")
 	private String Email;
+	
+	@Column(name = "Address")
 	private String Address;
+	
+	@Column(name = "Password")
 	private String Password;
+	
+	@Column(name = "UserName")
 	private String UserName;
+	
+	@Column(name = "JoinDate")
 	private Date JoinDate;
+	
+	@Column(name = "DOB")
 	private Date DOB;
 	
 	public Customer() {}
