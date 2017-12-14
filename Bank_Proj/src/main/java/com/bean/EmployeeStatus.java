@@ -13,6 +13,7 @@ public class EmployeeStatus {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "EmpID")
 	private int EmpID; 
 	
 	@Column(name = "Status")

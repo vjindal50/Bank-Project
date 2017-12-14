@@ -2,20 +2,56 @@ package com.bean;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.joda.time.LocalDate;
+
+@Entity
+@Table(name = "Employee")
 public class Employee {
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "EmpID")
 	private int EmpID;
+	
+	@Column(name = "FirstName")
 	private String FirstName;
+	
+	@Column(name = "LastName")
 	private String LastName;
+	
+	@Column(name = "MiddleName")
 	private String MiddleName;
+	
+	@Column(name = "Phone")
 	private String Phone;
+	
+	@Column(name = "AlternatePhone")
 	private String AlternatePhone;
+	
+	@Column(name = "Email")
 	private String Email;
+	
+	@Column(name = "Address")
 	private String Address;
+	
+	@Column(name = "Password")
 	private String Password;
+	
+	@Column(name = "UserName")
 	private String UserName;
-	private Date JoinDate;
-	private Date DOB;
+	
+	@Column(name = "JoinDate")
+	private LocalDate JoinDate;
+	
+	@Column(name = "DOB")
+	private LocalDate DOB;
 	
 	public Employee() {}
 
@@ -99,30 +135,32 @@ public class Employee {
 		UserName = userName;
 	}
 
-	public Date getJoinDate() {
+	public LocalDate getJoinDate() {
 		return JoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(LocalDate joinDate) {
 		JoinDate = joinDate;
 	}
 	
-	public Date getDOB() {
+	public LocalDate getDOB() {
 		return DOB;
 	}
 
-	public void setDOB(Date dOB) {
+	public void setDOB(LocalDate dOB) {
 		DOB = dOB;
 	}
 
 	public String toString() {
-		return "Emp ID : " + getEmpID()
+		return "Employee ID : " + getEmpID()
 				+ "\n Employee Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
 				+"\n Phone Number : " + getPhone()
 				+"\n Alternate Phone : " + getAlternatePhone()
 				+"\n Email : " + getEmail()
 				+"\n DOB : " + getDOB()
 				+"\n Address : " + getAddress()
-				+"\n User Name : " + getUserName();
+				+"\n User Name : " + getUserName()
+				+"\n Password : " + getPassword()
+				+"\n JoinDate : " + getJoinDate();
 	}
 }

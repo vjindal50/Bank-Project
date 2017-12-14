@@ -17,6 +17,7 @@ public class EmployeeLog {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "EmpLogID")
 	private int EmpLogID;
 	
 	@Column(name = "EmpID")
@@ -209,9 +210,7 @@ public class EmployeeLog {
 	public String toString() {
 		return "Employee Log ID : " + getEmpLogID()
 				+ "\nEmployee ID : " + getEmpID()
-				+ "\nFirst Name : " + getFirstName()
-				+ "\nMiddle Name : " + getMiddleName()
-				+ "\nLast Name : " + getLastName()
+				+ "Employee Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
 				+ "\nPhone : " + getPhone()
 				+ "\nAlternate Phone : " + getAlternatePhone()
 				+ "\nEmail : " + getEmail()
