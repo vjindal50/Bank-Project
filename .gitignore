@@ -1,1 +1,20 @@
 /.metadata/
+*.fdt
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments.gen
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.fdx
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.fnm
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.nrm
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.prx
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.frq
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.tii
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/write.lock
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments_1
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.tis
+Servers/Tomcat v8.5 Server at localhost-config/catalina.properties
+Servers/Tomcat v8.5 Server at localhost-config/catalina.policy
+Servers/.settings/org.eclipse.wst.server.core.prefs
+Servers/.project
+Servers/Tomcat v8.5 Server at localhost-config/server.xml
+Servers/Tomcat v8.5 Server at localhost-config/web.xml
+Servers/Tomcat v8.5 Server at localhost-config/tomcat-users.xml
+Servers/Tomcat v8.5 Server at localhost-config/context.xml
