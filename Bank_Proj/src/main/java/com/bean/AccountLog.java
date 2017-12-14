@@ -3,6 +3,11 @@ package com.bean;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "AccountLog")
 public class AccountLog implements Serializable {
 	
 	private int Anum;
