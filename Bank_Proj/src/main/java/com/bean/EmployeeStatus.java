@@ -1,8 +1,21 @@
 package com.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "EmployeeStatus")
 public class EmployeeStatus {
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int EmpID; 
+	
+	@Column(name = "Status")
 	private String Status;
 	
 	
@@ -19,6 +32,12 @@ public class EmployeeStatus {
 		Status = status;
 	}
 	
+	public EmployeeStatus(){}
 	
+	public String toString() {
+		return "Employee ID : " + getEmpID()
+				+ "\nStatus : " + getStatus();
+				
+	}
 	
 }
