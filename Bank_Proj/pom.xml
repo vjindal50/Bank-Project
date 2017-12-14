@@ -83,6 +83,12 @@
 	    <version>5.2.12.Final</version>
 	</dependency>
 	
+	<dependency>
+	    <groupId>joda-time</groupId>
+	    <artifactId>joda-time</artifactId>
+	    <version>2.9.9</version>
+	</dependency>
+	
     
   </dependencies>
   <build>
