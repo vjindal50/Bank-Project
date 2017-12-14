@@ -2,29 +2,71 @@ package com.bean;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.joda.time.LocalDate;
+
+@Entity
+@Table(name = "EmployeeLog")
 public class EmployeeLog {
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int EmpLogID;
+	
+	@Column(name = "EmpID")
 	private int EmpID; 
+	
+	@Column(name = "FirstName")
 	private String FirstName; 
+	
+	@Column(name = "LastName")
 	private String LastName; 
+	
+	@Column(name = "MiddleName")
 	private String MiddleName; 
+	
+	@Column(name = "Phone")
 	private String Phone; 
+	
+	@Column(name = "AlternatePhone")
 	private String AlternatePhone; 
+	
+	@Column(name = "Email")
 	private String Email; 
+	
+	@Column(name = "Address")
 	private String Address; 
+	
+	@Column(name = "Password")
 	private String Password; 
+	
+	@Column(name = "UserName")
 	private String UserName; 
+	
+	@Column(name = "Command")
 	private String Command; 
+	
+	@Column(name = "Status")
 	private String Status;
-	private String LeftDate; 
-	private Date JoinDate;
+	
+	@Column(name = "LeftDate")
+	private LocalDate LeftDate; 
+	
+	@Column(name = "JoinDate")
+	private LocalDate JoinDate;
 	
 	public EmployeeLog(){
 		
 	}
 	
 	public EmployeeLog(String FirstName,String LastName,String MiddleName,String Phone,String AlternatePhone,String Email,String Address,String Password,String UserName,String Command,String Status,
-			String LeftDate,Date JoinDate){
+			LocalDate LeftDate,LocalDate JoinDate){
 		this.FirstName=FirstName;
 		this.LastName=LastName;
 		this.MiddleName=MiddleName;
@@ -40,6 +82,14 @@ public class EmployeeLog {
 		this.JoinDate=JoinDate;
 		
 				
+	}
+	
+	public int getEmpLogID() {
+		return EmpLogID;
+	}
+
+	public void setEmpLogID(int empLogID) {
+		EmpLogID = empLogID;
 	}
 
 	public int getEmpID() {
@@ -138,20 +188,40 @@ public class EmployeeLog {
 		Status = status;
 	}
 
-	public String getLeftDate() {
+	public LocalDate getLeftDate() {
 		return LeftDate;
 	}
 
-	public void setLeftDate(String leftDate) {
+	public void setLeftDate(LocalDate leftDate) {
 		LeftDate = leftDate;
 	}
 
-	public Date getJoinDate() {
+	public LocalDate getJoinDate() {
 		return JoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(LocalDate joinDate) {
 		JoinDate = joinDate;
+	}
+	
+	
+
+	public String toString() {
+		return "Employee Log ID : " + getEmpLogID()
+				+ "\nEmployee ID : " + getEmpID()
+				+ "\nFirst Name : " + getFirstName()
+				+ "\nMiddle Name : " + getMiddleName()
+				+ "\nLast Name : " + getLastName()
+				+ "\nPhone : " + getPhone()
+				+ "\nAlternate Phone : " + getAlternatePhone()
+				+ "\nEmail : " + getEmail()
+				+ "\nAddress : " + getAddress()
+				+ "\nPassword" + getPassword()
+				+ "\nUser Name : " + getUserName()
+				+ "\nCommand : " + getCommand()
+				+ "\nStatus : " + getStatus()
+				+ "\nLeft Date : " + getLeftDate()
+				+ "\nJoin Date : " + getJoinDate();
 	}
 	
 }
