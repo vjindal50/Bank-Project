@@ -60,6 +60,8 @@ public class AccountLog implements Serializable {
 	
 	@Column(name = "Type")
 	private String Type;
+	
+	public AccountLog() {}
 
 	public int getAccLogID() {
 		return AccLogID;
