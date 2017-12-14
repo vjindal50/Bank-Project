@@ -1,46 +1,99 @@
 package com.bean;
 
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.joda.time.LocalDate;
+
+@Entity
+@Table(name = "CustomerLog")
 public class CustomerLog {
-
+	
+	@Id
+	@Column(name = "CustLogID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int CustLogID;
+	
+	@Column(name = "CustID")
 	private int CustID;
+	
+	@Column(name = "FirstName")
 	private String FirstName;
+	
+	@Column(name = "LastName")
 	private String LastName;
+	
+	@Column(name = "MiddleName")
 	private String MiddleName;
+	
+	@Column(name = "Phone")
 	private String Phone;
+	
+	@Column(name = "AlternatePhone")
 	private String AlternatePhone;
+	
+	@Column(name = "Email")
 	private String Email;
+	
+	@Column(name = "Address")
 	private String Address;
+	
+	@Column(name = "Password")
 	private String Password;
+	
+	@Column(name = "UserName")
 	private String UserName;
+	
+	@Column(name = "Command")
 	private String Command;
+	
+	@Column(name = "Status")
 	private String Status;
-	private Date DelDate;
+	
+	@Column(name = "DelLocalDate")
+	private LocalDate DelLocalDate;
+	
+	@Column(name = "JoinLocalDate")
+	private LocalDate JoinLocalDate;
+	
+	@Column(name = "DOB")
+	private LocalDate DOB;
 	
 	public CustomerLog(){
 		
 	}
 	
-	public CustomerLog(String FirstName,String LastName,String MiddleName, String Phone,String AlternatePhone,
-			String Email,String Address,String Password,String UserName,String Command,String Status,Date DelDate){
-		this.FirstName=FirstName;
-		this.LastName=LastName;
-		this.MiddleName=MiddleName;
-		this.Phone=Phone;
-		this.AlternatePhone=AlternatePhone;
-		this.Email=Email;
-		this.Address=Address;
-		this.Password=Password;
-		this.UserName=UserName;
-		this.Command=Command;
-		this.Status=Status;
-		this.DelDate=DelDate;
-		
-	}
+//	public CustomerLog(String FirstName,String LastName,String MiddleName, String Phone,String AlternatePhone,
+//			String Email,String Address,String Password,String UserName,String Command,String Status,LocalDate DelLocalDate){
+//		this.FirstName=FirstName;
+//		this.LastName=LastName;
+//		this.MiddleName=MiddleName;
+//		this.Phone=Phone;
+//		this.AlternatePhone=AlternatePhone;
+//		this.Email=Email;
+//		this.Address=Address;
+//		this.Password=Password;
+//		this.UserName=UserName;
+//		this.Command=Command;
+//		this.Status=Status;
+//		this.DelLocalDate=DelLocalDate;
+//		
+//	}
 
 	public int getCustID() {
 		return CustID;
+	}
+
+	public int getCustLogID() {
+		return CustLogID;
+	}
+
+	public void setCustLogID(int custLogID) {
+		CustLogID = custLogID;
 	}
 
 	public void setCustID(int custID) {
@@ -81,6 +134,22 @@ public class CustomerLog {
 
 	public String getAlternatePhone() {
 		return AlternatePhone;
+	}
+
+	public LocalDate getJoinLocalDate() {
+		return JoinLocalDate;
+	}
+
+	public void setJoinLocalDate(LocalDate joinLocalDate) {
+		JoinLocalDate = joinLocalDate;
+	}
+
+	public LocalDate getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(LocalDate dOB) {
+		DOB = dOB;
 	}
 
 	public void setAlternatePhone(String alternatePhone) {
@@ -135,12 +204,12 @@ public class CustomerLog {
 		Status = status;
 	}
 
-	public Date getDelDate() {
-		return DelDate;
+	public LocalDate getDelLocalDate() {
+		return DelLocalDate;
 	}
 
-	public void setDelDate(Date delDate) {
-		DelDate = delDate;
+	public void setDelLocalDate(LocalDate delLocalDate) {
+		DelLocalDate = delLocalDate;
 	}
 	
 	
