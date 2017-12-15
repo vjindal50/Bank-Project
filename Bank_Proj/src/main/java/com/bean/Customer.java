@@ -52,6 +52,9 @@ public class Customer implements Serializable{
 	@Column(name = "DOB")
 	private Date DOB;
 	
+	@Column(name = "Status")
+	private String Status;
+	
 	public Customer() {}
 
 	public int getCustID() {
@@ -150,6 +153,14 @@ public class Customer implements Serializable{
 		DOB = dOB;
 	}
 	
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
 	public String toString() {
 		return "Emp ID : " + getCustID()
 				+ "\n Employee Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
@@ -158,7 +169,8 @@ public class Customer implements Serializable{
 				+"\n Email : " + getEmail()
 				+"\n DOB : " + getDOB()
 				+"\n Address : " + getAddress()
-				+"\n User Name : " + getUserName();
+				+"\n User Name : " + getUserName()
+				+"\n Status : " + getStatus();
 	}
 
 }
