@@ -84,32 +84,6 @@ LOCK TABLES `AccountSavings` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `AccountStatus`
---
-
-DROP TABLE IF EXISTS `AccountStatus`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `AccountStatus` (
-  `SNo` int(11) NOT NULL AUTO_INCREMENT,
-  `AccountNumber` int(11) NOT NULL,
-  `Status` varchar(45) NOT NULL,
-  PRIMARY KEY (`SNo`),
-  UNIQUE KEY `AccountNumber_UNIQUE` (`AccountNumber`),
-  CONSTRAINT `AccountNumber` FOREIGN KEY (`AccountNumber`) REFERENCES `Accounts` (`AccountNumber`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `AccountStatus`
---
-
-LOCK TABLES `AccountStatus` WRITE;
-/*!40000 ALTER TABLE `AccountStatus` DISABLE KEYS */;
-/*!40000 ALTER TABLE `AccountStatus` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Accounts`
 --
 
@@ -122,6 +96,7 @@ CREATE TABLE `Accounts` (
   `ClosedOn` datetime DEFAULT NULL,
   `Cust_ID` int(11) NOT NULL,
   `Type` varchar(45) NOT NULL,
+  `Status` varchar(45) NOT NULL,
   PRIMARY KEY (`AccountNumber`),
   KEY `CustID_idx` (`Cust_ID`),
   CONSTRAINT `Cust_ID` FOREIGN KEY (`Cust_ID`) REFERENCES `Customers` (`CustID`)
@@ -243,6 +218,8 @@ DROP TABLE IF EXISTS `CustomerStatus`;
 CREATE TABLE `CustomerStatus` (
   `CustID` int(11) NOT NULL,
   `Status` varchar(45) NOT NULL,
+  `SNo` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`SNo`),
   UNIQUE KEY `CustID_UNIQUE` (`CustID`),
   KEY `CustID_idx` (`CustID`),
   CONSTRAINT `CustID` FOREIGN KEY (`CustID`) REFERENCES `Customers` (`CustID`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -405,4 +382,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-14 14:35:16
+-- Dump completed on 2017-12-15 13:32:29
