@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 @Controller
-public class MyController {
+public class HomePageController {
 	
 //	@Autowired
 //	StudentDAOImpl studentDAOImpl;
