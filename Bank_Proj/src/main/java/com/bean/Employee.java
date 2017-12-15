@@ -54,6 +54,9 @@ public class Employee implements Serializable{
 	@Column(name = "DOB")
 	private LocalDate DOB;
 	
+	@Column(name = "Status")
+	private String Status;
+	
 	public Employee() {}
 
 	public int getEmpID() {
@@ -152,6 +155,14 @@ public class Employee implements Serializable{
 		DOB = dOB;
 	}
 
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
 	public String toString() {
 		return "Employee ID : " + getEmpID()
 				+ "\n Employee Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
@@ -162,6 +173,7 @@ public class Employee implements Serializable{
 				+"\n Address : " + getAddress()
 				+"\n User Name : " + getUserName()
 				+"\n Password : " + getPassword()
-				+"\n JoinDate : " + getJoinDate();
+				+"\n JoinDate : " + getJoinDate()
+				+"\n Status : " + getStatus();
 	}
 }
