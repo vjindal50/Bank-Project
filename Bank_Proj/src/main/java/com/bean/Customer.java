@@ -1,5 +1,6 @@
 package com.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Customers")
-public class Customer {
+public class Customer implements Serializable{
 	
 	@Id
 	@Column(name = "CustID")

@@ -1,5 +1,6 @@
 package com.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import org.joda.time.LocalDate;
 
 @Entity
 @Table(name = "EmployeeLog")
-public class EmployeeLog {
+public class EmployeeLog implements Serializable{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

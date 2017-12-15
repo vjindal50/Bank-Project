@@ -1,11 +1,13 @@
 package com.bean;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class AccountStatus {
+public class AccountStatus implements Serializable{
 	
 	@Id
 	@Column(name = "SNo")

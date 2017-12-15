@@ -1,5 +1,7 @@
 package com.bean;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import org.joda.time.LocalDate;
 
 @Entity
 @Table(name = "AccountSavings")
-public class AccountSavings {
+public class AccountSavings implements Serializable{
 	
 	@Id
 	@Column(name = "SNo")
