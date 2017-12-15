@@ -10,7 +10,6 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-@RequestMapping(value = "/homeme.html")
 @Controller
 public class MyController {
 	
@@ -22,7 +21,7 @@ public class MyController {
 //		Login(request,response);
 //	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/homeme.html", method = RequestMethod.POST)
 	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) {
 		
 		System.out.println("In home page controller");

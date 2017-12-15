@@ -32,6 +32,9 @@ public class Accounts implements Serializable{
 	@Column(name = "Type")
 	private String type;
 	
+	@Column(name = "Status")
+	private String Status;
+	
 	public Accounts() {}
 
 	public int getAccountNumber() {
@@ -74,10 +77,19 @@ public class Accounts implements Serializable{
 		this.type = type;
 	}
 	
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
 	public String toString() {
 		return "Account Number : " + getAccountNumber()
 				+ "\nAccount Type : " + getType()
 				+ "\nOpened On : " + getOpenedOn()
-				+ "\nType : " + getType();
+				+ "\nType : " + getType()
+				+ "\nStatus : " + getStatus();
 	}
 }
