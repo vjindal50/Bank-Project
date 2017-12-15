@@ -1,4 +1,4 @@
-package com.controller;
+package controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,10 +10,9 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-
+@RequestMapping(value = "/homeme.html")
 @Controller
-@RequestMapping("/")
-public class homePageContoller {
+public class MyController {
 	
 //	@Autowired
 //	StudentDAOImpl studentDAOImpl;
@@ -23,8 +22,9 @@ public class homePageContoller {
 //		Login(request,response);
 //	}
 	
-	@RequestMapping(value = {"/homeME"}, method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) {
+		
 		System.out.println("In home page controller");
 		
 		String submit = request.getParameter("submit");
@@ -32,7 +32,7 @@ public class homePageContoller {
 		System.out.println(submit);
 //		System.out.println(pass);
 		
-		WebApplicationContext context = RequestContextUtils.findWebApplicationContext(request);
+//		WebApplicationContext context = RequestContextUtils.findWebApplicationContext(request);
 //		StudentDAOImpl student = (StudentDAOImpl)context.getBean("studentDao");  	    
 //	    
 //		Student s = student.login(uname, pass);

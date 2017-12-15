@@ -56,9 +56,9 @@
 	<fieldset><h1>WELCOME TO MY BANK</h1></fieldset>
 	
 	<div id="selection">
-		<div class="myButtons"><form action="home.html" method="post"><input type="submit" name="submit" value="Customer"></form></div>
-		<div class="myButtons"><form action="homeME" method="post"><input type="submit" name="submit" value="Employee"></form></div>
-		<div class="myButtons"><form action="homeME" method="post"><input type="submit" name="submit" value="Admin"></form></div>
+		<div class="myButtons"><form action="homeme.html" method="post"><input type="submit" name="submit" value="Customer"></form></div>
+		<div class="myButtons"><form action="homeme.html" method="post"><input type="submit" name="submit" value="Employee"></form></div>
+		<div class="myButtons"><form action="homeme.html" method="post"><input type="submit" name="submit" value="Admin"></form></div>
 	</div>
 </center>
 </body>
