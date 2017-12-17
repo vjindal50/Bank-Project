@@ -1,4 +1,5 @@
 /.metadata/
+/.metadata/
 *.fdt
 .recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments.gen
 .recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.fdx
@@ -36,9 +37,14 @@ Servers/Tomcat v8.5 Server at localhost-config/context.xml
 .recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_2.tii
 .recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_2.tis
 .recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments_3
+<<<<<<< HEAD
 /.recommenders/
 Bank_Proj/.settings/org.eclipse.jdt.core.prefs
 Bank_Proj/src/main/webapp/welcomPage.jsp
 Bank_Proj/src/main/webapp/WEB-INF/web.xml
 Bank_Proj/src/main/webapp/welcomPage.jsp
 Bank_Proj/src/main/java/controller/LoginController.java
+=======
+/.recommenders/
+Bank_Proj/*
+>>>>>>> 6bea56b78b445088e39e9bf4db27d8d41ec17c15
