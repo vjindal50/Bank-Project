@@ -37,3 +37,8 @@ Servers/Tomcat v8.5 Server at localhost-config/context.xml
 .recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_2.tis
 .recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments_3
 /.recommenders/
+Bank_Proj/.settings/org.eclipse.jdt.core.prefs
+Bank_Proj/src/main/webapp/welcomPage.jsp
+Bank_Proj/src/main/webapp/WEB-INF/web.xml
+Bank_Proj/src/main/webapp/welcomPage.jsp
+Bank_Proj/src/main/java/controller/LoginController.java
