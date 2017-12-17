@@ -56,6 +56,9 @@
 		fieldset{
 			border-width: 7px;
 		}
+		h1{
+			color: white;
+		}
 	</style>
 
 	<script type="text/javascript">

@@ -3,20 +3,18 @@ package com.vj.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.ContextLoader;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vj.model.Customer;
+import com.vj.model.Employee;
 import com.vj.service.CustomerService;
 import com.vj.service.EmployeeService;
 
@@ -89,20 +87,71 @@ public class RegistrationController {
 			return new ModelAndView("home", "model", customer.toString() );
 			
 		}
-//		
-//		if(submit.equals("Login_Employee")) {
-//			request.setAttribute("type", "employee");
-//			String uname = request.getParameter("uname");
-//			String pass = request.getParameter("pass");
-//			if (customerService.login(uname, pass) != null) {
-//				return new ModelAndView("home", "model", employeeService.login(uname, pass));
-//			} else {
-//				return new ModelAndView("home", "model", "no employee found");
-//			}
-//		}
+		
+		if(submit.equals("Reg_Employee")) {
+			request.setAttribute("type", "employee");
+			
+			String fname = request.getParameter("fname");
+			String lname = request.getParameter("lname");
+			String mname = request.getParameter("mname");
+			String phone = request.getParameter("phone");
+			String altphone= request.getParameter("altphone");
+			String email= request.getParameter("email");
+			String address= request.getParameter("address");
+			String dob = request.getParameter("dob");
+			String uname = request.getParameter("uname");
+			String pass = request.getParameter("pass");
+			
+			Employee employee = new Employee();
+			
+			Date Dob = null;
+			try {
+				Dob = new SimpleDateFormat("dd/MM/yyyy").parse(dob);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			employee.setAddress(address);
+			if (altphone.equals("") || altphone == null) {
+				employee.setAlternatePhone(" ");
+			} else {
+				employee.setAlternatePhone(altphone);
+			}
+			employee.setDOB(Dob);
+			employee.setEmail(email);
+			employee.setFirstName(fname);
+			employee.setJoinDate(new Date());
+			if (lname.equals("") || lname == null) {
+				employee.setLastName(" ");
+			} else {
+				employee.setLastName(lname);
+			}
+			if (lname.equals("") || lname == null) {
+				employee.setMiddleName(" ");
+			} else {
+				employee.setMiddleName(mname);
+			}
+			employee.setPassword(pass);
+			employee.setPhone(phone);
+			employee.setStatus("current");
+			employee.setUserName(uname);
+			
+			employeeService.addEmployee(employee);
+			
+			System.out.println(employee);
+			
+			return new ModelAndView("home", "model", employee.toString());
+			
+		}
 		
 		if(submit.equals("Reg_Admin")) {
-			return new ModelAndView("LoginReg", "adminMsg", "<h1>Admin cannot register<h1>");
+			
+			ModelAndView model = new ModelAndView();
+			model.addObject("adminMsg", "<h1>Admin cannot register. Try login in !!</h1>");
+			model.addObject("model", "Admin");
+			model.setViewName("LoginReg");
+			
+			return model;
 		}
 		
 		System.out.println(submit);	
