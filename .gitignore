@@ -1,0 +1,50 @@
+/.metadata/
+*.fdt
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments.gen
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.fdx
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.fnm
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.nrm
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.prx
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.frq
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.tii
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/write.lock
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments_1
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_0.tis
+Servers/Tomcat v8.5 Server at localhost-config/catalina.properties
+Servers/Tomcat v8.5 Server at localhost-config/catalina.policy
+Servers/.settings/org.eclipse.wst.server.core.prefs
+Servers/.project
+Servers/Tomcat v8.5 Server at localhost-config/server.xml
+Servers/Tomcat v8.5 Server at localhost-config/web.xml
+Servers/Tomcat v8.5 Server at localhost-config/tomcat-users.xml
+Servers/Tomcat v8.5 Server at localhost-config/context.xml
+.recommenders/caches/identified-project-coordinates.json
+.recommenders/caches/manual-mappings.json
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_1.fdx
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_1.fnm
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_1.frq
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_1.nrm
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_1.tii
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_1.prx
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_1.tis
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments_2
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_2.fdx
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_2.fnm
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_2.frq
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_2.nrm
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_2.prx
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_2.tii
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_2.tis
+.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/segments_3
+<<<<<<< HEAD
+/.recommenders/
+Bank_Proj/.settings/org.eclipse.jdt.core.prefs
+Bank_Proj/src/main/webapp/welcomPage.jsp
+Bank_Proj/src/main/webapp/WEB-INF/web.xml
+Bank_Proj/src/main/webapp/welcomPage.jsp
+Bank_Proj/src/main/java/controller/LoginController.java
+=======
+/.recommenders/
+Bank_Proj/*
+>>>>>>> 6bea56b78b445088e39e9bf4db27d8d41ec17c15
+*.jar
