@@ -56,6 +56,9 @@
 		fieldset{
 			border-width: 7px;
 		}
+		h1{
+			color: white;
+		}
 	</style>
 
 	<script type="text/javascript">
@@ -76,12 +79,12 @@ ${adminMsg}
 						<div class="textfields">Last Name :</div><input type="text" name="lname" required><br><br>
 						<div class="textfields">Middle Name : </div><input type="text" name="mname"><br><br>
 						<div class="textfields">Phone : </div><input type="Phone" name="phone" required><br><br>
-						<div class="textfields">Alternate Phone : </div><input type="phone" name="altphone"><br><br>
+						<div class="textfields">Alternate Phone : </div><input type="Phone" name="altphone"><br><br>
 						<div class="textfields">Email : </div><input type="Email" name="email" required><br><br>
 						<div class="textfields">Address : </div><input type="text" name="address" required><br><br>
 						<div class="textfields">User Name : </div><input type="text" name="uname" required><br><br>
 						<div class="textfields">Password : </div><input type="Password" name="pass" required><br><br>
-						<div class="textfields">D.O.B. :</div><input type="date" name=dob"" required><br><br>
+						<div class="textfields">D.O.B. :</div><input type="Date" name="dob" required><br><br>
 						<input class="butts" type="submit" name="submit" value="Reg_${model}">
 						<input class="butts" type="reset" name="reset" value="reset">
 					</form>

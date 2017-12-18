@@ -12,3 +12,23 @@
 <h1>${model2me}</h1>
 </body>
 </html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body><center>
+	<h1>
+		Welcome ${customer.getname}
+	</h1>
+	
+	<div><form method="post" action="viewprofile"><input type="submit" name="submit" value=""></form></div>
+
+</center>
+
+</body>
+</html> -->
