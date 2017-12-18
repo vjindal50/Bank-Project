@@ -40,7 +40,7 @@ public class LoginController {
 			if (customerService.login(uname, pass) != null) {
 				return new ModelAndView("home", "model", customerService.login(uname, pass));
 			} else {
-				return new ModelAndView("home", "model", "no customer found");
+				return new ModelAndView("error", "model", "no customer found");
 			}
 		}
 		
@@ -69,7 +69,7 @@ public class LoginController {
 				model.setViewName("home");
 				return model;
 			} else {
-				return new ModelAndView("home", "model", "no employee found");
+				return new ModelAndView("error", "model", "no employee found");
 			}
 		}
 		
@@ -80,7 +80,7 @@ public class LoginController {
 			if (uname.equals("vj") && pass.equals("137115")) {
 				return new ModelAndView("home", "model", "admin is here");
 			} else {
-				return new ModelAndView("home", "model", "no admin found");
+				return new ModelAndView("error", "model", "no admin found");
 			}
 		}
 		
