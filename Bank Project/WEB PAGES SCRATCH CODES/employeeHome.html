@@ -3,9 +3,59 @@
 <head>
 	<title>Home</title>
 	<script type="text/javascript">
-		function searchCust(){}
-		function viewCustLog(){}
-		function viewProfile(){}
+		function searchCust(){
+			var z = document.getElementById("sidemenucontent");
+			var text = "";
+			z.innerHTML = text;
+		}
+		function viewCustLog(){
+			var z = document.getElementById("sidemenucontent");
+			var text = "";
+			text += '<table>';
+			text += '<tr><th>Cust ID</th><th>Full Name</th><th>Account Number</th><th>User ID</th><th>Status</th></tr>';
+			text += '<c:forEach>';
+			text += '<tr><td>${}</td><td>${}</td><td>${}</td><td>${}</td><td>${}</td></tr>';
+			text += '</c:forEach>';
+			text += '</table>';
+			z.innerHTML = text;
+		}
+		function viewProfile(){
+			var z = document.getElementById("sidemenucontent");
+			var text = "";
+			text += '<div class="divtext">Fisrt Name : </div>${}';
+			text += '<br><div class="divtext">Middle Name : </div>${}';
+			text += '<br><div class="divtext">Last Name: </div>${}';
+			text += '<br><div class="divtext">ID : </div>${}';
+			text += '<br><div class="divtext">Phone : </div>${}';
+			text += '<br><div class="divtext">Alternate Phone : </div>${}';
+			text += '<br><div class="divtext">Email : </div>${}';
+			text += '<br><div class="divtext">Address : </div>${}';
+			text += '<br><div class="divtext">D.O.B : </div>${}';
+			text += '<br><div class="divtext">User Name : </div>${}';
+			text += '<br><div class="divtext">Password : </div>${}';
+			text += '<br><button onclick="updateProfile()">UPDATE PROFILE</button>';
+			z.innerHTML = text;
+		}
+		function updateProfile(){
+			var z = document.getElementById("sidemenucontent");
+			var text = "";
+			text += '<form method="post" action="updateEmpProfile">';
+			text += '<div class="divtext">First Name : </div><input type="text" name="fname"><br><br>';
+			text += '<div class="divtext">Last Name :</div><input type="text" name="lname"><br><br>';
+			text += '<div class="divtext">Middle Name : </div><input type="text" name="mname"><br><br>';
+			text += '<div class="divtext">Phone : </div><input type="Phone" name="phone"><br><br>';
+			text += '<div class="divtext">Alternate Phone : </div><input type="phone" name="altphone"><br><br>';
+			text += '<div class="divtext">Email : </div><input type="Email" name="email"><br><br>';
+			text += '<div class="divtext">Address : </div><input type="text" name="address"><br><br>';
+			text += '<div class="divtext">User Name : </div><input type="text" name="uname"><br><br>';
+			text += '<div class="divtext">Password : </div><input type="Password" name="pass"><br><br>';
+			text += '<div class="divtext">D.O.B. :</div><input type="date" name="dob" required><br><br>';
+			text += '<input class="butts" type="submit" name="submit" value="Update">';
+			text += '<input class="butts" type="reset" name="reset" value="Reset">';
+			text += '</form>';
+			text += '<button onclick="viewProfile()">Back</button>';
+			z.innerHTML = text;
+		}
 	</script>
 	<style type="text/css">
 		.emphomefield{
@@ -15,11 +65,12 @@
 		.sidemenuitem{
 			/*display: inline-block;*/
 			width: 100%;
-			height: 40px;
+			height: 50px;
 		}
 		.sidemenuandcontent{
 			display: inline-block;	
 			/*height: 400px;	*/
+			vertical-align: top;
 		}
 		#empinfo{
 			/*padding-left: 5%;*/
@@ -33,28 +84,70 @@
 		}
 		#sidemenucontent{
 			display: inline-block;
-			width: 300px;
+			width: 500px;
+			/*height: 200px;*/
+			/*width: 70%;*/
+			/*content: top;*/
+
+		}
+		button{
+			margin-top: 5px;
+			width: 150px;
+		}
+		#sidemenu{
+			width: 25%;
+		}
+		body{
+			background-color: lightblue;
+		}
+		#headings{
+			margin-top: 70px;
+		}
+		.divtext{
+			display: inline-block;
+			width: 140px;
+			text-align: right;
+			color: white;
+		}
+		table{
+			border: solid;
+		}
+		th, td{
+			border: solid;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+		#logout{
+			width: 150px;
+		}
+		.menuanddis{
+			margin-top: 35px;
+			margin-bottom: 35px;
+		}
+		.butts{
+			width: 150px;
 		}
 	</style>
 </head>
 <body><center>
-	<div><h1>Welcome ${EMPLOYEE.name}</h1></div>
+	<div id="headings"><h1>Welcome ${EMPLOYEE.name}</h1></div>
 	<div>
-		<div>
+		<div class="menuanddis">
 			<div class="emphomefield" id="empinfo">${empId} , ${empid}</div>
 			<div class="emphomefield" id="lastlogin">${LastLogin}</div>
 		</div>
-		<div>
+		<div class="menuanddis">
 			<div class="sidemenuandcontent" id="sidemenu">
-				<div class="sidemenuitem"><button onclick="">Search Customer</button></div>
-				<div class="sidemenuitem"><button onclick="">View Customer Log</button></div>
-				<div class="sidemenuitem"><button onclick="">View Profile</button></div>
-				<div class="sidemenuitem"><form action="logout" method="post"><input type="submit" name="submit" value="logout"></form></div>
+				<div class="sidemenuitem"><button onclick="searchCust()">Search Customer</button></div>
+				<div class="sidemenuitem"><button onclick="viewCustLog()">View Customer Log</button></div>
+				<div class="sidemenuitem"><button onclick="viewProfile()">View Profile</button></div>
+				<div class="sidemenuitem"><form action="logout" method="post"><input id="logout" type="submit" name="submit" value="Logout"></form></div>
 			</div>
-			<div class="sidemenuandcontent"><div id="sidemenucontent"></div>
-			<div></div>
-			<div></div>
-			<div></div>
+			<div class="sidemenuandcontent">
+				<div id="sidemenucontent">
+					 <h3>Please select an action</h3> 
+				</div>
+			
 			</div>
 		</div>
 	</div>
