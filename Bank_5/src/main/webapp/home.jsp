@@ -9,7 +9,64 @@
 	
 	<spring:url value="/resources/HomePageScript.js" var="employeeHomeScript" />
 	<script type="text/javascript" src="${employeeHomeScript}"></script>
-	
+	<script type="text/javascript">
+	function searchCust(){
+		var z = document.getElementById("sidemenucontent");
+		var text = "";
+		text += '<form method="post" action="searchCust">';
+		text += '<div class="divtext">First Name : </div><input type="text" name="fname"><br><br>';
+		text += '<div class="divtext">Last Name :</div><input type="text" name="lname"><br><br>';
+		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname"><br><br>';
+		text += '<div class="divtext">Phone : </div><input type="Phone" name="phone"><br><br>';
+		text += '<div class="divtext">Alternate Phone : </div><input type="phone" name="altphone"><br><br>';
+		text += '<div class="divtext">Email : </div><input type="Email" name="email"><br><br>';
+		text += '<div class="divtext">Address : </div><input type="text" name="address"><br><br>';
+		text += '<div class="divtext">User Name : </div><input type="text" name="uname"><br><br>';
+		text += '<div class="divtext">D.O.B. :</div><input type="date" name="dob"><br><br>';
+		text += '<input class="butts" type="submit" name="submit" value="Search">';
+		text += '<input class="butts" type="reset" name="reset" value="Reset">';
+		text += '</form>';
+		z.innerHTML = text;
+		console.log("hey");
+	}
+	function viewProfile(){
+		var z = document.getElementById("sidemenucontent");
+		var text = "";
+		text += '<div class="divtext">Fisrt Name : </div>${efname}';
+		text += '<br><div class="divtext">Middle Name : </div>${emname}';
+		text += '<br><div class="divtext">Last Name: </div>${elname}';
+		text += '<br><div class="divtext">ID : </div>${eeid}';
+		text += '<br><div class="divtext">Phone : </div>${ephone}';
+		text += '<br><div class="divtext">Alternate Phone : </div>${ealtphone}';
+		text += '<br><div class="divtext">Email : </div>${eemail}';
+		text += '<br><div class="divtext">Address : </div>${eaddress}';
+		text += '<br><div class="divtext">D.O.B : </div>${edob}';
+		text += '<br><div class="divtext">User Name : </div>${euname}';
+		text += '<br><div class="divtext">Password : </div>${epass}';
+		text += '<br><button onclick="updateProfile()">UPDATE PROFILE</button>';
+		z.innerHTML = text;
+	}
+	function updateProfile(){
+		var z = document.getElementById("sidemenucontent");
+		var text = "";
+		text += '<form method="post" action="updateEmpProfile">';
+		text += '<div class="divtext">First Name : </div><input type="text" name="fname" value="${efname}"><br><br>';
+		text += '<div class="divtext">Last Name :</div><input type="text" name="lname" value="${elname}"><br><br>';
+		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname" value="${emname}"><br><br>';
+		text += '<div class="divtext">Phone : </div><input type="Phone" name="phone" value="${ephone}"><br><br>';
+		text += '<div class="divtext">Alternate Phone : </div><input type="phone" name="altphone" value="${ealtphone}"><br><br>';
+		text += '<div class="divtext">Email : </div><input type="Email" name="email" value="${eemail}"><br><br>';
+		text += '<div class="divtext">Address : </div><input type="text" name="address" value="${eaddress}"><br><br>';
+		text += '<div class="divtext">User Name : </div><input type="text" name="uname" value="${euname}"><br><br>';
+		text += '<div class="divtext">Password : </div><input type="Password" name="pass" value="${epass}"><br><br>';
+		text += '<div class="divtext">D.O.B. :</div><input type="date" name="dob" value="${edob}"><br><br>';
+		text += '<input class="butts" type="submit" name="submit" value="Update">';
+		text += '<input class="butts" type="reset" name="reset" value="Reset">';
+		text += '</form>';
+		text += '<button onclick="viewProfile()">Back</button>';
+		z.innerHTML = text;
+	}
+	</script>
 	<style type="text/css">
 		.emphomefield{
 			display: inline-block;

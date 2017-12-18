@@ -55,6 +55,17 @@ public class LoginController {
 				model.addObject("empname", employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
 				model.addObject("empId", employee.getEmpID());
 				model.addObject("LastLogin", employee.getJoinDate());
+				model.addObject("eaddress", employee.getAddress());
+				model.addObject("ealtphone", employee.getAlternatePhone());
+				model.addObject("edob", employee.getDOB());
+				model.addObject("eemail", employee.getEmail());
+				model.addObject("eeid", employee.getEmpID());
+				model.addObject("efname", employee.getFirstName());
+				model.addObject("elname", employee.getLastName());
+				model.addObject("emname", employee.getMiddleName());
+				model.addObject("ephone", employee.getPhone());
+				model.addObject("euname", employee.getUserName());
+				model.addObject("epass", employee.getPassword());
 				model.setViewName("home");
 				return model;
 			} else {
