@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vj.model.Employee;
 import com.vj.service.CustomerService;
 import com.vj.service.EmployeeService;
 
@@ -47,8 +48,15 @@ public class LoginController {
 			request.setAttribute("type", "employee");
 			String uname = request.getParameter("uname");
 			String pass = request.getParameter("pass");
-			if (customerService.login(uname, pass) != null) {
-				return new ModelAndView("home", "model", employeeService.login(uname, pass));
+			Employee employee = new Employee();
+			employee = employeeService.login(uname, pass);
+			if (employee != null) {
+				ModelAndView model = new ModelAndView();
+				model.addObject("empname", employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
+				model.addObject("empId", employee.getEmpID());
+				model.addObject("LastLogin", employee.getJoinDate());
+				model.setViewName("home");
+				return model;
 			} else {
 				return new ModelAndView("home", "model", "no employee found");
 			}
