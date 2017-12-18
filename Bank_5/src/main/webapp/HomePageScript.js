@@ -15,6 +15,7 @@
 			text += '<input class="butts" type="reset" name="reset" value="Reset">';
 			text += '</form>';
 			z.innerHTML = text;
+			console.log("hey");
 		}
 		function viewCustLog(){
 			var z = document.getElementById("sidemenucontent");

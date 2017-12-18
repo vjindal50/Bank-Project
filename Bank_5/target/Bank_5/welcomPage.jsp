@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
    <%--  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> --%>
    <%--  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<spring:url value="/resources/welcomepageBg.jpg" var="welcomePageBg" />
 	<title>My Bank Applicaotion</title>
 	
 	<style type="text/css">
@@ -14,7 +16,7 @@
 			box-sizing: border-box;
 		}
 		body{
-			/* background-image: url("Media/welcomepageBg.jpg"); */
+			background-image: url("${welcomePageBg}");
 			background-repeat: repeat-y;
 			background-size:cover;
 		}
@@ -52,9 +54,9 @@
 	<script type="text/javascript"></script>
 
 </head>
-<body background="Media/welcomepageBg.jpg"><center>
+<body background="${welcomePageBg}"><center>
 	<fieldset><h1>WELCOME TO MY BANK</h1></fieldset>
-	
+	${logoutmsg}
 	<div id="selection">
 		<div class="myButtons"><form action="homeme.html" method="post"><input type="submit" name="submit" value="Customer"></form></div>
 		<div class="myButtons"><form action="homeme.html" method="post"><input type="submit" name="submit" value="Employee"></form></div>
