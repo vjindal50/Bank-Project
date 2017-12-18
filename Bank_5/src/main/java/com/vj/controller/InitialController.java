@@ -17,9 +17,9 @@ import com.vj.model.Customer;
 import com.vj.service.CustomerService;
  
 @Controller
-public class CustomerController {
+public class InitialController {
 	
-    public CustomerController() {
+    public InitialController() {
         System.out.println("CustomerController()");
     }
  
