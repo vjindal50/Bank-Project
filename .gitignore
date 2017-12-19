@@ -51,3 +51,6 @@ Bank_Proj/*
 *.class
 *.class
 *.class
+*.class
+*.MF
+*.properties
