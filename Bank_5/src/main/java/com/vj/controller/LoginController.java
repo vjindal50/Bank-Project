@@ -48,12 +48,15 @@ public class LoginController {
 		}
 		
 		if(submit.equals("Login_Employee")) {
-			request.setAttribute("type", "employee");
+			
+			request.setAttribute("type", "employee"); 
+			
 			String uname = request.getParameter("uname");
 			String pass = request.getParameter("pass");
 			Employee employee = new Employee();
 			employee = employeeService.login(uname, pass);
 			if (employee != null) {
+				request.getSession().setAttribute("emp", employee);
 				ModelAndView model = new ModelAndView();
 				model.addObject("empname", employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
 				model.addObject("empId", employee.getEmpID());

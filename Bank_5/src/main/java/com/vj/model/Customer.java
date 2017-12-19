@@ -162,8 +162,8 @@ public class Customer implements Serializable{
 	}
 
 	public String toString() {
-		return "Emp ID : " + getCustID()
-				+ "\n Employee Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
+		return "Cust ID : " + getCustID()
+				+ "\n Cust Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
 				+"\n Phone Number : " + getPhone()
 				+"\n Alternate Phone : " + getAlternatePhone()
 				+"\n Email : " + getEmail()

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,14 +15,14 @@
 		var z = document.getElementById("sidemenucontent");
 		var text = "";
 		text += '<form method="post" action="searchCust">';
-		text += '<div class="divtext">First Name : </div><input type="text" name="fname"><br><br>';
-		text += '<div class="divtext">Last Name :</div><input type="text" name="lname"><br><br>';
-		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname"><br><br>';
-		text += '<div class="divtext">Phone : </div><input type="Phone" name="phone"><br><br>';
-		text += '<div class="divtext">Alternate Phone : </div><input type="phone" name="altphone"><br><br>';
-		text += '<div class="divtext">Email : </div><input type="Email" name="email"><br><br>';
-		text += '<div class="divtext">Address : </div><input type="text" name="address"><br><br>';
-		text += '<div class="divtext">User Name : </div><input type="text" name="uname"><br><br>';
+		text += '<div class="divtext">First Name : </div><input type="text" name="fname1"><br><br>';
+		text += '<div class="divtext">Last Name :</div><input type="text" name="lname1"><br><br>';
+		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname1"><br><br>';
+		text += '<div class="divtext">Phone : </div><input type="Phone" name="phone1"><br><br>';
+		text += '<div class="divtext">Alternate Phone : </div><input type="phone" name="altphone1"><br><br>';
+		text += '<div class="divtext">Email : </div><input type="Email" name="email1"><br><br>';
+		text += '<div class="divtext">Address : </div><input type="text" name="address1"><br><br>';
+		text += '<div class="divtext">User Name : </div><input type="text" name="uname1"><br><br>';
 		text += '<input class="butts" type="submit" name="submit" value="Search">';
 		text += '<input class="butts" type="reset" name="reset" value="Reset">';
 		text += '</form>';
@@ -143,8 +144,8 @@
 	<div id="headings"><h1>Welcome ${empname}</h1></div>
 	<div>
 		<div class="menuanddis">
-			<div class="emphomefield" id="empinfo">${empId}</div>
-			<div class="emphomefield" id="lastlogin">${LastLogin}</div>
+			<div class="emphomefield" id="empinfo"><b>ID is : </b>${empId}</div>
+			<div class="emphomefield" id="lastlogin">Joined on : ${LastLogin}</div>
 		</div>
 		<div class="menuanddis">
 			<div class="sidemenuandcontent" id="sidemenu">
@@ -156,6 +157,7 @@
 			<div class="sidemenuandcontent">
 				<div id="sidemenucontent">
 					 <h3>Please select an action</h3> 
+					 ${custlist}
 				</div>
 			
 			</div>
