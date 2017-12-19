@@ -151,7 +151,6 @@ public class CustSearchController {
 			model.addObject("custlist", "No customer found");
 		}
 		Employee employee = (Employee) request.getSession().getAttribute("emp");
-		System.out.println(list);
 		model.addObject("empname", employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
 		model.addObject("empId", employee.getEmpID());
 		model.addObject("LastLogin", employee.getJoinDate());
