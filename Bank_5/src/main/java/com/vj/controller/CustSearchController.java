@@ -40,116 +40,125 @@ public class CustSearchController {
 		
 		ModelAndView model = new ModelAndView();
 		
-		List<Customer> list = customerService.getAllCustomer();
-//		System.out.println(list);
-		List<Customer> temp = list;
-//		System.out.println(list + " \n");
-//		System.out.println(temp + " \n");
-		if (fname != "" && fname != null) {
-			for(int i = 0 ; i < list.size(); i++) {
-				if(!list.get(i).getFirstName().equals(fname)) {
-					System.out.print(list.get(i).getFirstName() + " ");
-					System.out.println(!list.get(i).equals(fname));
-					temp.remove(i);
-				}
-			}
-		}
-
-		list = temp;
-	
-		if(lname != "" && lname != null) {
-			for(int i = 0 ; i < list.size(); i++) {
-				if(!list.get(i).getLastName().equals(lname)) {
-					temp.remove(i);
-				}
-			}
-		}
-		list = temp;
-//		System.out.println(list.size());
-//		
-		if(mname != "" && mname != null) {
-			for(int i = 0 ; i < list.size(); i++) {	
-				if(!list.get(i).getMiddleName().equals(mname)) {
-					temp.remove(i);
-				}
-			}
-		}
-		list = temp;
-		System.out.println(list.size());
-//		
-		if(phone != "" && phone != null) {
-			for(int i = 0 ; i < list.size(); i++) {
-				if(!list.get(i).getPhone().equals(phone)) {
-					temp.remove(i);
-				}
-			}
-		}
-		list = temp;
-//		System.out.println(list.size());
-//		
-		if(altphone != "" && altphone != null) {
-			for(int i = 0 ; i < list.size(); i++) {			
-				if(!list.get(i).getAlternatePhone().equals(altphone)) {
-					temp.remove(i);
-				}
-			}
-		}
-		list = temp;
-//		System.out.println(list.size());
-//		
-		if(email != "" && email != null) {
-			for(int i = 0 ; i < list.size(); i++) {			
-				if(!list.get(i).getEmail().equals(email)) {
-					temp.remove(i);
-				}
-			}
-		}
-		list = temp;
-//		System.out.println(list.size());
-//		
-		if(address != "" && address != null) {
-			for(int i = 0 ; i < list.size(); i++) {			
-				if(!list.get(i).getAddress().equals(address)) {
-					list.remove(i);
-				}
-			}
-		}
-		list = temp;
-//		System.out.println(list.size());
-//		
-		if(uname != "" && uname != null) {
-			for(int i = 0 ; i < list.size(); i++) {			
-				if(!list.get(i).getUserName().equals(uname)) {
-					list.remove(i);
-				}
-			}
-		}
-		list = temp;
-//		System.out.println(list.size());
+//		if((fname == "" || fname == null) && (lname == "" || lname == null) && (mname == "" || mname == null) 
+//				&& (phone == "" || phone == null) && (altphone == "" || altphone == null) && (email == "" || email == null)
+//				&& (address == "" || address == null) && (uname == "" || uname == null)) {
+//			
+//			model.addObject("custlist", "Enter 1 or more parameters to search.");
+//			
+//		} else {
 		
-		if (list.size() > 0) {
-			String result = "<table>";
-			result +="<tr>\n" + 
-					"		<th>CustId\n</th>\n" + 
-					"		<th>F.Name</th>\n" + 
-					"		<th>M.Name</th>\n" + 
-					"		<th>L.Name</th>\n" + 
-					"		<th>Email</th>\n" + 
-					"	</tr>";
-			for(int i = 0 ; i < list.size() ; i ++) {
-				result += "<tr>";
-				result += "<td><form method=\"post\" action=\"getthiscust\">\n" + 
-						"	<input type=\"submit\" name=\"custid\" value=\""+ list.get(i).getCustID() +"\">" + 
-						"</form></td>" + " <td>" + list.get(i).getFirstName() + "</td> <td>" + list.get(i).getMiddleName()
-						 + "</td> <td>" + list.get(i).getLastName() + "</td> <td>" + list.get(i).getEmail() + "</td>";
-				result += "</tr>";
-//				result+= "<form method='post' action='getthiscust'></form>";
+			List<Customer> list = customerService.getAllCustomer();
+	//		System.out.println(list);
+			List<Customer> temp = list;
+	//		System.out.println(list + " \n");
+	//		System.out.println(temp + " \n");
+			if (fname != "" && fname != null) {
+				for(int i = 0 ; i < list.size(); i++) {
+					if(!list.get(i).getFirstName().equals(fname)) {
+						System.out.print(list.get(i).getFirstName() + " ");
+						System.out.println(!list.get(i).equals(fname));
+						temp.remove(i);
+					}
+				}
 			}
-			model.addObject("custlist", result);
+	
+			list = temp;
+		
+			if(lname != "" && lname != null) {
+				for(int i = 0 ; i < list.size(); i++) {
+					if(!list.get(i).getLastName().equals(lname)) {
+						temp.remove(i);
+					}
+				}
+			}
+			list = temp;
+	//		System.out.println(list.size());
+	//		
+			if(mname != "" && mname != null) {
+				for(int i = 0 ; i < list.size(); i++) {	
+					if(!list.get(i).getMiddleName().equals(mname)) {
+						temp.remove(i);
+					}
+				}
+			}
+			list = temp;
+			System.out.println(list.size());
+	//		
+			if(phone != "" && phone != null) {
+				for(int i = 0 ; i < list.size(); i++) {
+					if(!list.get(i).getPhone().equals(phone)) {
+						temp.remove(i);
+					}
+				}
+			}
+			list = temp;
+	//		System.out.println(list.size());
+	//		
+			if(altphone != "" && altphone != null) {
+				for(int i = 0 ; i < list.size(); i++) {			
+					if(!list.get(i).getAlternatePhone().equals(altphone)) {
+						temp.remove(i);
+					}
+				}
+			}
+			list = temp;
+	//		System.out.println(list.size());
+	//		
+			if(email != "" && email != null) {
+				for(int i = 0 ; i < list.size(); i++) {			
+					if(!list.get(i).getEmail().equals(email)) {
+						temp.remove(i);
+					}
+				}
+			}
+			list = temp;
+	//		System.out.println(list.size());
+	//		
+			if(address != "" && address != null) {
+				for(int i = 0 ; i < list.size(); i++) {			
+					if(!list.get(i).getAddress().equals(address)) {
+						list.remove(i);
+					}
+				}
+			}
+			list = temp;
+	//		System.out.println(list.size());
+	//		
+			if(uname != "" && uname != null) {
+				for(int i = 0 ; i < list.size(); i++) {			
+					if(!list.get(i).getUserName().equals(uname)) {
+						list.remove(i);
+					}
+				}
+			}
+			list = temp;
+	//		System.out.println(list.size());
 			
-		}else {
-			model.addObject("custlist", "No customer found");
-		}
+			if (list.size() > 0) {
+				String result = "<table>";
+				result +="<tr>\n" + 
+						"		<th>CustId\n</th>\n" + 
+						"		<th>F.Name</th>\n" + 
+						"		<th>M.Name</th>\n" + 
+						"		<th>L.Name</th>\n" + 
+						"		<th>Email</th>\n" + 
+						"	</tr>";
+				for(int i = 0 ; i < list.size() ; i ++) {
+					result += "<tr>";
+					result += "<td><form method=\"post\" action=\"getthiscust\">\n" + 
+							"	<input type=\"submit\" name=\"custid\" value=\""+ list.get(i).getCustID() +"\">" + 
+							"</form></td>" + " <td>" + list.get(i).getFirstName() + "</td> <td>" + list.get(i).getMiddleName()
+							 + "</td> <td>" + list.get(i).getLastName() + "</td> <td>" + list.get(i).getEmail() + "</td>";
+					result += "</tr>";
+	//				result+= "<form method='post' action='getthiscust'></form>";
+				}
+				model.addObject("custlist", result);
+				
+			}else {
+				model.addObject("custlist", "No customer found");
+			}
+//		}
 		Employee employee = (Employee) request.getSession().getAttribute("emp");
 		model.addObject("empname", employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
 		model.addObject("empId", employee.getEmpID());

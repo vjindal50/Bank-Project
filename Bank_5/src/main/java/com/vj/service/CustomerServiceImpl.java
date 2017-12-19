@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
  
 import com.vj.dao.CustomerDAO;
+import com.vj.dao.CustomerLogDAO;
 import com.vj.model.Customer;
+import com.vj.model.CustomerLog;
  
 @Service
 @Transactional
@@ -15,10 +17,34 @@ public class CustomerServiceImpl implements CustomerService {
  
     @Autowired
     private CustomerDAO customerDAO;
+    
+    @Autowired
+    private CustomerLogDAO customerLogDAO;
  
     @Transactional
     public void addCustomer(Customer customer) {
+    		
     		customerDAO.addCustomer(customer);
+    		
+    		CustomerLog cLog = new CustomerLog();
+    		
+    		cLog.setAddress(customer.getAddress());
+    		cLog.setAlternatePhone(customer.getAlternatePhone());
+    		cLog.setCommand("Created new");
+    		cLog.setCustID(customer.getCustID());
+    		cLog.setDOB(customer.getDOB());
+    		cLog.setEmail(customer.getEmail());
+    		cLog.setFirstName(customer.getFirstName());
+    		cLog.setLastName(customer.getLastName());
+    		cLog.setMiddleName(customer.getMiddleName());
+    		cLog.setJoinDate(customer.getJoinDate());
+    		cLog.setCustID(customer.getCustID());
+    		cLog.setPassword(customer.getPassword());
+    		cLog.setPhone(customer.getPhone());
+    		cLog.setStatus(customer.getStatus());
+    		cLog.setUserName(customer.getUserName());
+
+    		customerLogDAO.insertCustomerLog(cLog);
     }
  
     @Transactional
@@ -29,16 +55,58 @@ public class CustomerServiceImpl implements CustomerService {
     
     @Transactional
     public void deleteCustomer(int customerId) {
-    	customerDAO.deleteCustomer(customerId);
+    		Customer customer = getCustomer(customerId);
+    		
+    		CustomerLog cLog = new CustomerLog();
+    		
+    		cLog.setAddress(customer.getAddress());
+    		cLog.setAlternatePhone(customer.getAlternatePhone());
+    		cLog.setCommand("Created new");
+    		cLog.setCustID(customer.getCustID());
+    		cLog.setDOB(customer.getDOB());
+    		cLog.setEmail(customer.getEmail());
+    		cLog.setFirstName(customer.getFirstName());
+    		cLog.setLastName(customer.getLastName());
+    		cLog.setMiddleName(customer.getMiddleName());
+    		cLog.setJoinDate(customer.getJoinDate());
+    		cLog.setCustID(customer.getCustID());
+    		cLog.setPassword(customer.getPassword());
+    		cLog.setPhone(customer.getPhone());
+    		cLog.setStatus(customer.getStatus());
+    		cLog.setUserName(customer.getUserName());
+
+    		customerLogDAO.insertCustomerLog(cLog);
+    		customerDAO.deleteCustomer(customerId);
     }
  
     public Customer getCustomer(int empid) {
         return customerDAO.getCustomer(empid);
     }
  
-    public Customer updateCustomer(Customer customer) {
-        // TODO Auto-generated method stub
-        return customerDAO.updateCustomer(customer);
+    public Customer updateCustomer(Customer customer2) {
+    		Customer customer = customerDAO.updateCustomer(customer2);
+    		
+    		CustomerLog cLog = new CustomerLog();
+    		
+    		cLog.setAddress(customer.getAddress());
+    		cLog.setAlternatePhone(customer.getAlternatePhone());
+    		cLog.setCommand("Created new");
+    		cLog.setCustID(customer.getCustID());
+    		cLog.setDOB(customer.getDOB());
+    		cLog.setEmail(customer.getEmail());
+    		cLog.setFirstName(customer.getFirstName());
+    		cLog.setLastName(customer.getLastName());
+    		cLog.setMiddleName(customer.getMiddleName());
+    		cLog.setJoinDate(customer.getJoinDate());
+    		cLog.setCustID(customer.getCustID());
+    		cLog.setPassword(customer.getPassword());
+    		cLog.setPhone(customer.getPhone());
+    		cLog.setStatus(customer.getStatus());
+    		cLog.setUserName(customer.getUserName());
+
+    		customerLogDAO.insertCustomerLog(cLog);
+    		
+        return customer;
     }
  
     public void setEmployeeDAO(CustomerDAO employeeDAO) {
