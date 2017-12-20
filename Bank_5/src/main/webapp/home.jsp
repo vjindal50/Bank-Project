@@ -2,10 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<<<<<<< HEAD
-=======
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
->>>>>>> master
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,17 +16,7 @@
 		var z = document.getElementById("sidemenucontent");
 		var text = "";
 		text += '<form method="post" action="searchCust">';
-<<<<<<< HEAD
-		text += '<div class="divtext">First Name : </div><input type="text" name="fname"><br><br>';
-		text += '<div class="divtext">Last Name :</div><input type="text" name="lname"><br><br>';
-		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname"><br><br>';
-		text += '<div class="divtext">Phone : </div><input type="Phone" name="phone"><br><br>';
-		text += '<div class="divtext">Alternate Phone : </div><input type="phone" name="altphone"><br><br>';
-		text += '<div class="divtext">Email : </div><input type="Email" name="email"><br><br>';
-		text += '<div class="divtext">Address : </div><input type="text" name="address"><br><br>';
-		text += '<div class="divtext">User Name : </div><input type="text" name="uname"><br><br>';
-		text += '<div class="divtext">D.O.B. :</div><input type="date" name="dob"><br><br>';
-=======
+
 		text += '<div class="divtext">First Name : </div><input type="text" name="fname1"><br><br>';
 		text += '<div class="divtext">Last Name :</div><input type="text" name="lname1"><br><br>';
 		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname1"><br><br>';
@@ -37,7 +25,7 @@
 		text += '<div class="divtext">Email : </div><input type="Email" name="email1"><br><br>';
 		text += '<div class="divtext">Address : </div><input type="text" name="address1"><br><br>';
 		text += '<div class="divtext">User Name : </div><input type="text" name="uname1"><br><br>';
->>>>>>> master
+
 		text += '<input class="butts" type="submit" name="submit" value="Search">';
 		text += '<input class="butts" type="reset" name="reset" value="Reset">';
 		text += '</form>';
@@ -65,10 +53,9 @@
 		var z = document.getElementById("sidemenucontent");
 		var text = "";
 		text += '<form method="post" action="updateEmpProfile">';
-<<<<<<< HEAD
-=======
+
 		text += '<div class="divtext">ID : </div><input type="text" name="empid" value="${empId}" readonly><br><br>';
->>>>>>> master
+
 		text += '<div class="divtext">First Name : </div><input type="text" name="fname" value="${efname}"><br><br>';
 		text += '<div class="divtext">Last Name :</div><input type="text" name="lname" value="${elname}"><br><br>';
 		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname" value="${emname}"><br><br>';
@@ -78,11 +65,9 @@
 		text += '<div class="divtext">Address : </div><input type="text" name="address" value="${eaddress}"><br><br>';
 		text += '<div class="divtext">User Name : </div><input type="text" name="uname" value="${euname}"><br><br>';
 		text += '<div class="divtext">Password : </div><input type="Password" name="pass" value="${epass}"><br><br>';
-<<<<<<< HEAD
-		text += '<div class="divtext">D.O.B. :</div><input type="date" name="dob" value="${edob}"><br><br>';
-=======
+
 		text += '<div class="divtext">D.O.B. :</div><input type="Date" name="dob" value="${edob}" readonly><br><br>';
->>>>>>> master
+
 		text += '<input class="butts" type="submit" name="submit" value="Update">';
 		text += '<input class="butts" type="reset" name="reset" value="Reset">';
 		text += '</form>';
@@ -126,6 +111,12 @@
 		button{
 			margin-top: 5px;
 			width: 150px;
+			border: none;
+			background: lightblue;
+		}
+		input{
+			border: none;
+			background: lightblue;
 		}
 		#sidemenu{
 			width: 25%;
