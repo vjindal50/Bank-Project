@@ -84,7 +84,12 @@ public class RegistrationController {
 			
 			customerService.addCustomer(customer);
 			
-			return new ModelAndView("LoginReg", "adminMsg", "<h1>Your Id is " + customer.getCustID() + ". Please login</h1>" );
+			ModelAndView model = new ModelAndView();
+			model.addObject("adminMsg", "<h1>Your Id is " + customer.getCustID() + ". Please login</h1>");
+			model.addObject("model", "Customer");
+			model.setViewName("LoginReg");
+			
+			return model;
 			
 		}
 		
@@ -140,7 +145,12 @@ public class RegistrationController {
 			
 			System.out.println(employee);
 			
-			return new ModelAndView("LoginReg", "adminMsg", "<h1>Your Id is " + employee.getEmpID() + ". Please login</h1>" );
+			ModelAndView model = new ModelAndView();
+			model.addObject("adminMsg", "<h1>Your Id is " + employee.getEmpID() + ". Please login</h1>");
+			model.addObject("model", "Employee");
+			model.setViewName("LoginReg");
+			
+			return model;
 			
 		}
 		
