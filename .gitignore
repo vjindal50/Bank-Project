@@ -47,5 +47,58 @@ Bank_Proj/src/main/java/controller/LoginController.java
 /.recommenders/
 Bank_Proj/*
 >>>>>>> 6bea56b78b445088e39e9bf4db27d8d41ec17c15
+<<<<<<< HEAD
+*.jar
+*.class
+*.class
+*.class
+<<<<<<< HEAD
+Bank_5/src/main/java/com/vj/dao/CustomerDAO.java
+Bank Project/WEB PAGES SCRATCH CODES/addaccount.html
+Bank Project/WEB PAGES SCRATCH CODES/bootstrap.min.js
+Bank_5/pom.xml
+Bank_5/src/main/java/com/vj/controller/AccountsController.java
+Bank_5/src/main/java/com/vj/controller/LoginController.java
+Bank_5/src/main/java/com/vj/dao/CustomerDAO.java
+Bank_5/src/main/java/com/vj/dao/CustomerDAO.java
+Bank_5/src/main/java/com/vj/dao/CustomerDAO.java
+Bank_5/src/main/webapp/home.jsp
+Bank_5/target/Bank_5/WEB-INF/spring-servlet.xml
+Bank_5/target/Bank_5/WEB-INF/spring-servlet.xml
+Bank_5/target/Bank_5/WEB-INF/classes/com/vj/controller/LoginController.class
+*.xml
+Bank_5/target/Bank_5/WEB-INF/spring-servlet.xml
+Bank_5/pom.xml
+Bank_5/target/Bank_5/WEB-INF/classes/com/vj/controller/LoginController.class
+Bank_5/pom.xml
+Bank_5/pom.xml
+Bank_5/pom.xml
+=======
+*.class
+*.MF
+*.properties
+Bank_5/target/classes/com/vj/controller/HomePageController.class
+Bank_5/target/classes/com/vj/controller/HomePageController.class
+Bank_5/target/classes/com/vj/controller/InitialController.class
+Bank_5/target/classes/com/vj/controller/LoginController.class
+Bank_5/target/classes/com/vj/controller/LogoutController.class
+Bank_5/target/classes/com/vj/controller/RegistrationController.class
+Bank_5/target/classes/com/vj/dao/CustomerDAO.class
+Bank_5/target/classes/com/vj/dao/CustomerDAOImpl.class
+Bank_5/target/classes/com/vj/dao/EmployeeDAO.class
+Bank_5/target/classes/com/vj/dao/EmployeeDAOImpl.class
+Bank_5/target/classes/com/vj/model/AccountLog.class
+Bank_5/target/classes/com/vj/model/Accounts.class
+Bank_5/target/classes/com/vj/model/AccountSavings.class
+Bank_5/target/classes/com/vj/model/AccountsChecking.class
+Bank_5/target/classes/com/vj/model/AccountsLoan.class
+Bank_5/target/classes/com/vj/model/CustomerLog.class
+Bank_5/target/classes/com/vj/model/Employee.class
+Bank_5/target/classes/com/vj/model/EmployeeLog.class
+Bank_5/target/classes/com/vj/service/CustomerService.class
+Bank_5/target/classes/com/vj/service/CustomerServiceImpl.class
+>>>>>>> 6adb5b56d584ebafac98e06909d9388e2a23c990
+=======
 *.jar
 Bank_5/target/classes/com/vj/controller/CustomerUpdateController.class
+>>>>>>> master

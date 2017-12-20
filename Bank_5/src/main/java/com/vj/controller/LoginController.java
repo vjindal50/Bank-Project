@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vj.model.Customer;
 import com.vj.model.Employee;
 import com.vj.service.CustomerService;
 import com.vj.service.EmployeeService;
@@ -40,8 +41,26 @@ public class LoginController {
 			request.setAttribute("type", "customer");
 			String uname = request.getParameter("uname");
 			String pass = request.getParameter("pass");
-			if (customerService.login(uname, pass) != null) {
-				return new ModelAndView("home", "model", customerService.login(uname, pass));
+			Customer customer=new Customer();
+			customer=customerService.login(uname, pass);
+			if (customer != null) {
+				ModelAndView model = new ModelAndView();
+				model.addObject("custname", customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
+				model.addObject("custId", customer.getCustID());
+				model.addObject("LastLogin", customer.getJoinDate());
+				model.addObject("caddress", customer.getAddress());
+				model.addObject("caltphone", customer.getAlternatePhone());
+				model.addObject("cdob", customer.getDOB());
+				model.addObject("cemail", customer.getEmail());
+				//model.addObject("eeid", customer.getEmpID());
+				model.addObject("cfname", customer.getFirstName());
+				model.addObject("clname", customer.getLastName());
+				model.addObject("cmname", customer.getMiddleName());
+				model.addObject("cphone", customer.getPhone());
+				model.addObject("cuname", customer.getUserName());
+				model.addObject("cpass", customer.getPassword());
+				model.setViewName("customerhome");
+				return model;
 			} else {
 				return new ModelAndView("error", "model", "no customer found");
 			}

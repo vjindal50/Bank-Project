@@ -16,7 +16,11 @@
 			box-sizing: border-box;
 		}
 		body{
+<<<<<<< HEAD
+			background-image: url("resources/welcomepageBg.jpg");
+=======
 			background-image: url("${welcomePageBg}");
+>>>>>>> master
 			background-repeat: repeat-y;
 			background-size:cover;
 		}
