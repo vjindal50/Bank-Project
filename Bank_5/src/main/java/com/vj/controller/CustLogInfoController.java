@@ -1,7 +1,8 @@
 package com.vj.controller;
 
-import java.util.List;
+import java.io.IOException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,45 +12,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vj.model.CustomerLog;
+import com.vj.model.Employee;
 import com.vj.service.CustomerService;
-import com.vj.model.*;
 
 @Controller
-public class customerlogController {
+public class CustLogInfoController {
 	
 	@Autowired
 	CustomerService customerService;
 	
-	@RequestMapping(value = "/viewCustLog", method = RequestMethod.POST)
-	public ModelAndView getCustLog(HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView model = new ModelAndView();
-		List<CustomerLog> list = customerService.getAllCustomerLog();
+	@RequestMapping(value = "/custlogid", method = RequestMethod.POST)
+	public ModelAndView GetCustLogInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		System.out.println("in cust log info controller");
+		System.out.println(request.getParameter("custintlogidz"));
 		
-		if (list.size() > 0) {
-			String result = "<table>";
-			result +="<tr>\n" + 
-					"		<th>Cust Log ID</th>\n" + 
-					"		<th>Cust ID</th>\n" + 
-					"		<th>Email</th>\n" + 
-					"		<th>Command</th>\n" + 
-					"		<th>F.Name</th>\n" + 
-					"	</tr>";
-			for(int i = 0 ; i < list.size() ; i ++) {
-				System.out.println(list.get(i).getCustLogID());
-				result += "<tr>";
-				result += "<td><form method=\"post\" action=\"custlogid\">\n" + 
-						"	<input type=\"submit\" name=\"custintlogidz\" value=\""+ list.get(i).getCustLogID() +"\">" + 
-						"</form></td>" + " <td>" + list.get(i).getCustID() + "</td> <td>" + list.get(i).getEmail()
-						 + "</td> <td>" + list.get(i).getCommand() + "</td> <td>" + list.get(i).getFirstName() + "</td>";
-				result += "</tr>";
-//				result+= "<form method='post' action='getthiscust'></form>";
-			}
-			model.addObject("custlist", result);
-			
-		}else {
-			model.addObject("custlist", "No customer log found");
-		}
+		ModelAndView model = new ModelAndView();
+		
+		int custLogId = Integer.parseInt(request.getParameter("custintlogidz"));
+		System.out.println(custLogId);
+		
+		CustomerLog log = customerService.getCustomerLog(custLogId);
+		model.addObject("custlist", log.toString());
+		
 		Employee employee = (Employee) request.getSession().getAttribute("emp");
+		
 		model.addObject("empname", employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
 		model.addObject("empId", employee.getEmpID());
 		model.addObject("LastLogin", employee.getJoinDate());
@@ -64,7 +51,9 @@ public class customerlogController {
 		model.addObject("ephone", employee.getPhone());
 		model.addObject("euname", employee.getUserName());
 		model.addObject("epass", employee.getPassword());
+		
 		model.setViewName("home");
+		
 		return model;
 	}
 

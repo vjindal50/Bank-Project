@@ -117,5 +117,17 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		return customerDAO.login(uname, pass);
 	}
+
+	@Override
+	public List<CustomerLog> getAllCustomerLog() {
+		// TODO Auto-generated method stub
+		return customerLogDAO.getAllCustomer();
+	}
+
+	@Override
+	public CustomerLog getCustomerLog(int custLogId) {
+		// TODO Auto-generated method stub
+		return customerLogDAO.getCustomerLog(custLogId);
+	}
 }
  
