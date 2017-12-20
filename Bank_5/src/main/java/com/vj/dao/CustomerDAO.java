@@ -10,11 +10,7 @@ public interface CustomerDAO {
 	public List<Customer> getAllCustomer();
 	public void deleteCustomer(int customerId);
 	public Customer updateCustomer(Customer customer);
-
-	//public Customer getCustomer(int empid);
-
 	public Customer getCustomer(int customerId);
-
 	public Customer login(String uname, String pass);
 
 }

@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "Customers")
 public class Customer implements Serializable{
 	
 	 @Id

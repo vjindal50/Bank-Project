@@ -8,7 +8,7 @@ public interface CustomerService {
 	public void addCustomer(Customer customer);
 	public List<Customer> getAllCustomer();
 	public void deleteCustomer(int custId);
-	public Customer getCustomer(int empid);
+	public Customer getCustomer(int custId);
 	public Customer updateCustomer(Customer customer);
 	public Customer login(String uname, String pass);
 }
