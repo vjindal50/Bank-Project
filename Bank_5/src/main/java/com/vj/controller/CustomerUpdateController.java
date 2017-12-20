@@ -39,6 +39,7 @@ public class CustomerUpdateController {
 		String uname = request.getParameter("uname");
 		String pass = request.getParameter("pass");
 		
+		System.out.println("custid"+custid);
 		customer.setCustID(Integer.parseInt(custid));
 		customer.setAddress(address);
 		if (altphone.equals("") || altphone == null) {
