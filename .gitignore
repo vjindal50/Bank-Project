@@ -102,3 +102,5 @@ Bank_5/target/classes/com/vj/service/CustomerServiceImpl.class
 *.jar
 Bank_5/target/classes/com/vj/controller/CustomerUpdateController.class
 >>>>>>> master
+*.component
+*.MF
