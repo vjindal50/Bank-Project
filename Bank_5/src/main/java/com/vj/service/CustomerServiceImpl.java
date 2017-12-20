@@ -61,7 +61,7 @@ public class CustomerServiceImpl implements CustomerService {
     		
     		cLog.setAddress(customer.getAddress());
     		cLog.setAlternatePhone(customer.getAlternatePhone());
-    		cLog.setCommand("Created new");
+    		cLog.setCommand("delete");
     		cLog.setCustID(customer.getCustID());
     		cLog.setDOB(customer.getDOB());
     		cLog.setEmail(customer.getEmail());
@@ -90,7 +90,7 @@ public class CustomerServiceImpl implements CustomerService {
     		
     		cLog.setAddress(customer.getAddress());
     		cLog.setAlternatePhone(customer.getAlternatePhone());
-    		cLog.setCommand("Created new");
+    		cLog.setCommand("update");
     		cLog.setCustID(customer.getCustID());
     		cLog.setDOB(customer.getDOB());
     		cLog.setEmail(customer.getEmail());

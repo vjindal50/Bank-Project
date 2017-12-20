@@ -8,7 +8,7 @@
 <html>
 <head>
 	<spring:url value="/resources/welcomepageBg.jpg" var="welcomePageBg" />
-	<title>My Bank Applicaotion</title>
+	<title>My Bank Application</title>
 	
 	<style type="text/css">
 	
@@ -16,7 +16,7 @@
 			box-sizing: border-box;
 		}
 		body{
-			background-image: url("${welcomePageBg}");
+			/* background-image: url("resources/welcomepageBg.jpg"; */
 			background-repeat: repeat-y;
 			background-size:cover;
 		}
@@ -54,7 +54,7 @@
 	<script type="text/javascript"></script>
 
 </head>
-<body background="${welcomePageBg}"><center>
+<body style="background-image:url('<c:url value="/resources/welcomepageBg.jpg" />')"><center>
 	<fieldset><h1>WELCOME TO MY BANK</h1></fieldset>
 	${logoutmsg}
 	<div id="selection">
