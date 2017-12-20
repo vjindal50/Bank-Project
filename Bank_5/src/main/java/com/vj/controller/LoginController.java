@@ -84,7 +84,7 @@ public class LoginController {
 			String uname = request.getParameter("uname");
 			String pass = request.getParameter("pass");
 			if (uname.equals("vj") && pass.equals("137115")) {
-				return new ModelAndView("home", "model", "admin is here");
+				return new ModelAndView("adminHome", "model", "admin is here");
 			} else {
 				return new ModelAndView("error", "model", "no admin found");
 			}
