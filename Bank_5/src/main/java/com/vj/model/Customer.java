@@ -62,7 +62,7 @@ public class Customer implements Serializable{
 	private String Status;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "AccountNumber")
+	@JoinColumn(name = "Cust_ID")
 	private List<Accounts> acc;
 	
 	public Customer() {}
