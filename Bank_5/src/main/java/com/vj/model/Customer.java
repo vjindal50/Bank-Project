@@ -2,6 +2,7 @@ package com.vj.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -61,7 +62,7 @@ public class Customer implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "AccountNumber")
-	private Accounts acc;
+	private List<Accounts> acc;
 	
 	public Customer() {}
 
@@ -169,11 +170,11 @@ public class Customer implements Serializable{
 		Status = status;
 	}
 
-	public Accounts getAcc() {
+	public List<Accounts> getAcc() {
 		return acc;
 	}
 
-	public void setAcc(Accounts acc) {
+	public void setAcc(List<Accounts> acc) {
 		this.acc = acc;
 	}
 
