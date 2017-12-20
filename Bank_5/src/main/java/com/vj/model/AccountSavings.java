@@ -85,10 +85,10 @@ public class AccountSavings implements Serializable{
 	}
 
 	public String toString() {
-		return "Account Number : " + getAccount_Number()
-				+ "\nBalance : " + getBalance()
-				+ "\nWithdraw Limit : " + getWithdrawLimit()
-				+ "\nInterest  : " + getInterest();
+		return "<br>Account Number : " + getAccount_Number()
+				+ "<br>\nBalance : " + getBalance()
+				+ "<br>\nWithdraw Limit : " + getWithdrawLimit()
+				+ "<br>\nInterest  : " + getInterest();
 	}
 	
 }
