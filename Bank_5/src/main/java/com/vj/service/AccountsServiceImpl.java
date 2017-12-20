@@ -41,19 +41,19 @@ public class AccountsServiceImpl implements AccountsService{
 	@Transactional
 	public void openSavingsAccount(AccountSavings accSav) {
 		// TODO Auto-generated method stub
-		//accountsDAO.openAccount(accounts);
+		accSavDAO.addSaveAccount(accSav);
 	}
 	
 	@Transactional
 	public void openCheckingAccount(AccountsChecking accChk) {
 		// TODO Auto-generated method stub
-		//accountsDAO.openAccount(accounts);
+		accChkDAO.addCheckAccount(accChk);
 	}
 	
 	@Transactional
 	public void openLoanAccount(AccountsLoan accLoan) {
 		// TODO Auto-generated method stub
-		//accountsDAO.openAccount(accounts);
+		accLoanDAO.addLoanAccount(accLoan);
 	}
 
 	@Override
