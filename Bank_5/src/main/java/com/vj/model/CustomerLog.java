@@ -213,6 +213,20 @@ public class CustomerLog implements Serializable{
 		DelDate = delDate;
 	}
 	
-	
+	public String toString() {
+		return "Log Id : " + getCustLogID()
+				+ "<br>\n Customer ID : " + getCustID()
+				+ "<br>\n First Name : " + getFirstName()
+				+ "<br>\n Middle Name : " + getMiddleName()
+				+ "<br>\n Last Name : " + getLastName()
+				+ "<br>\n Email : " + getEmail()
+				+ "<br>\n Command : " + getCommand()
+				+ "<br>\n Address : " + getAddress()
+				+ "<br>\n Phone : " + getPhone()
+				+ "<br>\n Alt phone : " + getAlternatePhone()
+				+ "<br>\n Status : " + getStatus()
+				+ "<br>\n User Name : " + getUserName()
+				+ "<br>\n Pasword : " + getPassword();
+	}
 	
 }
