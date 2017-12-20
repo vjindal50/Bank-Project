@@ -25,9 +25,9 @@ public class CustomerUpdateController {
 	public ModelAndView EmpUpdate(HttpServletRequest request, HttpServletResponse response) {		
 		System.out.println("In Login controller");		
 		String submit = request.getParameter("submit");
-		Customer customer = new Customer();
+		//Customer customer = new Customer();
 		
-		String custid = request.getParameter("custId");
+		//String custid = request.getParameter("custId");
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
 		String mname = request.getParameter("mname");
@@ -39,16 +39,24 @@ public class CustomerUpdateController {
 		String uname = request.getParameter("uname");
 		String pass = request.getParameter("pass");
 		
-		customer.setCustID(Integer.parseInt(custid));
+//		System.out.println(custid);
+//		System.out.println(Integer.parseInt(custid));
+		
+		Customer customer = (Customer) request.getSession().getAttribute("cust");
+		
+		customer.setCustID(customer.getCustID());
+//		System.out.println(Integer.parseInt(custid));
+		
 		customer.setAddress(address);
 		if (altphone.equals("") || altphone == null) {
 			customer.setAlternatePhone(" ");
 		} else {
 			customer.setAlternatePhone(altphone);
 		}
-		customer.setDOB(customerService.getCustomer(Integer.parseInt(custid)).getDOB());
+		customer.setDOB(customer.getDOB());
 		customer.setEmail(email);
 		customer.setFirstName(fname);
+		customer.setAcc(customer.getAcc());
 		customer.setJoinDate(new Date());
 		if (lname.equals("") || lname == null) {
 			customer.setLastName(" ");
@@ -62,17 +70,20 @@ public class CustomerUpdateController {
 		}
 		customer.setPassword(pass);
 		customer.setPhone(phone);
-		customer.setStatus("current");
+		customer.setStatus(customer.getStatus());
 		customer.setUserName(uname);
+		System.out.println(customer);
 		
-		
+	
 		Customer customer2 = customerService.updateCustomer(customer);
 		System.out.println(submit);
+		System.out.println(customer2.getAcc());
 		
 		ModelAndView model = new ModelAndView();
 		model.addObject("custname",customer2.getFirstName() + " " + customer2.getMiddleName() + " " + customer2.getLastName());
 		model.addObject("custId",customer2.getCustID());
 		model.addObject("LastLogin",customer2.getJoinDate());
+		model.addObject("acclist", customer2.getAcc());
 		model.addObject("caddress",customer2.getAddress());
 		model.addObject("caltphone",customer2.getAlternatePhone());
 		model.addObject("cdob",customer2.getDOB());

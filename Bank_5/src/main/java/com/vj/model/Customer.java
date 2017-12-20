@@ -61,8 +61,8 @@ public class Customer implements Serializable{
 	@Column(name = "Status")
 	private String Status;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "Cust_ID")
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "Cust_ID", updatable = false)
 	private List<Accounts> acc;
 	
 	public Customer() {}
