@@ -143,6 +143,7 @@
 		<div class="menuanddis">
 			<div class="custhomefield" id="custinfo">Customer Id: ${custId}</div>
 			<div class="custhomefield" id="lastlogin">Last Login: ${LastLogin}</div>
+			<div>Accounts ${acclist}</div>
 		</div>
 		<div class="menuanddis">
 			<div class="sidemenuandcontent" id="sidemenu">

@@ -43,9 +43,11 @@ public class LoginController {
 			if (customer != null) {
 				
 				request.getSession().setAttribute("cust",customer);
+				System.out.println(customer.getAcc());
 				ModelAndView model = new ModelAndView();
 				model.addObject("custname", customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
 				model.addObject("custId", customer.getCustID());
+				model.addObject("acclist", customer.getAcc());
 				model.addObject("LastLogin", customer.getJoinDate());
 				model.addObject("caddress", customer.getAddress());
 				model.addObject("caltphone", customer.getAlternatePhone());

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
  
 import com.vj.dao.EmployeeDAO;
-import com.vj.dao.EmployeeLogDAO;
+//import com.vj.dao.EmployeeLogDAO;
 import com.vj.model.Employee;
 import com.vj.model.EmployeeLog;
  
@@ -18,8 +18,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeDAO EmployeeDAO;
     
-    @Autowired
-    private EmployeeLogDAO employeeLogDAO;
+//    @Autowired
+//    private EmployeeLogDAO employeeLogDAO;
  
     @Transactional
     public void addEmployee(Employee Employee) {
@@ -58,13 +58,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public List<EmployeeLog> getAllEmployeeLog() {
 		// TODO Auto-generated method stub
-		return employeeLogDAO.getAllEmplog();
+		return null; //employeeLogDAO.getAllEmplog();
 	}
 
 	@Override
 	public EmployeeLog getCustomerLog(int empLogId) {
 		// TODO Auto-generated method stub
-		return employeeLogDAO.getEmployeeLog(empLogId);
+		return null; //employeeLogDAO.getEmployeeLog(empLogId);
 	}
 }
  

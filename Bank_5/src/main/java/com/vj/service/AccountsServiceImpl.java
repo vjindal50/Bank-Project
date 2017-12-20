@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.vj.dao.AccountLogDAO;
+//import com.vj.dao.AccountLogDAO;
 import com.vj.dao.AccountSavingsDAO;
 import com.vj.dao.AccountsCheckingDAO;
 import com.vj.dao.AccountsDAO;
@@ -32,8 +32,8 @@ public class AccountsServiceImpl implements AccountsService{
 	 @Autowired
 	 private AccountsLoanDAO accLoanDAO;
 	 
-	 @Autowired
-	 private AccountLogDAO accountLogDAO;
+//	 @Autowired
+//	 private AccountLogDAO accountLogDAO;
 
 	@Override
 	@Transactional
