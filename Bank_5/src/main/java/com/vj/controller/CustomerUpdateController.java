@@ -41,10 +41,19 @@ public class CustomerUpdateController {
 		String uname = request.getParameter("uname");
 		String pass = request.getParameter("pass");
 		
+<<<<<<< HEAD
 		System.out.println("custid"+custid);
 		customer.setCustID(Integer.parseInt(custid));
+=======
+//		System.out.println(custid);
+//		System.out.println(Integer.parseInt(custid));
+		
 		Customer customer = (Customer) request.getSession().getAttribute("cust");
+		
 		customer.setCustID(customer.getCustID());
+//		System.out.println(Integer.parseInt(custid));
+		
+>>>>>>> master
 		customer.setAddress(address);
 		if (altphone.equals("") || altphone == null) {
 			customer.setAlternatePhone(" ");
@@ -74,9 +83,10 @@ public class CustomerUpdateController {
 		customer.setUserName(uname);
 		System.out.println(customer);
 		
-		
+	
 		Customer customer2 = customerService.updateCustomer(customer);
 		System.out.println(submit);
+		System.out.println(customer2.getAcc());
 		
 		ModelAndView model = new ModelAndView();
 		model.addObject("custname",customer2.getFirstName() + " " + customer2.getMiddleName() + " " + customer2.getLastName());
