@@ -1,5 +1,8 @@
 package com.vj.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -59,25 +62,39 @@ public class LoginController {
 				model.setViewName("customerhome");
 				return model;
 			} else {
-				return new ModelAndView("home", "model", "no customer found");
+				return new ModelAndView("error", "model", "no customer found");
 			}
 		}
 		
 		if(submit.equals("Login_Employee")) {
-			request.setAttribute("type", "employee");
+			
+			request.setAttribute("type", "employee"); 
+			
 			String uname = request.getParameter("uname");
 			String pass = request.getParameter("pass");
 			Employee employee = new Employee();
 			employee = employeeService.login(uname, pass);
 			if (employee != null) {
+				request.getSession().setAttribute("emp", employee);
 				ModelAndView model = new ModelAndView();
 				model.addObject("empname", employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
 				model.addObject("empId", employee.getEmpID());
 				model.addObject("LastLogin", employee.getJoinDate());
+				model.addObject("eaddress", employee.getAddress());
+				model.addObject("ealtphone", employee.getAlternatePhone());
+				model.addObject("edob", employee.getDOB());
+				model.addObject("eemail", employee.getEmail());
+				model.addObject("eeid", employee.getEmpID());
+				model.addObject("efname", employee.getFirstName());
+				model.addObject("elname", employee.getLastName());
+				model.addObject("emname", employee.getMiddleName());
+				model.addObject("ephone", employee.getPhone());
+				model.addObject("euname", employee.getUserName());
+				model.addObject("epass", employee.getPassword());
 				model.setViewName("home");
 				return model;
 			} else {
-				return new ModelAndView("home", "model", "no employee found");
+				return new ModelAndView("error", "model", "no employee found");
 			}
 		}
 		
@@ -88,7 +105,7 @@ public class LoginController {
 			if (uname.equals("vj") && pass.equals("137115")) {
 				return new ModelAndView("home", "model", "admin is here");
 			} else {
-				return new ModelAndView("home", "model", "no admin found");
+				return new ModelAndView("error", "model", "no admin found");
 			}
 		}
 		

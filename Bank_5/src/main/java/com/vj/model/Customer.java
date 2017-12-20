@@ -162,15 +162,15 @@ public class Customer implements Serializable{
 	}
 
 	public String toString() {
-		return "Emp ID : " + getCustID()
-				+ "\n Employee Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
-				+"\n Phone Number : " + getPhone()
-				+"\n Alternate Phone : " + getAlternatePhone()
-				+"\n Email : " + getEmail()
-				+"\n DOB : " + getDOB()
-				+"\n Address : " + getAddress()
-				+"\n User Name : " + getUserName()
-				+"\n Status : " + getStatus();
+		return "<b>Cust ID : </b>" + getCustID()
+				+ "<br>\n <b>Cust Name : </b>" + getFirstName() + " " + getMiddleName() + " " + getLastName()
+				+"<br>\n <b>Phone Number : </b>" + getPhone()
+				+"<br>\n <b>Alternate Phone : </b>" + getAlternatePhone()
+				+"<br>\n <b>Email : </b>" + getEmail()
+				+"<br>\n <b>DOB : </b>" + getDOB()
+				+"<br>\n <b>Address : </b>" + getAddress()
+				+"<br>\n <b>User Name : </b>" + getUserName()
+				+"<br>\n <b>Status : </b>" + getStatus();
 	}
 
 }

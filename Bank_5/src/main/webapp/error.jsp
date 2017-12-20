@@ -7,6 +7,9 @@
 <title>Error</title>
 </head>
 <body>
-<center><h1>An error has occured</h1></center>
+<center><h1>An error has occured</h1>
+${model}
+</center>
+
 </body>
 </html>
