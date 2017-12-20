@@ -150,7 +150,7 @@
 		<div class="menuanddis">
 			<div class="sidemenuandcontent" id="sidemenu">
 				<div class="sidemenuitem"><button onclick="searchCust()">Search Customer</button></div>
-				<div class="sidemenuitem"><button onclick="viewCustLog()">View Customer Log</button></div>
+				<div class="sidemenuitem"><form action="viewCustLog" method="post"><input id="logout" type="submit" name="submit" value="View Customer Log"></form></div>
 				<div class="sidemenuitem"><button onclick="viewProfile()">View Profile</button></div>
 				<div class="sidemenuitem"><form action="logout" method="post"><input id="logout" type="submit" name="submit" value="Logout"></form></div>
 			</div>
