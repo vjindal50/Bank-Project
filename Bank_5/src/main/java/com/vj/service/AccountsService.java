@@ -11,8 +11,17 @@ public interface AccountsService {
 	
 	public void openAccount(Accounts accounts);
 	public List<Accounts> getAllAccounts();
+	public List<AccountSavings> getAllSavingsAccounts();
+	public List<AccountsChecking> getAllCheckingAccounts();
+	public List<AccountsLoan> getAllLoanAccounts();
 	public Accounts getAccount(int accountsNum);
+	public AccountSavings getSavAccount(int accountsSavNum);
+	public AccountsChecking getChkAccount(int accountsChkNum);
+	public AccountsLoan getLoanAccount(int accountsLoanNum);
 	public Accounts updateAccount(Accounts accounts);
+	public AccountSavings updateSavAccount(AccountSavings accounts);
+	public AccountsChecking updateChkAccount(AccountsChecking accounts);
+	public AccountsLoan updateLoanAccount(AccountsLoan accounts);
 	public void openSavingsAccount(AccountSavings accSav);
 	public void openCheckingAccount(AccountsChecking accChk);
 	public void openLoanAccount(AccountsLoan accLoan);
