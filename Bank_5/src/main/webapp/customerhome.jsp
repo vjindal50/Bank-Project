@@ -14,9 +14,9 @@
 		var z = document.getElementById("sidemenucontent");
 		var text = "";
 		
-		text += '<div class="divtext"><form action="savingsaccount" method="post"><input id="savings" type="submit" name="submit" value="Savings Account"></form></div><br><br>';
-		text += '<div class="divtext"><form action="checkingsaccount" method="post"><input id="checkings" type="submit" name="submit" value="Checkings Account"></form></div><br><br>';
-		text += '<div class="divtext"><form action="loanaaccount" method="post"><input id="loan" type="submit" name="submit" value="Loan Account"></form></div><br><br>';
+		text += '<div class="divtext"><form action="savingsaccount" method="post"><input id="savings" type="submit" name="submit" value="Savings_Account"></form></div><br><br>';
+		text += '<div class="divtext"><form action="checkingsaccount" method="post"><input id="checkings" type="submit" name="submit" value="Checkings_Account"></form></div><br><br>';
+		text += '<div class="divtext"><form action="loanaaccount" method="post"><input id="loan" type="submit" name="submit" value="Loan_Account"></form></div><br><br>';
 		
 		z.innerHTML = text;
 		console.log("hey");

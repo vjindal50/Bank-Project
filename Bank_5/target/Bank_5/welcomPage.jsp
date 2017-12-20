@@ -14,7 +14,7 @@
 			box-sizing: border-box;
 		}
 		body{
-			/* background-image: url("Media/welcomepageBg.jpg"); */
+			background-image: url("resources/welcomepageBg.jpg");
 			background-repeat: repeat-y;
 			background-size:cover;
 		}
@@ -54,7 +54,7 @@
 </head>
 <body background="Media/welcomepageBg.jpg"><center>
 	<fieldset><h1>WELCOME TO MY BANK</h1></fieldset>
-	
+	${logoutmsg}
 	<div id="selection">
 		<div class="myButtons"><form action="homeme.html" method="post"><input type="submit" name="submit" value="Customer"></form></div>
 		<div class="myButtons"><form action="homeme.html" method="post"><input type="submit" name="submit" value="Employee"></form></div>

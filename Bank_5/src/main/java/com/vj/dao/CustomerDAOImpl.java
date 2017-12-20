@@ -35,9 +35,9 @@ public class CustomerDAOImpl implements CustomerDAO {
  
     }
  
-    public Customer getCustomer(int custId) {
+    public Customer getCustomer(int empid) {
         return (Customer) sessionFactory.getCurrentSession().get(
-        		Customer.class, custId);
+        		Customer.class, empid);
     }
  
     public Customer updateCustomer(Customer customer) {

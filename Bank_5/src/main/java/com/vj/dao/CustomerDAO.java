@@ -17,7 +17,7 @@ public interface CustomerDAO {
 	public List<Customer> getAllCustomer();
 	public void deleteCustomer(int customerId);
 	public Customer updateCustomer(Customer customer);
-	public Customer getCustomer(int employeeid);
+	public Customer getCustomer(int empid);
 	public Customer login(String uname, String pass);
 
 }
