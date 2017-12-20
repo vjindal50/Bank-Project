@@ -77,4 +77,58 @@ public class AccountsServiceImpl implements AccountsService{
 		return accountsDAO.updateAccount(accounts);
 	}
 
+	@Override
+	public List<AccountSavings> getAllSavingsAccounts() {
+		// TODO Auto-generated method stub
+		return accSavDAO.getAllSaveAccounts();
+	}
+
+	@Override
+	public List<AccountsChecking> getAllCheckingAccounts() {
+		// TODO Auto-generated method stub
+		return accChkDAO.getAllChkAccounts();
+	}
+
+	@Override
+	public List<AccountsLoan> getAllLoanAccounts() {
+		// TODO Auto-generated method stub
+		return accLoanDAO.getAllLoanAccounts();
+	}
+
+	@Override
+	public AccountSavings getSavAccount(int accountsSavNum) {
+		// TODO Auto-generated method stub
+		return accSavDAO.getSaveAccount(accountsSavNum);
+	}
+
+	@Override
+	public AccountsChecking getChkAccount(int accountsChkNum) {
+		// TODO Auto-generated method stub
+		return accChkDAO.getChkAccount(accountsChkNum);
+	}
+
+	@Override
+	public AccountsLoan getLoanAccount(int accountsLoanNum) {
+		// TODO Auto-generated method stub
+		return accLoanDAO.getLoanAccount(accountsLoanNum);
+	}
+
+	@Override
+	public AccountSavings updateSavAccount(AccountSavings accounts) {
+		// TODO Auto-generated method stub
+		return accSavDAO.updateSavAccount(accounts);
+	}
+
+	@Override
+	public AccountsChecking updateChkAccount(AccountsChecking accounts) {
+		// TODO Auto-generated method stub
+		return accChkDAO.updateChkAccount(accounts);
+	}
+
+	@Override
+	public AccountsLoan updateLoanAccount(AccountsLoan accounts) {
+		// TODO Auto-generated method stub
+		return accLoanDAO.updateLoanAccount(accounts);
+	}
+
 }
