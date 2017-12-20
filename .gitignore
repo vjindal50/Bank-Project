@@ -47,6 +47,7 @@ Bank_Proj/src/main/java/controller/LoginController.java
 /.recommenders/
 Bank_Proj/*
 >>>>>>> 6bea56b78b445088e39e9bf4db27d8d41ec17c15
+<<<<<<< HEAD
 *.jar
 *.class
 *.class
