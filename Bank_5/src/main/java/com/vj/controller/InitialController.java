@@ -69,12 +69,12 @@ public class InitialController {
 				accountService.openAccount(account);
 				
 				double Balance = Double.parseDouble(balance);
-				double withdrawlimit = Balance*0.1;
+				double withdrawlimit = Balance * 0.01;
 				System.out.println(Balance + "   " + withdrawlimit);
 				
 				savings.setBalance(Balance);
-//				savings.setInterest(5.00);
-				savings.setWithdrawLimit(withdrawlimit);
+				savings.setInterest(5.00);
+//				savings.setWithdrawLimit(withdrawlimit);
 				savings.setAccount_Number(account.getAccountNumber());
 				
 				accountService.openSavingsAccount(savings);
@@ -89,6 +89,7 @@ public class InitialController {
 				model.addObject("caddress", customer.getAddress());
 				model.addObject("caltphone", customer.getAlternatePhone());
 				model.addObject("cdob", customer.getDOB());
+				model.addObject("acclist", customer.getAcc());
 				model.addObject("cemail", customer.getEmail());
 				//model.addObject("eeid", customer.getEmpID());
 				model.addObject("cfname", customer.getFirstName());

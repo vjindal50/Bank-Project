@@ -2,6 +2,7 @@ package com.vj.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,41 +41,41 @@ public class Accounts implements Serializable{
 	@Column(name = "Status")
 	private String Status;
 	
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "Account_Number")
-	private AccountSavings accSav;
+	private List<AccountSavings> accSav;
 	
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "AccNumber")
-	private AccountsChecking accChk;
+	private List<AccountsChecking> accChk;
 	
-	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name = "ACC_NUM")
-	private AccountsLoan accLoan;
+	private List<AccountsLoan> accLoan;
 	
 	public Accounts() {}
 	
-	public AccountSavings getAccSav() {
+	public List<AccountSavings>getAccSav() {
 		return accSav;
 	}
 
-	public void setAccSav(AccountSavings accSav) {
+	public void setAccSav(List<AccountSavings> accSav) {
 		this.accSav = accSav;
 	}
 	
-	public AccountsChecking getAccChk() {
+	public List<AccountsChecking> getAccChk() {
 		return accChk;
 	}
 
-	public void setAccChk(AccountsChecking accChk) {
+	public void setAccChk(List<AccountsChecking> accChk) {
 		this.accChk = accChk;
 	}
 	
-	public AccountsLoan getAccLoan() {
+	public List<AccountsLoan> getAccLoan() {
 		return accLoan;
 	}
 
-	public void setAccLoan(AccountsLoan accLoan) {
+	public void setAccLoan(List<AccountsLoan> accLoan) {
 		this.accLoan = accLoan;
 	}
 
@@ -125,13 +128,22 @@ public class Accounts implements Serializable{
 	}
 
 	public String toString() {
-		return "Account Number : " + getAccountNumber()
-				+ "\nAccount Type : " + getType()
-				+ "\nOpened On : " + getOpenedOn()
-				+ "\nType : " + getType()
-				+ "\nStatus : " + getStatus()
-				+ "\nSaving Acc Info : " + getAccSav()
-				+ "\nSaving Acc Info : " + getAccChk()
-				+ "\nSaving Acc Info : " + getAccLoan();
+		String result = "Account Number : " + getAccountNumber()
+				+ "<br>\nAccount Type : " + getType()
+				+ "<br>\nOpened On : " + getOpenedOn()
+				+ "<br>\nType : " + getType()
+				+ "<br>\nStatus : " + getStatus();
+		
+		if (getAccSav().size()>0) {
+			result += "<br>\nSaving Acc Info : " + getAccSav();
+		}
+		if (getAccChk().size()>0) {
+			result += "<br>\nChecking Acc Info : " + getAccChk();
+		}
+		if (getAccLoan().size()>0) {
+			result += "<br>\nLoan Acc Info : " + getAccLoan();
+		}
+				
+		return result;	
 	}
 }
