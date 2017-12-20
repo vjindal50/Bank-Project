@@ -31,7 +31,7 @@
 			margin: 7%;
 			background-color: green;
 			color: white;
-
+			vertical-align: top;
 		}
 		.textfields{
 			width: 120px;
@@ -90,6 +90,7 @@ ${adminMsg}
 					</form>
 				</div>
 		<div class="sections">
+		<div>
 			<h2>LOGIN</h2>
 			<br>
 			<br>
@@ -100,17 +101,9 @@ ${adminMsg}
 				<br><br>
 				<input class="butts" type="submit" name="submit" value="Login_${model}">
 				<input class="butts" type="reset" name="reset" value="reset">
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-
-
+				
 			</form>
+			</div>
 		</div>
 		</fieldset>
 	</div>

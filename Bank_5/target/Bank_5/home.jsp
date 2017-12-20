@@ -166,13 +166,8 @@
 	<div id="headings"><h1>Welcome ${empname}</h1></div>
 	<div>
 		<div class="menuanddis">
-<<<<<<< HEAD
-			<div class="emphomefield" id="empinfo">${empId}</div>
-			<div class="emphomefield" id="lastlogin">${LastLogin}</div>
-=======
 			<div class="emphomefield" id="empinfo"><b>ID is : </b>${empId}</div>
 			<div class="emphomefield" id="lastlogin">Joined on : ${LastLogin}</div>
->>>>>>> master
 		</div>
 		<div class="menuanddis">
 			<div class="sidemenuandcontent" id="sidemenu">
@@ -184,10 +179,7 @@
 			<div class="sidemenuandcontent">
 				<div id="sidemenucontent">
 					 <h3>Please select an action</h3> 
-<<<<<<< HEAD
-=======
 					 ${custlist}
->>>>>>> master
 				</div>
 			
 			</div>
@@ -200,20 +192,3 @@
 
 
 
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<title>Home</title>
-</head>
-<body><center>
-	<h1>
-		Welcome ${customer.getname}
-	</h1>
-	
-	<div><form method="post" action="viewprofile"><input type="submit" name="submit" value=""></form></div>
-
-</center>
-
-</body>
-</html> -->
