@@ -24,6 +24,12 @@ import com.vj.service.CustomerService;
 @Controller
 public class InitialController {
 	
+	@Autowired
+    private AccountsService accountService;
+	
+    @Autowired
+    private CustomerService customerService;
+	
     public InitialController() {
         System.out.println("CustomerController()");
     }
@@ -35,24 +41,24 @@ public class InitialController {
         return model;
     }
     
-    @RequestMapping(value = "/homeme.html", method = RequestMethod.POST)
-	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response,ModelAndView model) {		
-		System.out.println("In home page controller");		
-		String submit = request.getParameter("submit");		
+    @RequestMapping(value = "/logoutEmployee", method = RequestMethod.POST)
+	public ModelAndView LogoutEmployee(HttpServletRequest request, HttpServletResponse response) {		
+		System.out.println("In logout employee controller");		
+		String submit = request.getParameter("submit");
 		System.out.println(submit);	
+	    return new ModelAndView("employeeLogin","model","successfully logged out");
 		
-		model.addObject("model", submit);
-		model.setViewName("LoginReg");
-	    return model;
+	}
+	
+	@RequestMapping(value = "/logoutCustomer", method = RequestMethod.POST)
+	public ModelAndView LogoutCustomer(HttpServletRequest request, HttpServletResponse response) {		
+		System.out.println("In logout cutomer controller");		
+		String submit = request.getParameter("submit");
+		System.out.println(submit);	
+	    return new ModelAndView("customerLogin","model","successfully logged out");
 		
-	} 
+	}
     
-    @Autowired
-    private AccountsService accountService;
-	
-    @Autowired
-    private CustomerService customerService;
-	
 	@RequestMapping(value = "/savingsaccount", method = RequestMethod.POST)
 	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) throws IOException 
 	{

@@ -30,8 +30,8 @@ public class RegistrationController {
     private EmployeeService employeeService;
 		
 	@RequestMapping(value = "/registerCustomer", method = RequestMethod.POST)
-	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) {		
-		System.out.println("In register controller");		
+	public ModelAndView RegCust(HttpServletRequest request, HttpServletResponse response) {		
+		System.out.println("In customer register controller");		
 		
 			
 			String fname = request.getParameter("fname");
@@ -80,82 +80,58 @@ public class RegistrationController {
 			model.setViewName("customerLogin");
 			
 			return model;
-			
-		
-//		if(submit.equals("Reg_Employee")) {
-//			request.setAttribute("type", "employee");
-//			
-//			String fname = request.getParameter("fname");
-//			String lname = request.getParameter("lname");
-//			String mname = request.getParameter("mname");
-//			String phone = request.getParameter("phone");
-//			String altphone= request.getParameter("altphone");
-//			String email= request.getParameter("email");
-//			String address= request.getParameter("address");
-//			String dob = request.getParameter("dob");
-//			String uname = request.getParameter("uname");
-//			String pass = request.getParameter("pass");
-//			
-//			Employee employee = new Employee();
-//			
-//			Date Dob = null;
-//			try {
-//				Dob = new SimpleDateFormat("dd/MM/yyyy").parse(dob);
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//			}
-//			
-//			employee.setAddress(address);
-//			if (altphone.equals("") || altphone == null) {
-//				employee.setAlternatePhone(" ");
-//			} else {
-//				employee.setAlternatePhone(altphone);
-//			}
-//			employee.setDOB(Dob);
-//			employee.setEmail(email);
-//			employee.setFirstName(fname);
-//			employee.setJoinDate(new Date());
-//			if (lname.equals("") || lname == null) {
-//				employee.setLastName(" ");
-//			} else {
-//				employee.setLastName(lname);
-//			}
-//			if (lname.equals("") || lname == null) {
-//				employee.setMiddleName(" ");
-//			} else {
-//				employee.setMiddleName(mname);
-//			}
-//			employee.setPassword(pass);
-//			employee.setPhone(phone);
-//			employee.setStatus("current");
-//			employee.setUserName(uname);
-//			
-//			employeeService.addEmployee(employee);
-//			
-//			System.out.println(employee);
-//			
-//			ModelAndView model = new ModelAndView();
-//			model.addObject("adminMsg", "<h1>Your Id is " + employee.getEmpID() + ". Please login</h1>");
-//			model.addObject("model", "Employee");
-//			model.setViewName("LoginReg");
-//			
-//			return model;
-//			
-//		}
-//		
-//		if(submit.equals("Reg_Admin")) {
-//			
-//			ModelAndView model = new ModelAndView();
-//			model.addObject("adminMsg", "<h1>Admin cannot register. Try login in !!</h1>");
-//			model.addObject("model", "Admin");
-//			model.setViewName("LoginReg");
-//			
-//			return model;
-//		}
-		
-//		System.out.println(submit);	
-//	    return new ModelAndView("error");
 		
 	} 
+	
+	@RequestMapping(value = "/registerEmployee", method = RequestMethod.POST)
+	public ModelAndView RegEmp(HttpServletRequest request, HttpServletResponse response) {
+		
+		String fname = request.getParameter("fname");
+		String lname = request.getParameter("lname");
+		String mname = request.getParameter("mname");
+		String phone = request.getParameter("phone");
+		String altphone= request.getParameter("altphone");
+		String email= request.getParameter("email");
+		String address= request.getParameter("address");
+		String dob = request.getParameter("dob");
+		String uname = request.getParameter("uname");
+		String pass = request.getParameter("pass");
+		
+		Employee employee = new Employee();		
+		employee.setAddress(address);
+		if (altphone.equals("") || altphone == null) {
+			employee.setAlternatePhone(" ");
+		} else {
+			employee.setAlternatePhone(altphone);
+		}
+		employee.setDOB(dob);
+		employee.setEmail(email);
+		employee.setFirstName(fname);
+		employee.setJoinDate(new Date()+"");
+		if (lname.equals("") || lname == null) {
+			employee.setLastName(" ");
+		} else {
+			employee.setLastName(lname);
+		}
+		if (lname.equals("") || lname == null) {
+			employee.setMiddleName(" ");
+		} else {
+			employee.setMiddleName(mname);
+		}
+		employee.setPassword(pass);
+		employee.setPhone(phone);
+		employee.setStatus("current");
+		employee.setUserName(uname);
+		
+		employeeService.addEmployee(employee);		
+		System.out.println(employee);
+		
+		ModelAndView model = new ModelAndView();
+		model.addObject("model", "Your Id is " + employee.getEmpID() + ". Please login");
+		model.setViewName("employeeLogin");
+		
+		return model;
+		
+	}
 
 }
