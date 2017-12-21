@@ -14,7 +14,7 @@
 <div id="container">
   <div id="topMostBar">
     <div id="topMostInner1"> SWB </div>
-    <div id="topMostInner2"> Customer Register </div>
+    <div id="topMostInner2"> Employee Register </div>
     <div id="topMostInner3"> SummitWorks Banking Solution</div>
   </div>
  <div id="navcontainer"> <span class="buttonText" id="nav1"><a href="customerLogin.jsp">Customer Login</a></span> <span class="buttonText" id="nav2"><a href="employeeLogin.jsp">Employee Login</a></span> <span class="buttonText" id="nav3"><a href="customerRegistration.jsp">Customer Registration</a></span> <span class="buttonText" id="nav4"><a href="employeeRegistration.jsp">Employee Registration</a></span> </div>
@@ -55,8 +55,8 @@
       <div class="sideblock2">
         <div class="noteheader"> &nbsp;Register to Online Services </div>
         <div class="spacy">
-          <form action="registerCustomer" method="post" name="loginForm" onsubmit="validateFomr()">
-            <p>Enter login details</p>
+          <form action="registerEmployee" method="post" onsubmit="validateFomr()">
+            <p>Enter details</p>
             <fieldset>
               <div> <br />
               <label for="txtusername"><div class="fieldtext">First Name:</div></label>
