@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,10 +46,10 @@ public class Employee implements Serializable{
 	private String UserName;
 	
 	@Column(name = "JoinDate")
-	private Date JoinDate;
+	private String JoinDate;
 	
 	@Column(name = "DOB")
-	private Date DOB;
+	private String DOB;
 	
 	@Column(name = "Status")
 	private String Status;
@@ -137,19 +136,19 @@ public class Employee implements Serializable{
 		UserName = userName;
 	}
 
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return JoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(String joinDate) {
 		JoinDate = joinDate;
 	}
 	
-	public Date getDOB() {
+	public String getDOB() {
 		return DOB;
 	}
 
-	public void setDOB(Date dOB) {
+	public void setDOB(String dOB) {
 		DOB = dOB;
 	}
 
@@ -171,7 +170,7 @@ public class Employee implements Serializable{
 				+"\n Address : " + getAddress()
 				+"\n User Name : " + getUserName()
 				+"\n Password : " + getPassword()
-				+"\n JoinDate : " + getJoinDate()
+				+"\n JoinString : " + getJoinDate()
 				+"\n Status : " + getStatus();
 	}
 }

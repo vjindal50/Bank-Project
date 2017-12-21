@@ -6,9 +6,7 @@
 <html>
 <head>
 	<title>Customer Home</title>
-	
-	<spring:url value="/resources/HomePageScript.js" var="employeeHomeScript" />
-	<script type="text/javascript" src="${employeeHomeScript}"></script>
+
 	<script type="text/javascript">
 	function addaccount(){
 		var z = document.getElementById("sidemenucontent");
@@ -163,6 +161,6 @@
 		</div>
 	</div>
 </center>
-<script type="text/javascript" src="${employeeHomeScript}"></script>
+
 </body>
 </html>

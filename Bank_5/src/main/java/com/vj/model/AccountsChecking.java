@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +31,7 @@ public class AccountsChecking implements Serializable{
 	private double interest;
 	
 	@Column(name = "LastAccessed")
-	private Date lastAccess;
+	private String lastAccess;
 	
 	public AccountsChecking() {}
 
@@ -76,11 +75,11 @@ public class AccountsChecking implements Serializable{
 		this.interest = interest;
 	}
 
-	public Date getLastAccess() {
+	public String getLastAccess() {
 		return lastAccess;
 	}
 
-	public void setLastAccess(Date lastAccess) {
+	public void setLastAccess(String lastAccess) {
 		this.lastAccess = lastAccess;
 	}
 	

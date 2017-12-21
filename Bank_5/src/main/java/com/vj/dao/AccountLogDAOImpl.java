@@ -31,7 +31,7 @@ public class AccountLogDAOImpl implements AccountLogDAO{
 	}
 
 	@Override
-	public AccountLog getCustomerLog(int acclogId) {
+	public AccountLog getAccLog(int acclogId) {
 		return (AccountLog) sessionFactory.getCurrentSession().get(
 				AccountLog.class, acclogId);
 	}

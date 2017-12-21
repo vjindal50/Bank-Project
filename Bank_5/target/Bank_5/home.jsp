@@ -151,6 +151,8 @@
 			<div class="sidemenuandcontent" id="sidemenu">
 				<div class="sidemenuitem"><button onclick="searchCust()">Search Customer</button></div>
 				<div class="sidemenuitem"><form action="viewCustLog" method="post"><input id="logout" type="submit" name="submit" value="View Customer Log"></form></div>
+				<div class="sidemenuitem"><form action="viewAccLog" method="post"><input id="logout" type="submit" name="submit" value="View Account Log"></form></div>
+				<div class="sidemenuitem"><form action="viewEmpLog" method="post"><input id="logout" type="submit" name="submit" value="View Employee Log"></form></div>
 				<div class="sidemenuitem"><button onclick="viewProfile()">View Profile</button></div>
 				<div class="sidemenuitem"><form action="logout" method="post"><input id="logout" type="submit" name="submit" value="Logout"></form></div>
 			</div>

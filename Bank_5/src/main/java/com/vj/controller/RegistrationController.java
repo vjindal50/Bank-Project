@@ -29,13 +29,10 @@ public class RegistrationController {
 	@Autowired
     private EmployeeService employeeService;
 		
-	@RequestMapping(value = "/registerme", method = RequestMethod.POST)
+	@RequestMapping(value = "/registerCustomer", method = RequestMethod.POST)
 	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) {		
 		System.out.println("In register controller");		
-		String submit = request.getParameter("submit");
 		
-		if(submit.equals("Reg_Customer")) {
-			request.setAttribute("type", "customer");
 			
 			String fname = request.getParameter("fname");
 			String lname = request.getParameter("lname");
@@ -49,24 +46,17 @@ public class RegistrationController {
 			String pass = request.getParameter("pass");
 			
 			Customer customer = new Customer();
-			
-			Date Dob = null;
-			try {
-				Dob = new SimpleDateFormat("dd/MM/yyyy").parse(dob);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			
+		
 			customer.setAddress(address);
 			if (altphone.equals("") || altphone == null) {
 				customer.setAlternatePhone(" ");
 			} else {
 				customer.setAlternatePhone(altphone);
 			}
-			customer.setDOB(Dob);
+			customer.setDOB(dob);
 			customer.setEmail(email);
 			customer.setFirstName(fname);
-			customer.setJoinDate(new Date());
+			customer.setJoinDate(new Date() + "");
 			if (lname.equals("") || lname == null) {
 				customer.setLastName(" ");
 			} else {
@@ -85,87 +75,86 @@ public class RegistrationController {
 			customerService.addCustomer(customer);
 			
 			ModelAndView model = new ModelAndView();
-			model.addObject("adminMsg", "<h1>Your Id is " + customer.getCustID() + ". Please login</h1>");
-			model.addObject("model", "Customer");
-			model.setViewName("LoginReg");
+
+			model.addObject("model", "Your Id is " + customer.getCustID() + ". Please login");
+			model.setViewName("customerLogin");
 			
 			return model;
 			
-		}
 		
-		if(submit.equals("Reg_Employee")) {
-			request.setAttribute("type", "employee");
-			
-			String fname = request.getParameter("fname");
-			String lname = request.getParameter("lname");
-			String mname = request.getParameter("mname");
-			String phone = request.getParameter("phone");
-			String altphone= request.getParameter("altphone");
-			String email= request.getParameter("email");
-			String address= request.getParameter("address");
-			String dob = request.getParameter("dob");
-			String uname = request.getParameter("uname");
-			String pass = request.getParameter("pass");
-			
-			Employee employee = new Employee();
-			
-			Date Dob = null;
-			try {
-				Dob = new SimpleDateFormat("dd/MM/yyyy").parse(dob);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			
-			employee.setAddress(address);
-			if (altphone.equals("") || altphone == null) {
-				employee.setAlternatePhone(" ");
-			} else {
-				employee.setAlternatePhone(altphone);
-			}
-			employee.setDOB(Dob);
-			employee.setEmail(email);
-			employee.setFirstName(fname);
-			employee.setJoinDate(new Date());
-			if (lname.equals("") || lname == null) {
-				employee.setLastName(" ");
-			} else {
-				employee.setLastName(lname);
-			}
-			if (lname.equals("") || lname == null) {
-				employee.setMiddleName(" ");
-			} else {
-				employee.setMiddleName(mname);
-			}
-			employee.setPassword(pass);
-			employee.setPhone(phone);
-			employee.setStatus("current");
-			employee.setUserName(uname);
-			
-			employeeService.addEmployee(employee);
-			
-			System.out.println(employee);
-			
-			ModelAndView model = new ModelAndView();
-			model.addObject("adminMsg", "<h1>Your Id is " + employee.getEmpID() + ". Please login</h1>");
-			model.addObject("model", "Employee");
-			model.setViewName("LoginReg");
-			
-			return model;
-			
-		}
+//		if(submit.equals("Reg_Employee")) {
+//			request.setAttribute("type", "employee");
+//			
+//			String fname = request.getParameter("fname");
+//			String lname = request.getParameter("lname");
+//			String mname = request.getParameter("mname");
+//			String phone = request.getParameter("phone");
+//			String altphone= request.getParameter("altphone");
+//			String email= request.getParameter("email");
+//			String address= request.getParameter("address");
+//			String dob = request.getParameter("dob");
+//			String uname = request.getParameter("uname");
+//			String pass = request.getParameter("pass");
+//			
+//			Employee employee = new Employee();
+//			
+//			Date Dob = null;
+//			try {
+//				Dob = new SimpleDateFormat("dd/MM/yyyy").parse(dob);
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			employee.setAddress(address);
+//			if (altphone.equals("") || altphone == null) {
+//				employee.setAlternatePhone(" ");
+//			} else {
+//				employee.setAlternatePhone(altphone);
+//			}
+//			employee.setDOB(Dob);
+//			employee.setEmail(email);
+//			employee.setFirstName(fname);
+//			employee.setJoinDate(new Date());
+//			if (lname.equals("") || lname == null) {
+//				employee.setLastName(" ");
+//			} else {
+//				employee.setLastName(lname);
+//			}
+//			if (lname.equals("") || lname == null) {
+//				employee.setMiddleName(" ");
+//			} else {
+//				employee.setMiddleName(mname);
+//			}
+//			employee.setPassword(pass);
+//			employee.setPhone(phone);
+//			employee.setStatus("current");
+//			employee.setUserName(uname);
+//			
+//			employeeService.addEmployee(employee);
+//			
+//			System.out.println(employee);
+//			
+//			ModelAndView model = new ModelAndView();
+//			model.addObject("adminMsg", "<h1>Your Id is " + employee.getEmpID() + ". Please login</h1>");
+//			model.addObject("model", "Employee");
+//			model.setViewName("LoginReg");
+//			
+//			return model;
+//			
+//		}
+//		
+//		if(submit.equals("Reg_Admin")) {
+//			
+//			ModelAndView model = new ModelAndView();
+//			model.addObject("adminMsg", "<h1>Admin cannot register. Try login in !!</h1>");
+//			model.addObject("model", "Admin");
+//			model.setViewName("LoginReg");
+//			
+//			return model;
+//		}
 		
-		if(submit.equals("Reg_Admin")) {
-			
-			ModelAndView model = new ModelAndView();
-			model.addObject("adminMsg", "<h1>Admin cannot register. Try login in !!</h1>");
-			model.addObject("model", "Admin");
-			model.setViewName("LoginReg");
-			
-			return model;
-		}
-		
-		System.out.println(submit);	
-	    return new ModelAndView("error");
+//		System.out.println(submit);	
+//	    return new ModelAndView("error");
 		
 	} 
 

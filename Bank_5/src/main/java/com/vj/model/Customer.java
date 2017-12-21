@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -53,10 +52,10 @@ public class Customer implements Serializable{
 	private String UserName;
 	
 	@Column(name = "JoinDate")
-	private Date JoinDate;
+	private String JoinDate;
 	
 	@Column(name = "DOB")
-	private Date DOB;
+	private String DOB;
 	
 	@Column(name = "Status")
 	private String Status;
@@ -147,19 +146,19 @@ public class Customer implements Serializable{
 		UserName = userName;
 	}
 
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return JoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(String joinDate) {
 		JoinDate = joinDate;
 	}
 
-	public Date getDOB() {
+	public String getDOB() {
 		return DOB;
 	}
 
-	public void setDOB(Date dOB) {
+	public void setDOB(String dOB) {
 		DOB = dOB;
 	}
 	

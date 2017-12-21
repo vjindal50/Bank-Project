@@ -16,14 +16,6 @@
 			margin-left: 5%;
 			color: white;
 		}
-		/*#conatiner{
-			object-position: top;
-			position: absolute;
-			
-		}
-		.sections2{
-			display: inline-block;
-		}*/
 		.sections{
 			display: inline-block;
 			width: 33%;
@@ -31,6 +23,7 @@
 			margin: 7%;
 			background-color: green;
 			color: white;
+			vertical-align: top;
 
 		}
 		.textfields{
@@ -49,6 +42,8 @@
 			margin-left: 4px;
 			margin-right: 4px;
 			width: 120px;
+			/* border: none;
+			background-color: green; */
 		}
 		/*form{
 			height: 660px;
@@ -100,16 +95,6 @@ ${adminMsg}
 				<br><br>
 				<input class="butts" type="submit" name="submit" value="Login_${model}">
 				<input class="butts" type="reset" name="reset" value="reset">
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-				<br><br><div class="textfields"></div>
-
-
 			</form>
 		</div>
 		</fieldset>

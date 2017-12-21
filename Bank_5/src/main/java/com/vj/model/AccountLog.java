@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,13 +35,13 @@ public class AccountLog implements Serializable {
 	private double Interset;
 	
 	@Column(name = "LastAccess")
-	private Date LastAccess;
+	private String LastAccess;
 	
 	@Column(name = "EMI")
 	private double EMI;
 	
 	@Column(name = "LastEMIPayed")
-	private Date LastEMIPayed;
+	private String LastEMIPayed;
 	
 	@Column(name = "EMICounter")
 	private int EMICounter;
@@ -51,10 +50,10 @@ public class AccountLog implements Serializable {
 	private double amountPayed;
 	
 	@Column(name = "OpenedOn")
-	private Date OpenedOn;
+	private String OpenedOn;
 	
 	@Column(name = "ClosedOn")
-	private Date ClosedOn;
+	private String ClosedOn;
 	
 	@Column(name = "Cust_ID")
 	private int Cust_ID;
@@ -112,11 +111,11 @@ public class AccountLog implements Serializable {
 		Interset = interset;
 	}
 
-	public Date getLastAccess() {
+	public String getLastAccess() {
 		return LastAccess;
 	}
 
-	public void setLastAccess(Date lastAccess) {
+	public void setLastAccess(String lastAccess) {
 		LastAccess = lastAccess;
 	}
 
@@ -128,11 +127,11 @@ public class AccountLog implements Serializable {
 		EMI = eMI;
 	}
 
-	public Date getLastEMIPayed() {
+	public String getLastEMIPayed() {
 		return LastEMIPayed;
 	}
 
-	public void setLastEMIPayed(Date lastEMIPayed) {
+	public void setLastEMIPayed(String lastEMIPayed) {
 		LastEMIPayed = lastEMIPayed;
 	}
 
@@ -152,19 +151,19 @@ public class AccountLog implements Serializable {
 		this.amountPayed = amountPayed;
 	}
 
-	public Date getOpenedOn() {
+	public String getOpenedOn() {
 		return OpenedOn;
 	}
 
-	public void setOpenedOn(Date openedOn) {
+	public void setOpenedOn(String openedOn) {
 		OpenedOn = openedOn;
 	}
 
-	public Date getClosedOn() {
+	public String getClosedOn() {
 		return ClosedOn;
 	}
 
-	public void setClosedOn(Date closedOn) {
+	public void setClosedOn(String closedOn) {
 		ClosedOn = closedOn;
 	}
 

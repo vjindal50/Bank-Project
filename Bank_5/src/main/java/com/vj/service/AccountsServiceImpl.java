@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.vj.dao.AccountLogDAO;
 //import com.vj.dao.AccountLogDAO;
 import com.vj.dao.AccountSavingsDAO;
 import com.vj.dao.AccountsCheckingDAO;
 import com.vj.dao.AccountsDAO;
 import com.vj.dao.AccountsLoanDAO;
+import com.vj.model.AccountLog;
 import com.vj.model.AccountSavings;
 import com.vj.model.Accounts;
 import com.vj.model.AccountsChecking;
@@ -32,14 +34,29 @@ public class AccountsServiceImpl implements AccountsService{
 	 @Autowired
 	 private AccountsLoanDAO accLoanDAO;
 	 
-//	 @Autowired
-//	 private AccountLogDAO accountLogDAO;
+	 @Autowired
+	 private AccountLogDAO accountLogDAO;
 
 	@Override
 	@Transactional
 	public void openAccount(Accounts accounts) {
 		// TODO Auto-generated method stub
 		accountsDAO.openAccount(accounts);
+		AccountLog accLog = new AccountLog();
+//		accLog.setAmountPayed(amountPayed);
+//		accLog.setAnum(anum);
+//		accLog.setBalance(balance);
+//		accLog.setClosedOn(closedOn);
+//		accLog.setCust_ID(cust_ID);
+//		accLog.setEMI(eMI);
+//		accLog.setEMICounter(eMICounter);
+//		accLog.setInterset(interset);
+//		accLog.setLastAccess(lastAccess);
+//		accLog.setLastEMIPayed(lastEMIPayed);
+//		accLog.setOpenedOn(openedOn);
+//		accLog.setOverDraft(overDraft);
+//		accLog.setType(type);
+//		accLog.setWithdrawLimit(withdrawLimit);
 	}
 	
 	@Transactional
@@ -133,6 +150,18 @@ public class AccountsServiceImpl implements AccountsService{
 	public AccountsLoan updateLoanAccount(AccountsLoan accounts) {
 		// TODO Auto-generated method stub
 		return accLoanDAO.updateLoanAccount(accounts);
+	}
+
+	@Override
+	public List<AccountLog> getAllAccountsLogs() {
+		// TODO Auto-generated method stub
+		return accountLogDAO.getAllAcclog();
+	}
+
+	@Override
+	public AccountLog getAccLog(int accLogId) {
+		// TODO Auto-generated method stub
+		return accountLogDAO.getAccLog(accLogId);
 	}
 
 }

@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,10 +26,10 @@ public class Accounts implements Serializable{
 	private int AccountNumber;
 	
 	@Column(name = "OpenedOn")
-	private Date openedOn;
+	private String openedOn;
 	
 	@Column(name = "ClosedOn")
-	private Date closedOn;
+	private String closedOn;
 	
 	@Column(name = "Cust_ID")
 	private int Cust_ID;
@@ -87,19 +86,19 @@ public class Accounts implements Serializable{
 		AccountNumber = accountNumber;
 	}
 
-	public Date getOpenedOn() {
+	public String getOpenedOn() {
 		return openedOn;
 	}
 
-	public void setOpenedOn(Date openedOn) {
+	public void setOpenedOn(String openedOn) {
 		this.openedOn = openedOn;
 	}
 
-	public Date getClosedOn() {
+	public String getClosedOn() {
 		return closedOn;
 	}
 
-	public void setClosedOn(Date closedOn) {
+	public void setClosedOn(String closedOn) {
 		this.closedOn = closedOn;
 	}
 

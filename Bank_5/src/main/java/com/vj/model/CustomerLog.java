@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,20 +55,20 @@ public class CustomerLog implements Serializable{
 	private String Status;
 	
 	@Column(name = "DelDate")
-	private Date DelDate;
+	private String DelDate;
 	
 	@Column(name = "JoinDate")
-	private Date JoinDate;
+	private String JoinDate;
 	
 	@Column(name = "DOB")
-	private Date DOB;
+	private String DOB;
 	
 	public CustomerLog(){
 		
 	}
 	
 //	public CustomerLog(String FirstName,String LastName,String MiddleName, String Phone,String AlternatePhone,
-//			String Email,String Address,String Password,String UserName,String Command,String Status,Date DelDate){
+//			String Email,String Address,String Password,String UserName,String Command,String Status,String DelString){
 //		this.FirstName=FirstName;
 //		this.LastName=LastName;
 //		this.MiddleName=MiddleName;
@@ -81,7 +80,7 @@ public class CustomerLog implements Serializable{
 //		this.UserName=UserName;
 //		this.Command=Command;
 //		this.Status=Status;
-//		this.DelDate=DelDate;
+//		this.DelString=DelString;
 //		
 //	}
 
@@ -137,19 +136,19 @@ public class CustomerLog implements Serializable{
 		return AlternatePhone;
 	}
 
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return JoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(String joinDate) {
 		JoinDate = joinDate;
 	}
 
-	public Date getDOB() {
+	public String getDOB() {
 		return DOB;
 	}
 
-	public void setDOB(Date dOB) {
+	public void setDOB(String dOB) {
 		DOB = dOB;
 	}
 
@@ -205,11 +204,11 @@ public class CustomerLog implements Serializable{
 		Status = status;
 	}
 
-	public Date getDelDate() {
+	public String getDelDate() {
 		return DelDate;
 	}
 
-	public void setDelDate(Date delDate) {
+	public void setDelString(String delDate) {
 		DelDate = delDate;
 	}
 	

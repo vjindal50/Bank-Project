@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,33 +55,33 @@ public class EmployeeLog implements Serializable{
 	private String Status;
 	
 	@Column(name = "LeftDate")
-	private Date LeftDate; 
+	private String LeftDate; 
 	
 	@Column(name = "JoinDate")
-	private Date JoinDate;
+	private String JoinDate;
 	
 	public EmployeeLog(){
 		
 	}
 	
-	public EmployeeLog(String FirstName,String LastName,String MiddleName,String Phone,String AlternatePhone,String Email,String Address,String Password,String UserName,String Command,String Status,
-			Date LeftDate,Date JoinDate){
-		this.FirstName=FirstName;
-		this.LastName=LastName;
-		this.MiddleName=MiddleName;
-		this.Phone=Phone;
-		this.AlternatePhone=AlternatePhone;
-		this.Email=Email;
-		this.Address=Address ;
-		this.Password=Password;
-		this.UserName=UserName;
-		this.Command=Command;
-		this.Status=Status;
-		this.LeftDate=LeftDate;
-		this.JoinDate=JoinDate;
-		
-				
-	}
+//	public EmployeeLog(String FirstName,String LastName,String MiddleName,String Phone,String AlternatePhone,String Email,String Address,String Password,String UserName,String Command,String Status,
+//			String LeftString,String JoinString){
+//		this.FirstName=FirstName;
+//		this.LastName=LastName;
+//		this.MiddleName=MiddleName;
+//		this.Phone=Phone;
+//		this.AlternatePhone=AlternatePhone;
+//		this.Email=Email;
+//		this.Address=Address ;
+//		this.Password=Password;
+//		this.UserName=UserName;
+//		this.Command=Command;
+//		this.Status=Status;
+//		this.LeftDate=LeftDate;
+//		this.JoinDate=JoinDate;
+//		
+//				
+//	}
 	
 	public int getEmpLogID() {
 		return EmpLogID;
@@ -188,19 +187,19 @@ public class EmployeeLog implements Serializable{
 		Status = status;
 	}
 
-	public Date getLeftDate() {
+	public String getLeftDate() {
 		return LeftDate;
 	}
 
-	public void setLeftDate(Date leftDate) {
+	public void setLeftString(String leftDate) {
 		LeftDate = leftDate;
 	}
 
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return JoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinString(String joinDate) {
 		JoinDate = joinDate;
 	}
 	
@@ -218,8 +217,8 @@ public class EmployeeLog implements Serializable{
 				+ "\nUser Name : " + getUserName()
 				+ "\nCommand : " + getCommand()
 				+ "\nStatus : " + getStatus()
-				+ "\nLeft Date : " + getLeftDate()
-				+ "\nJoin Date : " + getJoinDate();
+				+ "\nLeft String : " + getLeftDate()
+				+ "\nJoin String : " + getJoinDate();
 	}
 	
 }

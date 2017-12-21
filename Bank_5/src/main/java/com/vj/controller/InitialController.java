@@ -31,9 +31,21 @@ public class InitialController {
     @RequestMapping(value = "/")
     public ModelAndView listCustomer(ModelAndView model) throws IOException {
         
-        model.setViewName("welcomPage");
+        model.setViewName("customerLogin");
         return model;
     }
+    
+    @RequestMapping(value = "/homeme.html", method = RequestMethod.POST)
+	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response,ModelAndView model) {		
+		System.out.println("In home page controller");		
+		String submit = request.getParameter("submit");		
+		System.out.println(submit);	
+		
+		model.addObject("model", submit);
+		model.setViewName("LoginReg");
+	    return model;
+		
+	} 
     
     @Autowired
     private AccountsService accountService;
@@ -63,9 +75,8 @@ public class InitialController {
 				customer = (Customer) request.getSession().getAttribute("cust");
 					
 				account.setCust_ID(customer.getCustID());
-				account.setOpenedOn(new Date());
+				account.setOpenedOn(new Date()+"");
 				account.setStatus("active");
-	//			account.setType("Savings");
 				accountService.openAccount(account);
 				
 				double Balance = Double.parseDouble(balance);
@@ -81,8 +92,6 @@ public class InitialController {
 				
 				ModelAndView model = new ModelAndView();
 				model.addObject("adminMsg", "<h1>Your Savings Account No is " + account.getAccountNumber());
-//				model.addObject("model", "Savings");
-//				model.setViewName("customerhome");
 				model.addObject("custname", customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
 				model.addObject("custId", customer.getCustID());
 				model.addObject("LastLogin", customer.getJoinDate());
@@ -91,7 +100,6 @@ public class InitialController {
 				model.addObject("cdob", customer.getDOB());
 				model.addObject("acclist", customer.getAcc());
 				model.addObject("cemail", customer.getEmail());
-				//model.addObject("eeid", customer.getEmpID());
 				model.addObject("cfname", customer.getFirstName());
 				model.addObject("clname", customer.getLastName());
 				model.addObject("cmname", customer.getMiddleName());

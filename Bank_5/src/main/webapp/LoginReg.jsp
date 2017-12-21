@@ -16,14 +16,6 @@
 			margin-left: 5%;
 			color: white;
 		}
-		/*#conatiner{
-			object-position: top;
-			position: absolute;
-			
-		}
-		.sections2{
-			display: inline-block;
-		}*/
 		.sections{
 			display: inline-block;
 			width: 33%;
@@ -96,7 +88,7 @@ ${adminMsg}
 			<h2>LOGIN</h2>
 			<br>
 			<br>
-			<form action="logininto" method="post" onsubmit="validateForm()" name="form1">
+			<form action="loginCutomer" method="post" onsubmit="validateForm()" name="form1">
 				<div class="textfields">User Name : </div><input type="text" name="uname" required>
 				<br><br>
 				<div class="textfields">Password : </div><input type="Password" name="pass" required>
