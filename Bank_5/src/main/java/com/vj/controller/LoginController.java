@@ -57,7 +57,7 @@ public class LoginController {
 	} 
 		
 	@RequestMapping(value = "/loginEmployee", method = RequestMethod.POST)
-	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) {		
+	public ModelAndView employeeLogin(HttpServletRequest request, HttpServletResponse response) {		
 		
 		System.out.println("In new employee Login controller");		
 			
@@ -75,6 +75,30 @@ public class LoginController {
 		}
 		
 	} 
+	
+	public ModelAndView employeeLogin(HttpServletRequest request, HttpServletResponse response, String uname, String pass) {		
+			
+			System.out.println("In new employee Login controller");		
+				
+			Employee employee = new Employee();
+			employee = employeeService.login(uname, pass);
+			System.out.println("employee sis : " + employee);
+			if (employee != null) {
+				request.getSession().setAttribute("emp", employee);
+				ModelAndView model = new ModelAndView();
+				return emptHome(model,employee);
+			} else {
+				return new ModelAndView("employeeLogin", "model", "no employee found");
+			}
+			
+		} 
+	
+	@RequestMapping(value = "/goemphome", method = RequestMethod.POST)
+	public ModelAndView employeeHomeRedt(HttpServletRequest request, HttpServletResponse response) {
+		Employee e  = (Employee) request.getSession().getAttribute("emp");
+	
+		return employeeLogin(request,response,e.getUserName(),e.getPassword());
+	}
 	
 	@RequestMapping(value = "/updateCustProfile", method = RequestMethod.POST)
 	public ModelAndView custUpdate(HttpServletRequest request, HttpServletResponse response) {		
@@ -192,7 +216,21 @@ public class LoginController {
 			model.addObject("custlist", result);
 			
 		}else {
-			model.addObject("custlist", "No customer log found");
+			model.addObject("custlist", "<br />\n" + 
+					"          <br />\n" + 
+					"          <br />\n" + 
+					"          <br />\n" + 
+					"          <br />\nNo customer log found" + 
+					"          <br />\n" + 
+					"          <br />\n" + 
+					"          <br />\n" + 
+					"          <br />\n" + 
+					"          <br />\n" + 
+					"          <br />\n" + 
+					"          <br />\n" + 
+					"          <br />\n" + 
+					"          <br />\n" + 
+					"          <br />\n" );
 		}
 		Employee employee = (Employee) request.getSession().getAttribute("emp");
 		
@@ -241,14 +279,14 @@ public class LoginController {
 		model.addObject("ealtphone", employee2.getAlternatePhone());
 		model.addObject("edob", employee2.getDOB());
 		model.addObject("eemail", employee2.getEmail());
-		model.addObject("eeid", employee2.getEmpID());
+//		model.addObject("eeid", employee2.getEmpID());
 		model.addObject("efname", employee2.getFirstName());
 		model.addObject("elname", employee2.getLastName());
 		model.addObject("emname", employee2.getMiddleName());
 		model.addObject("ephone", employee2.getPhone());
 		model.addObject("euname", employee2.getUserName());
 		model.addObject("epass", employee2.getPassword());
-		model.setViewName("home");
+		model.setViewName("employeeHome");
 		return model;
 	}
 	

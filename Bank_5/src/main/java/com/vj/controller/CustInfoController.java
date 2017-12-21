@@ -42,7 +42,7 @@ public class CustInfoController {
 		model.addObject("ephone", employee.getPhone());
 		model.addObject("euname", employee.getUserName());
 		model.addObject("epass", employee.getPassword());
-		model.setViewName("home");
+		model.setViewName("employeeHome");
 		return model;
 	}
 

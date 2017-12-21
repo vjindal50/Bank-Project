@@ -91,7 +91,7 @@ public class InitialController {
 				
 				savings.setBalance(Balance);
 				savings.setInterest(5.00);
-//				savings.setWithdrawLimit(withdrawlimit);
+				savings.setWithdrawLimit(withdrawlimit);
 				savings.setAccount_Number(account.getAccountNumber());
 				
 				accountService.openSavingsAccount(savings);

@@ -40,13 +40,6 @@ public class CustSearchController {
 		
 		ModelAndView model = new ModelAndView();
 		
-//		if((fname == "" || fname == null) && (lname == "" || lname == null) && (mname == "" || mname == null) 
-//				&& (phone == "" || phone == null) && (altphone == "" || altphone == null) && (email == "" || email == null)
-//				&& (address == "" || address == null) && (uname == "" || uname == null)) {
-//			
-//			model.addObject("custlist", "Enter 1 or more parameters to search.");
-//			
-//		} else {
 		
 			List<Customer> list = customerService.getAllCustomer();
 	//		System.out.println(list);
@@ -151,14 +144,14 @@ public class CustSearchController {
 							"</form></td>" + " <td>" + list.get(i).getFirstName() + "</td> <td>" + list.get(i).getMiddleName()
 							 + "</td> <td>" + list.get(i).getLastName() + "</td> <td>" + list.get(i).getEmail() + "</td>";
 					result += "</tr>";
-	//				result+= "<form method='post' action='getthiscust'></form>";
+
 				}
 				model.addObject("custlist", result);
 				
 			}else {
 				model.addObject("custlist", "No customer found");
 			}
-//		}
+
 		Employee employee = (Employee) request.getSession().getAttribute("emp");
 		model.addObject("empname", employee.getFirstName() + " " + employee.getMiddleName() + " " + employee.getLastName());
 		model.addObject("empId", employee.getEmpID());
@@ -174,7 +167,7 @@ public class CustSearchController {
 		model.addObject("ephone", employee.getPhone());
 		model.addObject("euname", employee.getUserName());
 		model.addObject("epass", employee.getPassword());
-		model.setViewName("home");
+		model.setViewName("employeeHome");
 		return model;
 	}
 
