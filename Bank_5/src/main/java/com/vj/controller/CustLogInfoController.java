@@ -52,7 +52,7 @@ public class CustLogInfoController {
 		model.addObject("euname", employee.getUserName());
 		model.addObject("epass", employee.getPassword());
 		
-		model.setViewName("home");
+		model.setViewName("employeeHome");
 		
 		return model;
 	}
