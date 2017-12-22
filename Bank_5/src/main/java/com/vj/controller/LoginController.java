@@ -95,11 +95,37 @@ public class LoginController {
 			
 		} 
 	
+	public ModelAndView customerLogin(HttpServletRequest request, HttpServletResponse response, String uname, String pass) {		
+		
+		System.out.println("In new Login controller");		
+		
+		Customer customer=new Customer();
+		customer=customerService.login(uname, pass);
+
+		if (customer != null) {
+			
+			request.getSession().setAttribute("cust",customer);
+			System.out.println(customer);
+			ModelAndView model = new ModelAndView();		
+			return custHome(model, customer);
+				
+		} else {
+			return new ModelAndView("customerLogin", "model", "no customer found");
+		}		
+	} 
+	
 	@RequestMapping(value = "/goemphome", method = RequestMethod.POST)
 	public ModelAndView employeeHomeRedt(HttpServletRequest request, HttpServletResponse response) {
 		Employee e  = (Employee) request.getSession().getAttribute("emp");
 	
 		return employeeLogin(request,response,e.getUserName(),e.getPassword());
+	}
+	
+	@RequestMapping(value = "/gocusthome", method = RequestMethod.POST)
+	public ModelAndView custHomeRedt(HttpServletRequest request, HttpServletResponse response) {
+		Customer e  = (Customer) request.getSession().getAttribute("cust");
+	
+		return customerLogin(request,response,e.getUserName(),e.getPassword());
 	}
 	
 	@RequestMapping(value = "/updateCustProfile", method = RequestMethod.POST)
