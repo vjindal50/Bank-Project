@@ -43,7 +43,8 @@ public class InitialController {
     
     @RequestMapping(value = "/logoutEmployee", method = RequestMethod.POST)
 	public ModelAndView LogoutEmployee(HttpServletRequest request, HttpServletResponse response) {		
-		System.out.println("In logout employee controller");		
+		System.out.println("In logout employee controller");	
+		request.getSession().setAttribute("emp", null);
 		String submit = request.getParameter("submit");
 		System.out.println(submit);	
 	    return new ModelAndView("employeeLogin","model","successfully logged out");
@@ -52,7 +53,8 @@ public class InitialController {
 	
 	@RequestMapping(value = "/logoutCustomer", method = RequestMethod.POST)
 	public ModelAndView LogoutCustomer(HttpServletRequest request, HttpServletResponse response) {		
-		System.out.println("In logout cutomer controller");		
+		System.out.println("In logout cutomer controller");	
+		request.getSession().setAttribute("cust", null);
 		String submit = request.getParameter("submit");
 		System.out.println(submit);	
 	    return new ModelAndView("customerLogin","model","successfully logged out");

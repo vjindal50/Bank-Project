@@ -60,43 +60,43 @@
             <fieldset>
               <div> <br />
               <label for="txtusername"><div class="fieldtext">First Name:</div></label>
-              <input type="text" name="fname"  maxlength="20" required/>
+              <input class="getfield" type="text" name="fname"  maxlength="20" required/>
             </div>
             <div> <br />
               <label for="txtusername"><div class="fieldtext">Middle Name:</div></label>
-              <input type="text" name="mname"  maxlength="20" required/>
+              <input class="getfield" type="text" name="mname"  maxlength="20"/>
             </div>
             <div> <br />
               <label for="txtusername"><div class="fieldtext">Last Name:</div></label>
-              <input type="text" name="lname"  maxlength="20" required/>
+              <input class="getfield" type="text" name="lname"  maxlength="20" required/>
             </div>
             <div> <br />
               <label for="txtusername"><div class="fieldtext">Phone:</div></label>
-              <input type="number" name="phone"  min ="9" maxlength="10" required/>
+              <input class="getfield" type="number" name="phone"  min ="9" maxlength="10" required/>
             </div>
             <div> <br />
               <label for="txtusername"><div class="fieldtext">Alt Phone:</div></label>
-              <input type="number" name="altphone"  maxlength="10" required/>
+              <input class="getfield" type="number" name="altphone"  maxlength="10"/>
             </div>
             <div> <br />
               <label for="txtusername"><div class="fieldtext">Email:</div></label>
-              <input type="Email" name="email"  maxlength="20" required/>
+              <input class="getfield" type="Email" name="email"  maxlength="20" required/>
             </div>
             <div> <br />
               <label for="txtusername"><div class="fieldtext">Address:</div></label>
-              <input type="text" name="address"  maxlength="20" required/>
+              <input class="getfield" type="text" name="address"  maxlength="20" required/>
             </div>
             <div> <br />
               <label for="txtusername"><div class="fieldtext">D.O.B.:</div></label>
-              <input type="Date" name="dob"  maxlength="20" required/>
+              <input class="getfield" type="Date" name="dob"  maxlength="20" required/>
             </div>
             <div> <br />
               <label for="txtusername"><div class="fieldtext">Username:</div></label>
-              <input type="text" name="uname"  maxlength="20" required/>
+              <input class="getfield" type="text" name="uname"  maxlength="20" required/>
             </div>
             <div><br />
               <label for="txtpassword"><div class="fieldtext">Password:</div></label>
-              <input type="password" name="pass"  maxlength="20" required/>
+              <input class="getfield" type="password" name="pass"  maxlength="20" required/>
             </div>
             <br />
             <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

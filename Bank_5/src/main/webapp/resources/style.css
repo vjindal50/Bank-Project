@@ -18,6 +18,11 @@ body
 	background: url('images/bggrad2.jpg') repeat-x #999999;
 }
 
+table{
+	width: 450px;
+	text-align: center;
+}
+
 /* Page centering outermost container */
 #container 
 {
@@ -414,6 +419,8 @@ a img
 	margin-top: 1px;
 }
 
+
+
 /* Column 3 of the three columns */
 .col2 
 {
@@ -482,4 +489,16 @@ a img
 .butts, #backbtt{
 	margin-left: 10px;
 	margin-right: 10px;
+}
+.info{
+	margin-left: 15px;
+	width: 120px;
+	margin-right: 7px;
+	display: inline-block;
+}
+.miniprofile{
+	display: inline-block;
+	margin-left:5px;
+	width: 90px;
+	font-weight: bold;
 }

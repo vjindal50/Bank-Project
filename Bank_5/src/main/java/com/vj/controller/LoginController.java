@@ -19,6 +19,7 @@ import com.vj.model.Accounts;
 import com.vj.model.Customer;
 import com.vj.model.CustomerLog;
 import com.vj.model.Employee;
+import com.vj.model.EmployeeLog;
 import com.vj.service.AccountsService;
 import com.vj.service.CustomerService;
 import com.vj.service.EmployeeService;
@@ -144,6 +145,55 @@ public class LoginController {
 	
 	}
 	
+	@RequestMapping(value = "/updateCustProfileEmp", method = RequestMethod.POST)
+	public ModelAndView custUpdateEmp(HttpServletRequest request, HttpServletResponse response) {		
+		System.out.println("In Login controller");		
+
+		String fname = request.getParameter("fname");
+		String lname = request.getParameter("lname");
+		String mname = request.getParameter("mname");
+		String phone = request.getParameter("phone");
+		String altphone= request.getParameter("altphone");
+		String email= request.getParameter("email");
+		String address= request.getParameter("address");
+		String uname = request.getParameter("uname");
+		String pass = request.getParameter("pass");
+
+		Customer customer = (Customer) request.getSession().getAttribute("custemp");
+		Employee employee = (Employee) request.getSession().getAttribute("emp");
+				
+		customer.setAddress(address);
+		if (altphone.equals("") || altphone == null) {
+			customer.setAlternatePhone(" ");
+		} else {
+			customer.setAlternatePhone(altphone);
+		}
+		customer.setEmail(email);
+		customer.setFirstName(fname);
+		if (lname.equals("") || lname == null) {
+			customer.setLastName(" ");
+		} else {
+			customer.setLastName(lname);
+		}
+		if (lname.equals("") || lname == null) {
+			customer.setMiddleName(" ");
+		} else {
+			customer.setMiddleName(mname);
+		}
+		customer.setPassword(pass);
+		customer.setPhone(phone);
+		customer.setUserName(uname);
+		
+		ModelAndView model = new ModelAndView();
+		model = custHome(model,customerService.updateCustomer(customer));
+		String str = customer.toString();
+		str += "<div><center><br><br><button onclick=\"updateCustProfile()\">UPDATE PROFILE</button></center></div><br><br>";
+	
+		model.addObject("custlist", str);
+		model.setViewName("employeeHome");
+		return emptHome(model,employee);
+	}
+	
 	@RequestMapping(value = "/updateEmpProfile", method = RequestMethod.POST)
 	public ModelAndView EmpUpdate(HttpServletRequest request, HttpServletResponse response) {		
 		System.out.println("In Login controller");		
@@ -216,21 +266,7 @@ public class LoginController {
 			model.addObject("custlist", result);
 			
 		}else {
-			model.addObject("custlist", "<br />\n" + 
-					"          <br />\n" + 
-					"          <br />\n" + 
-					"          <br />\n" + 
-					"          <br />\nNo customer log found" + 
-					"          <br />\n" + 
-					"          <br />\n" + 
-					"          <br />\n" + 
-					"          <br />\n" + 
-					"          <br />\n" + 
-					"          <br />\n" + 
-					"          <br />\n" + 
-					"          <br />\n" + 
-					"          <br />\n" + 
-					"          <br />\n" );
+			model.addObject("custlist", "No customer log found" );
 		}
 		Employee employee = (Employee) request.getSession().getAttribute("emp");
 		
@@ -249,27 +285,62 @@ public class LoginController {
 					"		<th>Acc Num</th>\n" + 
 					"		<th>Cust Id</th>\n" + 
 					"		<th>Type</th>\n" + 
-					"		<th>Opened on</th>\n" + 
+					"		<th>Command</th>\n" + 
 					"	</tr>";
 			for(int i = 0 ; i < list.size() ; i ++) {
 
 				result += "<tr>";
-				result += "<td><form method=\"post\" action=\"custlogid\">\n" + 
+				result += "<td><form method=\"post\" action=\"acclogid\">\n" + 
 						"	<input type=\"submit\" name=\"custintlogidz\" value=\""+ list.get(i).getAccLogID() +"\">" + 
 						"</form></td>" + " <td>" + list.get(i).getAnum() + "</td> <td>" + list.get(i).getCust_ID()
-						 + "</td> <td>" + list.get(i).getType() + "</td> <td>" + list.get(i).getOpenedOn() + "</td>";
+						 + "</td> <td>" + list.get(i).getType() + "</td> <td>" + list.get(i).getCommand() + "</td>";
 				result += "</tr>";
 
 			}
 			model.addObject("custlist", result);
 			
 		}else {
-			model.addObject("custlist", "No customer log found");
+			model.addObject("custlist", "No account log found");
 		}
 		Employee employee = (Employee) request.getSession().getAttribute("emp");
 		
 		return emptHome(model, employee);
 	}
+	
+	//---------------view emp log----------------------
+		@RequestMapping(value = "/viewEmpLog", method = RequestMethod.POST)
+		public ModelAndView getEmpLog(HttpServletRequest request, HttpServletResponse response) {
+			ModelAndView model = new ModelAndView();
+			List<EmployeeLog> list = employeeService.getAllEmployeeLog();
+			
+			if ( list != null && list.size() > 0) {
+				String result = "<table>";
+				result +="<tr>\n" + 
+						"		<th>Log ID</th>\n" + 
+						"		<th>EMP ID</th>\n" + 
+						"		<th>F. Name</th>\n" + 
+						"		<th>Email</th>\n" + 
+						"		<th>Command</th>\n" + 
+						"	</tr>";
+				for(int i = 0 ; i < list.size() ; i ++) {
+
+					result += "<tr>";
+					result += "<td><form method=\"post\" action=\"emplogid\">\n" + 
+							"	<input type=\"submit\" name=\"emplogid\" value=\""+ list.get(i).getEmpLogID() +"\">" + 
+							"</form></td>" + " <td>" + list.get(i).getEmpID() + "</td> <td>" + list.get(i).getFirstName()
+							 + "</td> <td>" + list.get(i).getEmail() + "</td> <td>" + list.get(i).getCommand() + "</td>";
+					result += "</tr>";
+
+				}
+				model.addObject("custlist", result);
+				
+			}else {
+				model.addObject("custlist", "No employee log found");
+			}
+			Employee employee = (Employee) request.getSession().getAttribute("emp");
+			
+			return emptHome(model, employee);
+		}
 	
 	public ModelAndView emptHome(ModelAndView model, Employee employee2) {
 		model.addObject("empname", employee2.getFirstName() + " " + employee2.getMiddleName() + " " + employee2.getLastName());

@@ -42,10 +42,9 @@ public class CustSearchController {
 		
 		
 			List<Customer> list = customerService.getAllCustomer();
-	//		System.out.println(list);
+
 			List<Customer> temp = list;
-	//		System.out.println(list + " \n");
-	//		System.out.println(temp + " \n");
+
 			if (fname != "" && fname != null) {
 				for(int i = 0 ; i < list.size(); i++) {
 					if(!list.get(i).getFirstName().equals(fname)) {

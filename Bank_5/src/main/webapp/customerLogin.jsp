@@ -44,11 +44,11 @@
             <fieldset>
             <div> <br />
               <label for="txtusername">Username:</label>
-              <input type="text" name="uname" title="Text input: Username" id="txtusername" maxlength="20" required/>
+              <input class="getfield" type="text" name="uname" title="Text input: Username" id="txtusername" maxlength="20" required/>
             </div>
             <div>
               <label for="txtpassword">&nbsp;Password:</label>
-              <input type="password" name="pass" title="Text input: Password" id="txtpassword" maxlength="20" required/>
+              <input class="getfield" type="password" name="pass" title="Text input: Password" id="txtpassword" maxlength="20" required/>
             </div>
             <br />
             <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

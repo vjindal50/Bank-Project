@@ -22,7 +22,8 @@
   function searchCust(){
     var z = document.getElementById("col3");
     var text = "";
-    text += '<form method="post" action="searchCust">';
+    text += '<div><center><b>Note : </b>Don\'t fill any values to get a full list of customers.</center></div>';
+    text += '<br><form method="post" action="searchCust">';
     text += '<br><div class="divtext">First Name : </div><input class="getfield" type="text" name="fname1"><br><br>';
     text += '<div class="divtext">Last Name :</div><input class="getfield" type="text" name="lname1"><br><br>';
     text += '<div class="divtext">Middle Name : </div><input class="getfield" type="text" name="mname1"><br><br>';
@@ -58,21 +59,40 @@
     var z = document.getElementById("col3");
     var text = "";
     text += '<form method="post" action="updateEmpProfile">';
-    text += '<div class="divtext">First Name : </div><input type="text" name="fname" value="${efname}"><br><br>';
-    text += '<div class="divtext">Last Name :</div><input type="text" name="lname" value="${elname}"><br><br>';
-    text += '<div class="divtext">Middle Name : </div><input type="text" name="mname" value="${emname}"><br><br>';
-    text += '<div class="divtext">Phone : </div><input type="Phone" name="phone" value="${ephone}"><br><br>';
-    text += '<div class="divtext">Alternate Phone : </div><input type="phone" name="altphone" value="${ealtphone}"><br><br>';
-    text += '<div class="divtext">Email : </div><input type="Email" name="email" value="${eemail}"><br><br>';
-    text += '<div class="divtext">Address : </div><input type="text" name="address" value="${eaddress}"><br><br>';
-    text += '<div class="divtext">User Name : </div><input type="text" name="uname" value="${euname}"><br><br>';
-    text += '<div class="divtext">Password : </div><input type="Password" name="pass" value="${epass}"><br><br>';
+    text += '<div class="divtext">First Name : </div><input class="getfield" type="text" name="fname" value="${efname}"><br><br>';
+    text += '<div class="divtext">Last Name :</div><input class="getfield" type="text" name="lname" value="${elname}"><br><br>';
+    text += '<div class="divtext">Middle Name : </div><input class="getfield" type="text" name="mname" value="${emname}"><br><br>';
+    text += '<div class="divtext">Phone : </div><input class="getfield" type="Phone" name="phone" value="${ephone}"><br><br>';
+    text += '<div class="divtext">Alternate Phone : </div><input class="getfield" type="phone" name="altphone" value="${ealtphone}"><br><br>';
+    text += '<div class="divtext">Email : </div><input class="getfield" type="Email" name="email" value="${eemail}"><br><br>';
+    text += '<div class="divtext">Address : </div><input class="getfield" type="text" name="address" value="${eaddress}"><br><br>';
+    text += '<div class="divtext">User Name : </div><input class="getfield" type="text" name="uname" value="${euname}"><br><br>';
+    text += '<div class="divtext">Password : </div><input class="getfield" type="Password" name="pass" value="${epass}"><br><br>';
     text += '<div><center><input class="butts" type="submit" name="submit" value="Update">';
     text += '<input class="butts" type="reset" name="reset" value="Reset">';
     text += '<button id="backbtt" onclick="viewProfile()">Back</button></center></div></form>';
-    text += '';
+
     z.innerHTML = text;
   }
+  function updateCustProfile(){
+		var z = document.getElementById("col3");
+		var text = "";
+		text += '<form method="post" action="updateCustProfileEmp">';
+		text += '<div class="divtext">First Name : </div><input type="text" name="fname" value="${cfname}"><br><br>';
+		text += '<div class="divtext">Last Name :</div><input type="text" name="lname" value="${clname}"><br><br>';
+		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname" value="${cmname}"><br><br>';
+		text += '<div class="divtext">Phone : </div><input type="Phone" name="phone" value="${cphone}"><br><br>';
+		text += '<div class="divtext">Alternate Phone : </div><input type="phone" name="altphone" value="${caltphone}"><br><br>';
+		text += '<div class="divtext">Email : </div><input type="Email" name="email" value="${cemail}"><br><br>';
+		text += '<div class="divtext">Address : </div><input type="text" name="address" value="${caddress}"><br><br>';
+		text += '<div class="divtext">User Name : </div><input type="text" name="uname" value="${cuname}"><br><br>';
+		text += '<div class="divtext">Password : </div><input type="Password" name="pass" value="${cpass}"><br><br>';
+		text += '<br><div><center><input class="butts" type="submit" name="submit" value="Update">';
+		text += '<input class="butts" type="reset" name="reset" value="Reset">';
+		text += '</center></div></form>';
+		
+		z.innerHTML = text;
+	}
   </script>
 </head>
 <body>
@@ -152,20 +172,18 @@
         <!-- <div class="noteheader"> &nbsp;Personal Banking </div> -->
           
           
-          <br />ID : ${empId}
-          <br />First Name : ${efname}
-          <br />Middle Name : ${emname}
-          <br />Last Name : ${elname}
-          <br />Email: ${eemail}
+          <br /><div class="miniprofile">ID </div> : ${empId}<br />
+          <br /><div class="miniprofile">First Name</div> : ${efname}<br />
+      <%--     <br /><div class="miniprofile">Middle Name</div> : ${emname}<br /> --%>
+          <br /><div class="miniprofile">Last Name</div> : ${elname}<br />
+          <br /><div class="miniprofile">Email</div> : ${eemail}<br />
           <br />
-          <br /><div class="sidemenuitem"><button onclick="viewProfile()">View Profile</button></div>
-          <br />
-          <br />
+          <br /><div><center><button onclick="viewProfile()">View Profile</button></center></div>
           <br />
           <br />
           <br />
-          <br />
-          <br />
+
+
           
          </div>
       

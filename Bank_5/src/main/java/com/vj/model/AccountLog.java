@@ -61,6 +61,9 @@ public class AccountLog implements Serializable {
 	@Column(name = "Type")
 	private String Type;
 	
+	@Column(name = "Command")
+	private String Command;
+	
 	public AccountLog() {}
 
 	public int getAccLogID() {
@@ -183,6 +186,14 @@ public class AccountLog implements Serializable {
 		Type = type;
 	}
 	
+	public String getCommand() {
+		return Command;
+	}
+
+	public void setCommand(String command) {
+		Command = command;
+	}
+
 	public String toString() {
 		return "Log ID : " + getAccLogID()
 				+ "\nAccount Number : " + getAnum()

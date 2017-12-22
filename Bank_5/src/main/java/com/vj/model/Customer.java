@@ -179,15 +179,15 @@ public class Customer implements Serializable{
 	}
 
 	public String toString() {
-		return "<b>Cust ID : </b>" + getCustID()
-				+ "<br>\n <b>Cust Name : </b>" + getFirstName() + " " + getMiddleName() + " " + getLastName()
-				+"<br>\n <b>Phone Number : </b>" + getPhone()
-				+"<br>\n <b>Alternate Phone : </b>" + getAlternatePhone()
-				+"<br>\n <b>Email : </b>" + getEmail()
-				+"<br>\n <b>DOB : </b>" + getDOB()
-				+"<br>\n <b>Address : </b>" + getAddress()
-				+"<br>\n <b>User Name : </b>" + getUserName()
-				+"<br>\n <b>Status : </b>" + getStatus();
+		return "<div class=\"info\"><b>Cust ID</b></div> : " + getCustID()
+				+ "<br><div class=\"info\"><br>\n <b>Cust Name</b></div> : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
+				+"<br><div class=\"info\"><br>\n <b>Phone Number</b></div> : " + getPhone()
+				+"<br><div class=\"info\"><br>\n <b>Alternate Phone </b></div> : " + getAlternatePhone()
+				+"<br><div class=\"info\"><br>\n <b>Email </b></div> : " + getEmail()
+				+"<br><div class=\"info\"><br>\n <b>DOB </b></div> : " + getDOB()
+				+"<br><div class=\"info\"><br>\n <b>Address </b></div> : " + getAddress()
+				+"<br><div class=\"info\"><br>\n <b>User Name </b></div> : " + getUserName()
+				+"<br><div class=\"info\"><br>\n <b>Status </b></div> : " + getStatus() ;
 	}
 
 }

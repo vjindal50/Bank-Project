@@ -44,19 +44,24 @@ public class AccountsServiceImpl implements AccountsService{
 		accountsDAO.openAccount(accounts);
 		AccountLog accLog = new AccountLog();
 //		accLog.setAmountPayed(amountPayed);
-//		accLog.setAnum(anum);
-//		accLog.setBalance(balance);
-//		accLog.setClosedOn(closedOn);
-//		accLog.setCust_ID(cust_ID);
+		accLog.setAnum(accounts.getAccountNumber());
+//		accLog.setBalance();
+		accLog.setClosedOn(accounts.getClosedOn());
+		accLog.setCust_ID(accounts.getCust_ID());
 //		accLog.setEMI(eMI);
 //		accLog.setEMICounter(eMICounter);
-//		accLog.setInterset(interset);
+//		accLog.setInterset();
 //		accLog.setLastAccess(lastAccess);
 //		accLog.setLastEMIPayed(lastEMIPayed);
-//		accLog.setOpenedOn(openedOn);
+		accLog.setOpenedOn(accounts.getOpenedOn());
 //		accLog.setOverDraft(overDraft);
-//		accLog.setType(type);
-//		accLog.setWithdrawLimit(withdrawLimit);
+		accLog.setType(accounts.getType());
+		accLog.setCommand("Created");
+		if(accounts.getType().equals("savings"));{
+			accLog.setWithdrawLimit((double)accounts.getAccSav().get(0).getWithdrawLimit());
+		}
+		
+		accountLogDAO.insertAccLog(accLog);
 	}
 	
 	@Transactional
