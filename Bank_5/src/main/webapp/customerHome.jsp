@@ -10,6 +10,18 @@
 </style>
 <script type="text/javascript" src="js/validation.js"></script>
 <script type="text/javascript">
+	function getFAQs(){
+		var z = document.getElementById("col3");
+		var text = '<div>';
+			text += '<b>Q. How do I close my account ?</b>';
+			text += '</div>';
+				text += '<div>';
+					text += '	A. If the feature has been implemented then you\'ll see an option to do that.';
+					text += '</div>';
+		
+		
+		z.innerHTML = text;
+	}
 	function addaccount(){
 		var z = document.getElementById("col3");
 		var text = "";
@@ -85,8 +97,9 @@
   <input id="logout" type="submit" name="submit" value="New Account"></form></span> 
   <span class="buttonText" id="nav41"><form action="viewEmpLog" method="post">
   <input id="logout" type="submit" name="submit" value="Loan"></form></span>
-   <span class="buttonText" id="nav51"><form action="viewAccLog" method="post">
-   <input id="logout" type="submit" name="submit" value="FAQ"></form></span>
+  
+   <span class="buttonText" id="nav51"><button onclick="getFAQs()">FAQs</button></span>
+   
     <span class="buttonText" id="nav61"><form action="logoutCustomer" method="post">
     <input id="logout" type="submit" name="submit" value="Logout"></form></span> </div>
   <div id="main">
