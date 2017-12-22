@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vj.model.Accounts;
 import com.vj.model.Customer;
 import com.vj.model.Employee;
 import com.vj.service.CustomerService;
@@ -31,7 +32,7 @@ public class LoginController {
 		
 	@RequestMapping(value = "/logininto", method = RequestMethod.POST)
 	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) {		
-		System.out.println("In Login controller");		
+		System.out.println("In Login meme rrrrrrrrrrrrrrrrrrrrr controller");		
 		String submit = request.getParameter("submit");
 		
 		if(submit.equals("Login_Customer")) {
@@ -41,19 +42,17 @@ public class LoginController {
 			Customer customer=new Customer();
 			customer=customerService.login(uname, pass);
 			if (customer != null) {
-				
 				request.getSession().setAttribute("cust",customer);
 				System.out.println(customer.getAcc());
 				ModelAndView model = new ModelAndView();
 				model.addObject("custname", customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
 				model.addObject("custId", customer.getCustID());
-				model.addObject("acclist", customer.getAcc());
+				//model.addObject("acclist", res);
 				model.addObject("LastLogin", customer.getJoinDate());
 				model.addObject("caddress", customer.getAddress());
 				model.addObject("caltphone", customer.getAlternatePhone());
 				model.addObject("cdob", customer.getDOB());
 				model.addObject("cemail", customer.getEmail());
-				//model.addObject("eeid", customer.getEmpID());
 				model.addObject("cfname", customer.getFirstName());
 				model.addObject("clname", customer.getLastName());
 				model.addObject("cmname", customer.getMiddleName());

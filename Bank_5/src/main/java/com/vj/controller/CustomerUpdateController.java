@@ -22,13 +22,11 @@ public class CustomerUpdateController {
     private CustomerService customerService;
 		
 	@RequestMapping(value = "/updateCustProfile", method = RequestMethod.POST)
-	public ModelAndView EmpUpdate(HttpServletRequest request, HttpServletResponse response) {		
+	public ModelAndView CustUpdate(HttpServletRequest request, HttpServletResponse response) {		
 		System.out.println("In Login controller");		
 		String submit = request.getParameter("submit");
-		Customer customer = new Customer();
 		//Customer customer = new Customer();
 		
-		String custid = request.getParameter("custId");
 		//String custid = request.getParameter("custId");
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
@@ -41,10 +39,9 @@ public class CustomerUpdateController {
 		String uname = request.getParameter("uname");
 		String pass = request.getParameter("pass");
 		
-<<<<<<< HEAD
-		System.out.println("custid"+custid);
-		customer.setCustID(Integer.parseInt(custid));
-=======
+
+		
+
 //		System.out.println(custid);
 //		System.out.println(Integer.parseInt(custid));
 		
@@ -53,14 +50,13 @@ public class CustomerUpdateController {
 		customer.setCustID(customer.getCustID());
 //		System.out.println(Integer.parseInt(custid));
 		
->>>>>>> master
+
 		customer.setAddress(address);
 		if (altphone.equals("") || altphone == null) {
 			customer.setAlternatePhone(" ");
 		} else {
 			customer.setAlternatePhone(altphone);
 		}
-		customer.setDOB(customerService.getCustomer(Integer.parseInt(custid)).getDOB());
 		customer.setDOB(customer.getDOB());
 		customer.setEmail(email);
 		customer.setFirstName(fname);
@@ -78,7 +74,6 @@ public class CustomerUpdateController {
 		}
 		customer.setPassword(pass);
 		customer.setPhone(phone);
-		customer.setStatus("current");
 		customer.setStatus(customer.getStatus());
 		customer.setUserName(uname);
 		System.out.println(customer);

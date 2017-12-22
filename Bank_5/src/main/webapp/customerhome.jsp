@@ -7,8 +7,8 @@
 <head>
 	<title>Customer Home</title>
 	
-	<spring:url value="/resources/HomePageScript.js" var="employeeHomeScript" />
-	<script type="text/javascript" src="${employeeHomeScript}"></script>
+<!--  	<spring:url value="/resources/HomePageScript.js" var="employeeHomeScript" />
+	<script type="text/javascript" src="${employeeHomeScript}"></script>  -->
 	<script type="text/javascript">
 	function addaccount(){
 		var z = document.getElementById("sidemenucontent");
@@ -16,13 +16,36 @@
 		
 		text += '<div class="divtext"><form action="savingsaccount" method="post">';
 		text +=	'<div class="divtext">Enter Balance : </div><br>';
-		text+='<div class="divtext"></div><input type="text" name="savingsbalance"><input class="butts" type="submit" name="submit" value="Savings_Account"></form></div><br><br>';
-		text += '<div class="divtext"><form action="checkingsaccount" method="post"><input id="checkings" type="submit" name="submit" value="Checkings_Account"></form></div><br><br>';
-		text += '<div class="divtext"><form action="loanaaccount" method="post"><input id="loan" type="submit" name="submit" value="Loan_Account"></form></div><br><br>';
+		text+='<div class="divtext"></div><input class="butts1" type="text" name="savingsbalance"><input class="butts1" type="submit" name="submit" value="Savings_Account"></form></div><br><br>';
+		
+		text += '<div class="divtext"><form action="savingsaccount" method="post">';
+		text +=	'<div class="divtext">Enter Balance : </div><br>';
+		text+='<div class="divtext"></div><input class="butts1" type="text" name="checkingsbalance"><input class="butts1" type="submit" name="submit" value="Checkings_Account"></form></div><br><br>';
+		
+		text += '<div class="divtext"><form action="savingsaccount" method="post">';
+		text +=	'<div class="divtext">Enter the loan amount : </div><br>';
+		text+='<div class="divtext"></div><input class="butts1" type="text" name="loanamount"><input class="butts1" type="submit" name="submit" value="Loan_Account"></form></div><br><br>';
+		
+		
 		
 		z.innerHTML = text;
 		console.log("hey");
 	}
+	
+	function viewAccounts(){
+		var z = document.getElementById("sidemenucontent");
+		var text = "";
+		text += '<div class="divtext">Account Number : </div>${accNo}';
+		text += '<br><div class="divtext">Customer Id : </div>${acccustId}';
+		text += '<br><div class="divtext">Account Status: </div>${accstatus}';
+		text += '<br><div class="divtext">Account Open Date : </div>${accopenDate}';
+		text += '<br><div class="divtext">Account Type : </div>${acctype}';
+		text += '<br><button onclick="updateProfile()">Delete PROFILE</button>';
+		z.innerHTML = text;
+	}
+	
+	
+	
 	function viewProfile(){
 		var z = document.getElementById("sidemenucontent");
 		var text = "";
@@ -98,6 +121,9 @@
 			margin-top: 5px;
 			width: 150px;
 		}
+		.butts1{
+			width:140px;
+		}
 		#sidemenu{
 			width: 25%;
 		}
@@ -143,26 +169,28 @@
 		<div class="menuanddis">
 			<div class="custhomefield" id="custinfo">Customer Id: ${custId}</div>
 			<div class="custhomefield" id="lastlogin">Last Login: ${LastLogin}</div>
-			<div>Accounts ${acclist}</div>
+			
 		</div>
 		<div class="menuanddis">
 			<div class="sidemenuandcontent" id="sidemenu">
+				<div class="sidemenuitem"><form action="viewAccounts" method="post"><input id="viewacc" type="submit" name="submit" value="View Accounts"></form></div>
 				<div class="sidemenuitem"><button onclick="addaccount()">Add Account</button></div>
 				
-			<!-- 	<div class="sidemenuitem"><button onclick="viewCustLog()">View Customer Log</button></div>
+			<!-- 	<div class="sidemenuitem"><button onclick="viewCustLog()">View Customer Log</button></form></div>
 				 -->
 				<div class="sidemenuitem"><button onclick="viewProfile()">View Profile</button></div>
 				<div class="sidemenuitem"><form action="logout" method="post"><input id="logout" type="submit" name="submit" value="Logout"></form></div>
 			</div>
 			<div class="sidemenuandcontent">
 				<div id="sidemenucontent">
-					 <h3>Please select an action</h3> 
+					 <h3>Please select an action</h3>
+					 ${acclist} 
 				</div>
 			
 			</div>
 		</div>
 	</div>
 </center>
-<script type="text/javascript" src="${employeeHomeScript}"></script>
+  <!--   <script type="text/javascript" src="${employeeHomeScript}"></script>  -->
 </body>
 </html>
