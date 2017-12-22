@@ -206,19 +206,19 @@ public class EmployeeLog implements Serializable{
 	
 
 	public String toString() {
-		return "Employee Log ID : " + getEmpLogID()
-				+ "\nEmployee ID : " + getEmpID()
-				+ "Employee Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
-				+ "\nPhone : " + getPhone()
-				+ "\nAlternate Phone : " + getAlternatePhone()
-				+ "\nEmail : " + getEmail()
-				+ "\nAddress : " + getAddress()
-				+ "\nPassword" + getPassword()
-				+ "\nUser Name : " + getUserName()
-				+ "\nCommand : " + getCommand()
-				+ "\nStatus : " + getStatus()
-				+ "\nLeft String : " + getLeftDate()
-				+ "\nJoin String : " + getJoinDate();
+		return "<div class=\"info\"><b>Log ID</b></div> : " + getEmpLogID()
+				+ "<div class=\"info\"><b>Employee ID</b></div> : " + getEmpID()
+				+ "<div class=\"info\"><b>Full Name</b></div> : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
+				+ "<div class=\"info\"><b>Phone</b></div> : " + getPhone()
+				+ "<div class=\"info\"><b>Alt Phone</b></div> : " + getAlternatePhone()
+				+ "<div class=\"info\"><b>Email</b></div> : " + getEmail()
+				+ "<div class=\"info\"><b>Address</b></div> : " + getAddress()
+				+ "<div class=\"info\"><b>Password</b></div> : " + getPassword()
+				+ "<div class=\"info\"><b>User Name</b></div> : " + getUserName()
+				+ "<div class=\"info\"><b>Command</b></div> : " + getCommand()
+				+ "<div class=\"info\"><b>Status</b></div> : " + getStatus()
+				+ "<div class=\"info\"><b>LeftDate</b></div> : " + getLeftDate()
+				+ "<div class=\"info\"><b>Join Date</b></div> : " + getJoinDate();
 	}
 	
 }

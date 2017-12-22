@@ -195,20 +195,21 @@ public class AccountLog implements Serializable {
 	}
 
 	public String toString() {
-		return "Log ID : " + getAccLogID()
-				+ "\nAccount Number : " + getAnum()
-				+ "\nBalance : " + getBalance()
-				+ "\nWithdraw Limit : " + getWithdrawLimit()
-				+ "\nOver Draft : " + getOverDraft()
-				+ "\nInterest : " + getInterset()
-				+ "\nLast Access : " + getLastAccess()
-				+ "\nEMI : " + getEMI()
-				+ "\nLast EMI payed : " + getLastEMIPayed()
-				+ "\nEMI counter : " + getEMICounter()
-				+ "\nAmount Payed : " + getAmountPayed()
-				+ "\nOpened On : " + getOpenedOn()
-				+ "\nClosed On : " + getClosedOn()
-				+ "\nCustomer ID : " + getCust_ID()
-				+ "\nAccount type : " + getType();
+		return "<div class=\"info\"><b>Log ID</b></div> : " + getAccLogID()
+				+ "<br><div class=\"info\"><br>\n <b>Account Number</b></div> : " + getAnum()
+				+ "<br><div class=\"info\"><br>\n <b>Balance</b></div> : " + getBalance()
+				+ "<br><div class=\"info\"><br>\n <b>Withdraw Limit</b></div> : " + getWithdrawLimit()
+				+ "<br><div class=\"info\"><br>\n <b>Over Draft Limit</b></div> : " + getOverDraft()
+				+ "<br><div class=\"info\"><br>\n <b>Interest</b></div> : " + getInterset()
+				+ "<br><div class=\"info\"><br>\n <b>Last Accessed</b></div> : " + getLastAccess()
+				+ "<br><div class=\"info\"><br>\n <b>EMI</b></div> : " + getEMI()
+				+ "<br><div class=\"info\"><br>\n <b>Last EMI Payed</b></div> : " + getLastEMIPayed()
+				+ "<br><div class=\"info\"><br>\n <b>No. of EMI Payed</b></div> : " + getEMICounter()
+				+ "<br><div class=\"info\"><br>\n <b>Amount Payed</b></div> : " + getAmountPayed()
+				+ "<br><div class=\"info\"><br>\n <b>Opened On</b></div> : " + getOpenedOn()
+				+ "<br><div class=\"info\"><br>\n <b>Closed On</b></div> : " + getClosedOn()
+				+ "<br><div class=\"info\"><br>\n <b>Customer ID</b></div> : " + getCust_ID()
+				+ "<br><div class=\"info\"><br>\n <b>Account Type</b></div> : " + getType()
+				+ "<br><div class=\"info\"><br>\n <b>Command</b></div> : " + getCommand();
 	}
 }

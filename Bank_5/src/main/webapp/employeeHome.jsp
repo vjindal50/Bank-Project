@@ -58,7 +58,8 @@
   function updateProfile(){
     var z = document.getElementById("col3");
     var text = "";
-    text += '<form method="post" action="updateEmpProfile">';
+    text += '<div style="text-align: right"><button id="backbtt" onclick="viewProfile()">Back</button></div>';
+    	text += '<form method="post" action="updateEmpProfile">';
     text += '<div class="divtext">First Name : </div><input class="getfield" type="text" name="fname" value="${efname}"><br><br>';
     text += '<div class="divtext">Last Name :</div><input class="getfield" type="text" name="lname" value="${elname}"><br><br>';
     text += '<div class="divtext">Middle Name : </div><input class="getfield" type="text" name="mname" value="${emname}"><br><br>';
@@ -68,9 +69,9 @@
     text += '<div class="divtext">Address : </div><input class="getfield" type="text" name="address" value="${eaddress}"><br><br>';
     text += '<div class="divtext">User Name : </div><input class="getfield" type="text" name="uname" value="${euname}"><br><br>';
     text += '<div class="divtext">Password : </div><input class="getfield" type="Password" name="pass" value="${epass}"><br><br>';
-    text += '<div><center><input class="butts" type="submit" name="submit" value="Update">';
-    text += '<input class="butts" type="reset" name="reset" value="Reset">';
-    text += '<button id="backbtt" onclick="viewProfile()">Back</button></center></div></form>';
+    text += '<center><input class="butts" type="submit" name="submit" value="Update">';
+    text += '<input class="butts" type="reset" name="reset" value="Reset"></center>';
+    text += '</form><br><br>';
 
     z.innerHTML = text;
   }

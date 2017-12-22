@@ -17,7 +17,9 @@ body
 	position: absolute;
 	background: url('images/bggrad2.jpg') repeat-x #999999;
 }
-
+form{
+	display: inline-block;
+}
 table{
 	width: 450px;
 	text-align: center;
@@ -481,6 +483,7 @@ a img
 	width: 140px;
 	text-align: right;
 	margin-right: 20px;
+	font-weight: bold;
 }
 .getfield{
 	background-color: white;
@@ -501,4 +504,5 @@ a img
 	margin-left:5px;
 	width: 90px;
 	font-weight: bold;
+	color:#663366;
 }

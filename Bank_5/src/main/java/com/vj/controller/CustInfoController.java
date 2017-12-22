@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.vj.model.Accounts;
 import com.vj.model.Customer;
 import com.vj.model.Employee;
+import com.vj.service.AccountsService;
 import com.vj.service.CustomerService;
 
 @Controller
@@ -21,6 +22,11 @@ public class CustInfoController {
 	
 	@Autowired
 	CustomerService customerService;
+	
+	
+	@Autowired
+	AccountsService accountService;
+	
 	
 	@RequestMapping(value = "/getthiscust", method = RequestMethod.POST)
 	public ModelAndView getCust(HttpServletRequest request, HttpServletResponse response) {
@@ -30,39 +36,39 @@ public class CustInfoController {
 		Customer c = customerService.getCustomer(custId);
 		request.getSession().setAttribute("custemp", c);
 		
-		List<Accounts> list = c.getAcc();
-		String res = "";
-		if(list.size() > 0 ) {
-			res += "<table><tr><th>Account Number</th><th>Balance</th></tr><br>\n";
-			for(int i = 0 ; i < list.size() ; i++) {
-				res += "<tr><td><form method=\"post\" action=\"fetchAccInfo\"><input type=\"Submit\" name=\"accId\" value=" +list.get(i).getAccountNumber()+"></form></td>";
-				res += "<td>";
-				
-				System.out.println(list.get(i).getType());
-				
-				if (list.get(i).getType().equals("savings") && list.get(i).getAccSav().size() > 0) {
-				 	res += list.get(i).getAccSav().get(0).getBalance();
-				}
-				
-				if (list.get(i).getType().equals("checking") && list.get(i).getAccChk().size() > 0 ) {
-					res += list.get(i).getAccChk().get(0).getBalance();
-				} 
-				
-				if (list.get(i).getType().equals("loan") && list.get(i).getAccLoan().size() > 0 ) {
-					res += list.get(i).getAccLoan().get(0).getBalance();
-				}
-				
-				res +="</td></tr>";
-			}
-			res += "</table>";
-			System.out.println(res);
-		}	else {
-			res = "No account associated with this user account";
-		}	
+//		List<Accounts> list = c.getAcc();
+//		String res = "";
+//		if(list.size() > 0 ) {
+//			res += "<table><tr><th>Account Number</th><th>Balance</th></tr><br>\n";
+//			for(int i = 0 ; i < list.size() ; i++) {
+//				res += "<tr><td><form method=\"post\" action=\"fetchAccInfo\"><input type=\"Submit\" name=\"accId\" value=" +list.get(i).getAccountNumber()+"></form></td>";
+//				res += "<td>";
+//				
+//				System.out.println(list.get(i).getType());
+//				
+//				if (list.get(i).getType().equals("savings") && list.get(i).getAccSav().size() > 0) {
+//				 	res += list.get(i).getAccSav().get(0).getBalance();
+//				}
+//				
+//				if (list.get(i).getType().equals("checking") && list.get(i).getAccChk().size() > 0 ) {
+//					res += list.get(i).getAccChk().get(0).getBalance();
+//				} 
+//				
+//				if (list.get(i).getType().equals("loan") && list.get(i).getAccLoan().size() > 0 ) {
+//					res += list.get(i).getAccLoan().get(0).getBalance();
+//				}
+//				
+//				res +="</td></tr>";
+//			}
+//			res += "</table>";
+//			System.out.println(res);
+//		}	else {
+//			res = "No account associated with this user account";
+//		}	
 		model.addObject("custname",c.getFirstName() + " " + c.getMiddleName() + " " + c.getLastName());
 		model.addObject("custId",c.getCustID());
 		model.addObject("LastLogin",c.getJoinDate());
-		model.addObject("acclist", res);
+//		model.addObject("acclist", res);
 		model.addObject("caddress",c.getAddress());
 		model.addObject("caltphone",c.getAlternatePhone());
 		model.addObject("cdob",c.getDOB());
@@ -98,4 +104,109 @@ public class CustInfoController {
 		return model;
 	}
 
+	
+	
+	@RequestMapping(value = "/viewAccounts", method = RequestMethod.POST)
+	public ModelAndView AccDelete(HttpServletRequest request, HttpServletResponse response) {		
+		System.out.println("In Accounts Delete controller");	
+		
+//		Accounts account = new Accounts();
+
+		String submit = request.getParameter("submit");
+		System.out.println(submit);	
+		String res = "";
+		Customer customer =	(Customer) request.getSession().getAttribute("cust");
+		List<Accounts> list = customer.getAcc();
+		System.out.println(list);
+		ModelAndView model = new ModelAndView();
+		
+		if(list.size() > 0 ) {
+			res += "<div><center><h2>List of Accounts</h2></center></div><br><table><tr><th>Account Number</th><th>Balance</th></tr><br>\n";
+			for(int i = 0 ; i < list.size() ; i++) {
+				res += "<tr><td><form method=\"post\" action=\"fetchAccInfo\"><input type=\"Submit\" name=\"accId\" value=" +
+						list.get(i).getAccountNumber()+"></form></td>";
+				res += "<td>";
+				
+				System.out.println(list.get(i).getType());
+				
+				if (list.get(i).getType().equals("savings") && list.get(i).getAccSav().size() > 0) {
+				 	res += list.get(i).getAccSav().get(0).getBalance();
+				}
+				
+				if (list.get(i).getType().equals("checking") && list.get(i).getAccChk().size() > 0 ) {
+					res += list.get(i).getAccChk().get(0).getBalance();
+				} 
+				
+				if (list.get(i).getType().equals("loan") && list.get(i).getAccLoan().size() > 0 ) {
+					res += list.get(i).getAccLoan().get(0).getBalance();
+				}
+				
+				res +="</td></tr>";
+			}
+			res += "</table>";
+			System.out.println(res);
+			model.addObject("acclist", res);
+			
+		}	else {
+			model.addObject("acclist", "You have no accounts with us.");
+		}
+		
+		model.addObject("custname",customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
+		model.addObject("custId",customer.getCustID());
+		model.addObject("LastLogin",customer.getJoinDate());
+		model.addObject("acclist", res);
+		model.addObject("caddress",customer.getAddress());
+		model.addObject("caltphone",customer.getAlternatePhone());
+		model.addObject("cdob",customer.getDOB());
+		model.addObject("cemail",customer.getEmail());
+		model.addObject("cfname",customer.getFirstName());
+		model.addObject("clname",customer.getLastName());
+		model.addObject("cmname",customer.getMiddleName());
+		model.addObject("cphone",customer.getPhone());
+		model.addObject("cuname",customer.getUserName());
+		model.addObject("cpass",customer.getPassword());
+		
+		model.setViewName("customerHome");
+		
+		return model;
+	
+	}
+	
+	@RequestMapping(value = "/fetchAccInfo", method = RequestMethod.POST)
+	public ModelAndView AccountInfo(HttpServletRequest request, HttpServletResponse response) {	
+		
+//		Accounts account = new Accounts();
+		Customer customer =	(Customer) request.getSession().getAttribute("cust");
+		System.out.println("in accounts controller");
+		int accountId = Integer.parseInt(request.getParameter("accId"));
+		System.out.println(accountId);
+		
+		ModelAndView model = new ModelAndView();
+		model.addObject("custname",customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
+		model.addObject("custId",customer.getCustID());
+		model.addObject("LastLogin",customer.getJoinDate());
+//		model.addObject("acclist", res);
+		model.addObject("caddress",customer.getAddress());
+		model.addObject("caltphone",customer.getAlternatePhone());
+		model.addObject("cdob",customer.getDOB());
+		model.addObject("cemail",customer.getEmail());
+		model.addObject("cfname",customer.getFirstName());
+		model.addObject("clname",customer.getLastName());
+		model.addObject("cmname",customer.getMiddleName());
+		model.addObject("cphone",customer.getPhone());
+		model.addObject("cuname",customer.getUserName());
+		model.addObject("cpass",customer.getPassword());
+		Accounts account  = accountService.getAccount(accountId);
+		
+		String str = "";
+		str+= account.toString();
+		str +="<br><br><center><form action=\"viewAccounts\" method=\"post\">\n" + 
+				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\">\n" + 
+				"  </form></center>";
+		model.addObject("acclist", str);
+		model.setViewName("customerHome");
+
+		
+		return model;
+	}
 }

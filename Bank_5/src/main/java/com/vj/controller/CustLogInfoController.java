@@ -44,8 +44,8 @@ public class CustLogInfoController {
 		
 		CustomerLog log = customerService.getCustomerLog(custLogId);
 		String str = log.toString();
-		str += "<br><br><div><form action=\"viewCustLog\" method=\"post\">\n" + 
-				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\"></form></div><br><br>";
+		str += "<br><br><div><center><form action=\"viewCustLog\" method=\"post\">\n" + 
+				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\"></form></center></div><br><br>";
 		
 		model.addObject("custlist", str);
 		
@@ -64,8 +64,8 @@ public class CustLogInfoController {
 		
 		AccountLog log = accountService.getAccLog(accLogId);
 		String str = log.toString();
-		str += "<br><br><div><form action=\"viewAccLog\" method=\"post\">\n" + 
-				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\"></form></div><br><br>";
+		str += "<br><br><div><center><form action=\"viewAccLog\" method=\"post\">\n" + 
+				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\"></form></center></div><br><br>";
 		
 		model.addObject("custlist", str);
 		
@@ -84,8 +84,8 @@ public class CustLogInfoController {
 		
 		EmployeeLog log = employeeService.getEmployeeLog(empLogId);
 		String str = log.toString();
-		str += "<br><br><div><form action=\"viewEmpLog\" method=\"post\">\n" + 
-				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\"></form></div><br><br>";
+		str += "<br><br><div><center><form action=\"viewEmpLog\" method=\"post\">\n" + 
+				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\"></form></center></div><br><br>";
 		
 		model.addObject("custlist", str);
 

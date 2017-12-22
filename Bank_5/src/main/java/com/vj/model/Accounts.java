@@ -127,17 +127,20 @@ public class Accounts implements Serializable{
 	}
 
 	public String toString() {
-		String result = "Account Number : " + getAccountNumber()
-				+ "<br>\nAccount Type : " + getType()
-				+ "<br>\nOpened On : " + getOpenedOn()
-				+ "<br>\nType : " + getType()
-				+ "<br>\nStatus : " + getStatus();
+		String result = "<br><div class=\"info\"><b>Account Number</b></div> : " + getAccountNumber()
+				+ "<br><br><div class=\"info\"><b>Type</b></div> : " + getType()
+				+ "<br><br><div class=\"info\"><b>Opened On</b></div> : " + getOpenedOn()
+				+ "<br><br><div class=\"info\"><b>Status</b></div> : " + getStatus();
 		
 		if (getAccSav().size()>0) {
-			result += "<br>\nSaving Acc Info : " + getAccSav();
+			result += "<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccSav().get(0).getBalance();
+			result += "<br><br><div class=\"info\"><b>Interest</b></div> : " + getAccSav().get(0).getInterest();
+			result += "<br><br><div class=\"info\"><b>Widthdraw Limit</b></div> : " + getAccSav().get(0).getWithdrawLimit();
 		}
 		if (getAccChk().size()>0) {
-			result += "<br>\nChecking Acc Info : " + getAccChk();
+			result += result += "<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccChk().get(0).getBalance();
+			result += result += "<br><br><div class=\"info\"><b>Interest</b></div> : " + getAccChk().get(0).getInterest();
+			result += result += "<br><br><div class=\"info\"><b>Over Draft Limit</b></div> : " + getAccChk().get(0).getOverDraft();
 		}
 		if (getAccLoan().size()>0) {
 			result += "<br>\nLoan Acc Info : " + getAccLoan();

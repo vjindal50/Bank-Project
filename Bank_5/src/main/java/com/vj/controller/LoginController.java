@@ -49,6 +49,7 @@ public class LoginController {
 		if (customer != null) {
 			
 			request.getSession().setAttribute("cust",customer);
+			System.out.println(customer);
 			ModelAndView model = new ModelAndView();		
 			return custHome(model, customer);
 				
@@ -116,7 +117,7 @@ public class LoginController {
 		String pass = request.getParameter("pass");
 
 		Customer customer = (Customer) request.getSession().getAttribute("cust");
-				
+		System.out.println(customer);
 		customer.setAddress(address);
 		if (altphone.equals("") || altphone == null) {
 			customer.setAlternatePhone(" ");
@@ -140,7 +141,7 @@ public class LoginController {
 		customer.setUserName(uname);
 		
 		ModelAndView model = new ModelAndView();
-		
+		System.out.println(customer);
 		return custHome(model, customerService.updateCustomer(customer));
 	
 	}
@@ -362,39 +363,39 @@ public class LoginController {
 	}
 	
 	public ModelAndView custHome(ModelAndView model, Customer customer2) {
-		List<Accounts> list = customer2.getAcc();
-		String res = "";
-		if(list.size() > 0 ) {
-			res += "<table><tr><th>Account Number</th><th>Balance</th></tr><br>\n";
-			for(int i = 0 ; i < list.size() ; i++) {
-				res += "<tr><td><form method=\"post\" action=\"fetchAccInfo\"><input type=\"Submit\" name=\"accId\" value=" +list.get(i).getAccountNumber()+"></form></td>";
-				res += "<td>";
-				
-				System.out.println(list.get(i).getType());
-				
-				if (list.get(i).getType().equals("savings") && list.get(i).getAccSav().size() > 0) {
-				 	res += list.get(i).getAccSav().get(0).getBalance();
-				}
-				
-				if (list.get(i).getType().equals("checking") && list.get(i).getAccChk().size() > 0 ) {
-					res += list.get(i).getAccChk().get(0).getBalance();
-				} 
-				
-				if (list.get(i).getType().equals("loan") && list.get(i).getAccLoan().size() > 0 ) {
-					res += list.get(i).getAccLoan().get(0).getBalance();
-				}
-				
-				res +="</td></tr>";
-			}
-			res += "</table>";
-			System.out.println(res);
-		}	else {
-			res = "No account associated with this user account";
-		}	
+//		List<Accounts> list = customer2.getAcc();
+//		String res = "";
+//		if(list.size() > 0 ) {
+//			res += "<table><tr><th>Account Number</th><th>Balance</th></tr><br>\n";
+//			for(int i = 0 ; i < list.size() ; i++) {
+//				res += "<tr><td><form method=\"post\" action=\"fetchAccInfo\"><input type=\"Submit\" name=\"accId\" value=" +list.get(i).getAccountNumber()+"></form></td>";
+//				res += "<td>";
+//				
+//				System.out.println(list.get(i).getType());
+//				
+//				if (list.get(i).getType().equals("savings") && list.get(i).getAccSav().size() > 0) {
+//				 	res += list.get(i).getAccSav().get(0).getBalance();
+//				}
+//				
+//				if (list.get(i).getType().equals("checking") && list.get(i).getAccChk().size() > 0 ) {
+//					res += list.get(i).getAccChk().get(0).getBalance();
+//				} 
+//				
+//				if (list.get(i).getType().equals("loan") && list.get(i).getAccLoan().size() > 0 ) {
+//					res += list.get(i).getAccLoan().get(0).getBalance();
+//				}
+//				
+//				res +="</td></tr>";
+//			}
+//			res += "</table>";
+//			System.out.println(res);
+//		}	else {
+//			res = "No account associated with this user account";
+//		}	
 		model.addObject("custname",customer2.getFirstName() + " " + customer2.getMiddleName() + " " + customer2.getLastName());
 		model.addObject("custId",customer2.getCustID());
 		model.addObject("LastLogin",customer2.getJoinDate());
-		model.addObject("acclist", res);
+//		model.addObject("acclist", res);
 		model.addObject("caddress",customer2.getAddress());
 		model.addObject("caltphone",customer2.getAlternatePhone());
 		model.addObject("cdob",customer2.getDOB());
@@ -405,7 +406,7 @@ public class LoginController {
 		model.addObject("cphone",customer2.getPhone());
 		model.addObject("cuname",customer2.getUserName());
 		model.addObject("cpass",customer2.getPassword());
-		model.setViewName("customerhome");
+		model.setViewName("customerHome");
 		return model;
 	}
 
