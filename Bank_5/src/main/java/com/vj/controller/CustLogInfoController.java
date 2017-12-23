@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vj.model.AccountLog;
+import com.vj.model.Accounts;
 import com.vj.model.CustomerLog;
 import com.vj.model.Employee;
 import com.vj.model.EmployeeLog;
@@ -94,7 +95,7 @@ public class CustLogInfoController {
 	
 	@RequestMapping(value = "/empmyid", method = RequestMethod.POST)
 	public ModelAndView GetEmpMyInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		System.out.println("in emp log info controller");
+		System.out.println("in emp info controller");
 		System.out.println(request.getParameter("empid"));
 		
 		ModelAndView model = new ModelAndView();
@@ -105,6 +106,26 @@ public class CustLogInfoController {
 		Employee info = employeeService.getEmployee(empmyId);
 		String str = info.toString();
 		str += "<br><br><div><center><form action=\"viewEmpList\" method=\"post\">\n" + 
+				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\"></form></center></div><br><br>";
+		
+		model.addObject("custlist", str);
+
+		return empHome(request, model);
+	}
+	
+	@RequestMapping(value = "/accnumid", method = RequestMethod.POST)
+	public ModelAndView GetAccInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		System.out.println("in acc info controller");
+		System.out.println(request.getParameter("accnum"));
+		
+		ModelAndView model = new ModelAndView();
+		
+		int accNum = Integer.parseInt(request.getParameter("accnum"));
+		System.out.println(accNum);
+		
+		Accounts info = accountService.getAccount(accNum);
+		String str = info.toString();
+		str += "<br><br><div><center><form action=\"viewAccList\" method=\"post\">\n" + 
 				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\"></form></center></div><br><br>";
 		
 		model.addObject("custlist", str);

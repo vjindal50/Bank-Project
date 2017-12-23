@@ -105,6 +105,17 @@
 		text += '</form></div>';
 		z.innerHTML = text;
 	}
+  	function AccountOption(){
+		var z = document.getElementById("col3");
+		var text = "";
+		text += '<div><center><h2>MENU</h2></center></div>';
+		text += '<br><br><div class = "employeeMenu"><form action="viewAccLog" method="post">';
+		text += '<input id="logout" type="submit" name="submit" value="Account Log">';
+		text += '</form></div>';
+		text += '<br><br><div class = "employeeMenu"><form action="viewAccList" method="post"><input id="logout" type="submit" name="submit" value="Accounts List">';
+		text += '</form></div>';
+		z.innerHTML = text;
+	}
   
   
   </script>
@@ -129,8 +140,9 @@
  </span> 
   
   
-  <span class="buttonText" id="nav51"><form action="viewAccLog" method="post">
-  <input id="logout" type="submit" name="submit" value="Account Log"></form></span> 
+  <span class="buttonText" id="nav51">
+  <button onclick="AccountOption()">Accounts</button>
+  </span> 
   
   <span class="buttonText" id="nav61">
   <form action="logoutEmployee" method="post"><input id="logout" type="submit" name="submit" value="Logout">
