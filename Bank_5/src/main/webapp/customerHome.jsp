@@ -57,17 +57,15 @@
 		var text = "";
 		text += '<div style="text-align: right"><button id="backbtt" onclick="viewProfile()">Back</button></div>';
 		text += '<form method="post" action="updateCustProfile">';
-		text += '<div class="divtext">Customer ID : </div><input type="text" name="custId" value="${custId}" readonly><br><br>';
-		text += '<div class="divtext">First Name : </div><input type="text" name="fname" value="${cfname}"><br><br>';
-		text += '<div class="divtext">Last Name :</div><input type="text" name="lname" value="${clname}"><br><br>';
-		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname" value="${cmname}"><br><br>';
-		text += '<div class="divtext">Phone : </div><input type="Phone" name="phone" value="${cphone}"><br><br>';
-		text += '<div class="divtext">Alternate Phone : </div><input type="phone" name="altphone" value="${caltphone}"><br><br>';
-		text += '<div class="divtext">Email : </div><input type="Email" name="email" value="${cemail}"><br><br>';
-		text += '<div class="divtext">Address : </div><input type="text" name="address" value="${caddress}"><br><br>';
-		text += '<div class="divtext">User Name : </div><input type="text" name="uname" value="${cuname}"><br><br>';
-		text += '<div class="divtext">Password : </div><input type="Password" name="pass" value="${cpass}"><br><br>';
-		text += '<div class="divtext">D.O.B. :</div><input type="date" name="dob" value="${cdob}" readonly><br><br>';
+		text += '<div class="divtext">First Name : </div><input class="getfield" type="text" name="fname" value="${cfname}"><br><br>';
+		text += '<div class="divtext">Last Name :</div><input class="getfield" type="text" name="lname" value="${clname}"><br><br>';
+		text += '<div class="divtext">Middle Name : </div><input class="getfield" type="text" name="mname" value="${cmname}"><br><br>';
+		text += '<div class="divtext">Phone : </div><input class="getfield" type="Phone" name="phone" value="${cphone}"><br><br>';
+		text += '<div class="divtext">Alternate Phone : </div><input class="getfield" type="phone" name="altphone" value="${caltphone}"><br><br>';
+		text += '<div class="divtext">Email : </div><input class="getfield" type="Email" name="email" value="${cemail}"><br><br>';
+		text += '<div class="divtext">Address : </div><input class="getfield" type="text" name="address" value="${caddress}"><br><br>';
+		text += '<div class="divtext">User Name : </div><input class="getfield" type="text" name="uname" value="${cuname}"><br><br>';
+		text += '<div class="divtext">Password : </div><input class="getfield" type="Password" name="pass" value="${cpass}"><br><br>';
 		text += '<center><input class="butts" type="submit" name="submit" value="Update">';
 		text += '<input class="butts" type="reset" name="reset" value="Reset"></center>';
 		text += '</form>';
@@ -104,64 +102,12 @@
     <input id="logout" type="submit" name="submit" value="Logout"></form></span> </div>
   <div id="main">
     <div class="horizRect">
-      <!-- <div class="adblock2">
-        <div class="noteheader"> &nbsp;Where do we stand? </div>
-        <div id="brag"> 150+ years<br />
-          of customer satisfaction,<br />
-          1500 awards<br />
-          <br />
-          We just love big numbers! </div>
-      </div> -->
+      
     </div>
-    <!-- <div class="horizRect">
-      <div class="adblock">
-        <div class="noteheader"> &nbsp;Welcome to SummitWorks Bank Online </div>
-        <div class="spacy">
-          <div class="imgSlogan">
-            <ul>
-              <li> [ Trust Worthy ]</li>
-              <li> [ Secure ]</li>
-              <li> [ 138 Billion Dollars Capital ]</li>
-              <li> [ 150+ years of operational excellence ]</li>
-              <li> [ A banking revolution ]</li>
-            </ul>
-            <br />
-            Need more reasons to choose SilkSun?<br />
-            [<a href="#">Click here</a>] </div>
-        </div>
-      </div>
-      <div class="sideblock">
-        <div class="noteheader"> &nbsp;Login to Online Services </div>
-        <div class="spacy">
-          <form action="loginEmployee" method="post" name="loginForm" onsubmit="validateFomr()">
-            <p>Enter login details</p>
-            <fieldset>
-            <div> <br />
-              <label for="txtusername">Username:</label>
-              <input type="text" name="txtusername" title="Text input: Username" id="txtusername" maxlength="20" required />
-            </div>
-            <div>
-              <label for="txtpassword">&nbsp;Password:</label>
-              <input type="password" name="txtpassword" title="Text input: Password" id="txtpassword" maxlength="20" required/>
-            </div>
-            <br />
-            <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="submit" name="LoginButton" title="Login button: Login" id="btnLogin" value="Login" class="button" />
-              <input type="Reset" name="ResetButton" title="Reset button: Login" id="btnReset" value="Clear" class="button" />
-              <br />
-              <a href="#">Forgot your password?</a><br />
-              <a href="#">Login Problems?</a> </div>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-    </div> -->
+ 
     <div class="threecolcontainer">
       <div id="welcome"><h2>Welcome ${cfname} ${clname}</h2></div>
-      <div class="col1">
-        <!-- <div class="noteheader"> &nbsp;Personal Banking </div> -->
-          
-          
+      <div class="col1">       
           <br /><div class="miniprofile">ID : </div>${custId}<br />
           <br /><div class="miniprofile">First Name : </div>${cfname}<br />
           <br /><div class="miniprofile">Last Name : </div>${clname}<br />
@@ -184,7 +130,6 @@
       </div>
     </div>
   </div>
-  <!-- <div id="footer"> &copy; 2006-2007 Silksun Corporation Pvt. Ltd., All rights reserved;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XHTML 1.0 Strict | Pure CSS Layout </div>
-</div> -->
+  
 </body>
 </html>
