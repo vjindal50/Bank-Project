@@ -79,21 +79,34 @@
 		var z = document.getElementById("col3");
 		var text = "";
 		text += '<form method="post" action="updateCustProfileEmp">';
-		text += '<div class="divtext">First Name : </div><input type="text" name="fname" value="${cfname}"><br><br>';
-		text += '<div class="divtext">Last Name :</div><input type="text" name="lname" value="${clname}"><br><br>';
-		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname" value="${cmname}"><br><br>';
-		text += '<div class="divtext">Phone : </div><input type="Phone" name="phone" value="${cphone}"><br><br>';
-		text += '<div class="divtext">Alternate Phone : </div><input type="phone" name="altphone" value="${caltphone}"><br><br>';
-		text += '<div class="divtext">Email : </div><input type="Email" name="email" value="${cemail}"><br><br>';
-		text += '<div class="divtext">Address : </div><input type="text" name="address" value="${caddress}"><br><br>';
-		text += '<div class="divtext">User Name : </div><input type="text" name="uname" value="${cuname}"><br><br>';
-		text += '<div class="divtext">Password : </div><input type="Password" name="pass" value="${cpass}"><br><br>';
+		text += '<div class="divtext">First Name : </div><input class="getfield" type="text" name="fname" value="${cfname}"><br><br>';
+		text += '<div class="divtext">Last Name :</div><input class="getfield" type="text" name="lname" value="${clname}"><br><br>';
+		text += '<div class="divtext">Middle Name : </div><input class="getfield" type="text" name="mname" value="${cmname}"><br><br>';
+		text += '<div class="divtext">Phone : </div><input class="getfield" type="Phone" name="phone" value="${cphone}"><br><br>';
+		text += '<div class="divtext">Alternate Phone : </div><input class="getfield" type="phone" name="altphone" value="${caltphone}"><br><br>';
+		text += '<div class="divtext">Email : </div><input class="getfield" type="Email" name="email" value="${cemail}"><br><br>';
+		text += '<div class="divtext">Address : </div><input class="getfield" type="text" name="address" value="${caddress}"><br><br>';
+		text += '<div class="divtext">User Name : </div><input class="getfield" type="text" name="uname" value="${cuname}"><br><br>';
+		text += '<div class="divtext">Password : </div><input class="getfield" type="Password" name="pass" value="${cpass}"><br><br>';
 		text += '<br><div><center><input class="butts" type="submit" name="submit" value="Update">';
 		text += '<input class="butts" type="reset" name="reset" value="Reset">';
 		text += '</center></div></form>';
 		
 		z.innerHTML = text;
 	}
+  
+  	function EmployeeOption(){
+		var z = document.getElementById("col3");
+		var text = "";
+		text += '<div><center><h2>MENU</h2></center></div>';
+		text += '<br><br><div class = "employeeMenu"><form action="viewEmpLog" method="post"><input id="logout" type="submit" name="submit" value="Employee Log">';
+		text += '</form></div>';
+		text += '<br><br><div class = "employeeMenu"><form action="viewEmpList" method="post"><input id="logout" type="submit" name="submit" value="Employee List">';
+		text += '</form></div>';
+		z.innerHTML = text;
+	}
+  
+  
   </script>
 </head>
 <body>
@@ -105,14 +118,29 @@
   </div>
   <div id="navcontainer"> <span class="buttonText" id="nav11"><form action="goemphome" method="post">
   <input id="logout" type="submit" name="submit" value="Home"></form></span> 
+  
   <span class="buttonText" id="nav21"><button onclick="searchCust()">Search Customer</button></span> 
+  
   <span class="buttonText" id="nav31"><form action="viewCustLog" method="post">
-  <input id="logout" type="submit" name="submit" value="Customer Log"></form></span> <span class="buttonText" id="nav41">
-  <form action="viewEmpLog" method="post"><input id="logout" type="submit" name="submit" value="Employee Log"></form></span> 
+  <input id="logout" type="submit" name="submit" value="Customer Log"></form></span> 
+  
+  <span class="buttonText" id="nav41">
+  <button onclick="EmployeeOption()">Employee</button>
+ </span> 
+  
+  
   <span class="buttonText" id="nav51"><form action="viewAccLog" method="post">
-  <input id="logout" type="submit" name="submit" value="Account Log"></form></span> <span class="buttonText" id="nav61">
+  <input id="logout" type="submit" name="submit" value="Account Log"></form></span> 
+  
+  <span class="buttonText" id="nav61">
   <form action="logoutEmployee" method="post"><input id="logout" type="submit" name="submit" value="Logout">
-  </form></span> </div>
+  </form></span> 
+  
+  
+  </div>
+  
+  
+  
   <div id="main">
     <div class="horizRect">
       <!-- <div class="adblock2">

@@ -359,10 +359,46 @@ public class LoginController {
 					result += "</tr>";
 
 				}
+				result +="</table><br><br><div><center><button onclick=\"EmployeeOption()\">Back</button></center></div>";
 				model.addObject("custlist", result);
 				
 			}else {
 				model.addObject("custlist", "No employee log found");
+			}
+			Employee employee = (Employee) request.getSession().getAttribute("emp");
+			
+			return emptHome(model, employee);
+		}
+		
+		@RequestMapping(value = "/viewEmpList", method = RequestMethod.POST)
+		public ModelAndView getEmpList(HttpServletRequest request, HttpServletResponse response) {
+			ModelAndView model = new ModelAndView();
+			List<Employee> list = employeeService.getAllEmployee();
+			
+			if ( list != null && list.size() > 0) {
+				String result = "<div><center><h2>Employee List</h2></center></div><br><table>";
+				result +="<tr>\n" + 
+						"		<th>EMP ID</th>\n" + 
+						"		<th>F. Name</th>\n" + 
+						"		<th>L. Name</th>\n" + 
+						"		<th>Email</th>\n" + 
+						"		<th>Phone</th>\n" + 
+						"	</tr>";
+				for(int i = 0 ; i < list.size() ; i ++) {
+
+					result += "<tr>";
+					result += "<td><form method=\"post\" action=\"empmyid\">\n" + 
+							"	<input type=\"submit\" name=\"empid\" value=\""+ list.get(i).getEmpID() +"\">" + 
+							"</form></td>" + " <td>" + list.get(i).getFirstName() + "</td> <td>" + list.get(i).getLastName()
+							 + "</td> <td>" + list.get(i).getEmail() + "</td> <td>" + list.get(i).getPhone() + "</td>";
+					result += "</tr>";
+
+				}
+				result +="</table><br><br><div><center><button onclick=\"EmployeeOption()\">Back</button></center></div>";
+				model.addObject("custlist", result);
+				
+			}else {
+				model.addObject("custlist", "No employees found");
 			}
 			Employee employee = (Employee) request.getSession().getAttribute("emp");
 			

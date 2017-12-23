@@ -138,12 +138,16 @@ public class Accounts implements Serializable{
 			result += "<br><br><div class=\"info\"><b>Widthdraw Limit</b></div> : " + getAccSav().get(0).getWithdrawLimit();
 		}
 		if (getAccChk().size()>0) {
-			result += result += "<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccChk().get(0).getBalance();
-			result += result += "<br><br><div class=\"info\"><b>Interest</b></div> : " + getAccChk().get(0).getInterest();
-			result += result += "<br><br><div class=\"info\"><b>Over Draft Limit</b></div> : " + getAccChk().get(0).getOverDraft();
+			result += "<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccChk().get(0).getBalance();
+			result += "<br><br><div class=\"info\"><b>Interest</b></div> : " + getAccChk().get(0).getInterest();
+			result += "<br><br><div class=\"info\"><b>Over Draft Limit</b></div> : " + getAccChk().get(0).getOverDraft();
 		}
 		if (getAccLoan().size()>0) {
-			result += "<br>\nLoan Acc Info : " + getAccLoan();
+			result +="<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccLoan().get(0).getBalance();
+			result +="<br><br><div class=\"info\"><b>EMI</b></div> : " + getAccLoan().get(0).getEMI();
+			result +="<br><br><div class=\"info\"><b>Amount Payed</b></div> : " + getAccLoan().get(0).getAmountPayed();
+			result +="<br><br><div class=\"info\"><b>Interest</b></div> : " + getAccLoan().get(0).getInterest();
+			result +="<br><br><div class=\"info\"><b>EMIs Payed</b></div> : " + getAccLoan().get(0).getEMIcounter();
 		}
 				
 		return result;	

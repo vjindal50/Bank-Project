@@ -92,6 +92,26 @@ public class CustLogInfoController {
 		return empHome(request, model);
 	}
 	
+	@RequestMapping(value = "/empmyid", method = RequestMethod.POST)
+	public ModelAndView GetEmpMyInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		System.out.println("in emp log info controller");
+		System.out.println(request.getParameter("empid"));
+		
+		ModelAndView model = new ModelAndView();
+		
+		int empmyId = Integer.parseInt(request.getParameter("empid"));
+		System.out.println(empmyId);
+		
+		Employee info = employeeService.getEmployee(empmyId);
+		String str = info.toString();
+		str += "<br><br><div><center><form action=\"viewEmpList\" method=\"post\">\n" + 
+				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\"></form></center></div><br><br>";
+		
+		model.addObject("custlist", str);
+
+		return empHome(request, model);
+	}
+	
 	public ModelAndView empHome(HttpServletRequest request, ModelAndView model) {
 		
 		Employee employee = (Employee) request.getSession().getAttribute("emp");
