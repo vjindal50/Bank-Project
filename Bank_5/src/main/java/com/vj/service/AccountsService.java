@@ -21,7 +21,7 @@ public interface AccountsService {
 	public AccountsChecking getChkAccount(int accountsChkNum);
 	public AccountsLoan getLoanAccount(int accountsLoanNum);
 	public AccountLog getAccLog(int accLogId);
-	public Accounts updateAccount(Accounts accounts);
+//	public Accounts updateAccount(Accounts accounts);
 	public AccountSavings updateSavAccount(AccountSavings accounts);
 	public AccountsChecking updateChkAccount(AccountsChecking accounts);
 	public AccountsLoan updateLoanAccount(AccountsLoan accounts);

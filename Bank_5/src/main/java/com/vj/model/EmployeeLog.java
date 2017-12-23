@@ -60,6 +60,9 @@ public class EmployeeLog implements Serializable{
 	@Column(name = "JoinDate")
 	private String JoinDate;
 	
+	@Column(name = "DOB")
+	private String DOB;
+	
 	public EmployeeLog(){
 		
 	}
@@ -202,23 +205,37 @@ public class EmployeeLog implements Serializable{
 	public void setJoinString(String joinDate) {
 		JoinDate = joinDate;
 	}
-	
-	
+
+	public String getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(String dOB) {
+		DOB = dOB;
+	}
+
+	public void setLeftDate(String leftDate) {
+		LeftDate = leftDate;
+	}
+
+	public void setJoinDate(String joinDate) {
+		JoinDate = joinDate;
+	}
 
 	public String toString() {
-		return "<div class=\"info\"><b>Log ID</b></div> : " + getEmpLogID()
-				+ "<div class=\"info\"><b>Employee ID</b></div> : " + getEmpID()
-				+ "<div class=\"info\"><b>Full Name</b></div> : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
-				+ "<div class=\"info\"><b>Phone</b></div> : " + getPhone()
-				+ "<div class=\"info\"><b>Alt Phone</b></div> : " + getAlternatePhone()
-				+ "<div class=\"info\"><b>Email</b></div> : " + getEmail()
-				+ "<div class=\"info\"><b>Address</b></div> : " + getAddress()
-				+ "<div class=\"info\"><b>Password</b></div> : " + getPassword()
-				+ "<div class=\"info\"><b>User Name</b></div> : " + getUserName()
-				+ "<div class=\"info\"><b>Command</b></div> : " + getCommand()
-				+ "<div class=\"info\"><b>Status</b></div> : " + getStatus()
-				+ "<div class=\"info\"><b>LeftDate</b></div> : " + getLeftDate()
-				+ "<div class=\"info\"><b>Join Date</b></div> : " + getJoinDate();
+		return "<br><div class=\"info\"><b>Log ID</b></div> : " + getEmpLogID()
+				+ "<br><br><div class=\"info\"><b>Employee ID</b></div> : " + getEmpID()
+				+ "<br><br><div class=\"info\"><b>Full Name</b></div> : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
+				+ "<br><br><div class=\"info\"><b>Phone</b></div> : " + getPhone()
+				+ "<br><br><div class=\"info\"><b>Alt Phone</b></div> : " + getAlternatePhone()
+				+ "<br><br><div class=\"info\"><b>Email</b></div> : " + getEmail()
+				+ "<br><br><div class=\"info\"><b>Address</b></div> : " + getAddress()
+				+ "<br><br><div class=\"info\"><b>Password</b></div> : " + getPassword()
+				+ "<br><br><div class=\"info\"><b>User Name</b></div> : " + getUserName()
+				+ "<br><br><div class=\"info\"><b>Command</b></div> : " + getCommand()
+				+ "<br><br><div class=\"info\"><b>Status</b></div> : " + getStatus()
+				+ "<br><br><div class=\"info\"><b>LeftDate</b></div> : " + getLeftDate()
+				+ "<br><br><div class=\"info\"><b>Join Date</b></div> : " + getJoinDate();
 	}
 	
 }

@@ -272,7 +272,7 @@ public class LoginController {
 		List<CustomerLog> list = customerService.getAllCustomerLog();
 		
 		if (list.size() > 0) {
-			String result = "<table>";
+			String result = "<div><center><h2>Customer Logs</h2></center></div><br><table>";
 			result +="<tr>\n" + 
 					"		<th>Cust Log ID</th>\n" + 
 					"		<th>Cust ID</th>\n" + 
@@ -306,7 +306,7 @@ public class LoginController {
 		List<AccountLog> list = accountsService.getAllAccountsLogs();
 		
 		if (list.size() > 0) {
-			String result = "<table>";
+			String result = "<div><center><h2>Account Logs</h2></center></div><br><table>";
 			result +="<tr>\n" + 
 					"		<th>Acc Log ID</th>\n" + 
 					"		<th>Acc Num</th>\n" + 
@@ -341,7 +341,7 @@ public class LoginController {
 			List<EmployeeLog> list = employeeService.getAllEmployeeLog();
 			
 			if ( list != null && list.size() > 0) {
-				String result = "<table>";
+				String result = "<div><center><h2>Employee Logs</h2></center></div><br><table>";
 				result +="<tr>\n" + 
 						"		<th>Log ID</th>\n" + 
 						"		<th>EMP ID</th>\n" + 

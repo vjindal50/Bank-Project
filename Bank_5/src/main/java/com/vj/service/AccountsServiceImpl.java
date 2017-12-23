@@ -42,44 +42,70 @@ public class AccountsServiceImpl implements AccountsService{
 	public void openAccount(Accounts accounts) {
 		// TODO Auto-generated method stub
 		accountsDAO.openAccount(accounts);
-		AccountLog accLog = new AccountLog();
-//		accLog.setAmountPayed(amountPayed);
-		accLog.setAnum(accounts.getAccountNumber());
-//		accLog.setBalance();
-		accLog.setClosedOn(accounts.getClosedOn());
-		accLog.setCust_ID(accounts.getCust_ID());
-//		accLog.setEMI(eMI);
-//		accLog.setEMICounter(eMICounter);
-//		accLog.setInterset();
-//		accLog.setLastAccess(lastAccess);
-//		accLog.setLastEMIPayed(lastEMIPayed);
-		accLog.setOpenedOn(accounts.getOpenedOn());
-//		accLog.setOverDraft(overDraft);
-		accLog.setType(accounts.getType());
-		accLog.setCommand("Created");
-		if(accounts.getType().equals("savings"));{
-			accLog.setWithdrawLimit((double)accounts.getAccSav().get(0).getWithdrawLimit());
-		}
 		
-		accountLogDAO.insertAccLog(accLog);
 	}
 	
 	@Transactional
 	public void openSavingsAccount(AccountSavings accSav) {
 		// TODO Auto-generated method stub
 		accSavDAO.addSaveAccount(accSav);
+		Accounts accounts = getAccount(accSav.getAccount_Number());
+		
+		AccountLog accLog = new AccountLog();
+		
+		accLog.setAnum(accounts.getAccountNumber());
+		accLog.setClosedOn(accounts.getClosedOn());
+		accLog.setCust_ID(accounts.getCust_ID());
+		accLog.setType(accounts.getType());
+		accLog.setCommand("Created");
+		accLog.setOpenedOn(accounts.getOpenedOn());
+		accLog.setWithdrawLimit((double)accounts.getAccSav().get(0).getWithdrawLimit());
+		accLog.setBalance(accounts.getAccSav().get(0).getBalance());
+		accLog.setInterset(accounts.getAccSav().get(0).getInterest());
+
 	}
 	
 	@Transactional
 	public void openCheckingAccount(AccountsChecking accChk) {
 		// TODO Auto-generated method stub
 		accChkDAO.addCheckAccount(accChk);
+		
+		Accounts accounts = getAccount(accChk.getAccNumber());
+		AccountLog accLog = new AccountLog();
+		
+		accLog.setAnum(accounts.getAccountNumber());
+		accLog.setClosedOn(accounts.getClosedOn());
+		accLog.setCust_ID(accounts.getCust_ID());
+		accLog.setType(accounts.getType());
+		accLog.setCommand("Created");
+		accLog.setOpenedOn(accounts.getOpenedOn());
+		accLog.setBalance(accounts.getAccChk().get(0).getBalance());
+		accLog.setOverDraft(accounts.getAccChk().get(0).getOverDraft());
+		accLog.setInterset(accounts.getAccChk().get(0).getInterest());
+
 	}
 	
 	@Transactional
 	public void openLoanAccount(AccountsLoan accLoan) {
 		// TODO Auto-generated method stub
 		accLoanDAO.addLoanAccount(accLoan);
+		
+		Accounts accounts = getAccount(accLoan.getACC_NUM());
+		AccountLog accLog = new AccountLog();
+		
+		accLog.setAnum(accounts.getAccountNumber());
+		accLog.setClosedOn(accounts.getClosedOn());
+		accLog.setCust_ID(accounts.getCust_ID());
+		accLog.setType(accounts.getType());
+		accLog.setCommand("Created");
+		accLog.setOpenedOn(accounts.getOpenedOn());
+		accLog.setEMI(accounts.getAccLoan().get(0).getEMI());
+		accLog.setEMICounter(accounts.getAccLoan().get(0).getEMIcounter());
+		accLog.setBalance(accounts.getAccLoan().get(0).getBalance());
+		accLog.setInterset(accounts.getAccLoan().get(0).getInterest());
+		accLog.setLastEMIPayed(accounts.getAccLoan().get(0).getLastEMIPayed());
+		accLog.setAmountPayed(accounts.getAccLoan().get(0).getAmountPayed());
+
 	}
 
 	@Override
@@ -96,12 +122,14 @@ public class AccountsServiceImpl implements AccountsService{
 		return accountsDAO.getAccount(accNumber);
 	}
 
-	@Override
-	@Transactional
-	public Accounts updateAccount(Accounts accounts) {
-		// TODO Auto-generated method stub
-		return accountsDAO.updateAccount(accounts);
-	}
+//	@Override
+//	@Transactional
+//	public Accounts updateAccount(Accounts accounts) {
+//		// TODO Auto-generated method stub
+//		accounts = accountsDAO.updateAccount(accounts);
+//		
+//		return accounts;
+//	}
 
 	@Override
 	public List<AccountSavings> getAllSavingsAccounts() {
@@ -130,6 +158,7 @@ public class AccountsServiceImpl implements AccountsService{
 	@Override
 	public AccountsChecking getChkAccount(int accountsChkNum) {
 		// TODO Auto-generated method stub
+		
 		return accChkDAO.getChkAccount(accountsChkNum);
 	}
 
@@ -140,21 +169,78 @@ public class AccountsServiceImpl implements AccountsService{
 	}
 
 	@Override
-	public AccountSavings updateSavAccount(AccountSavings accounts) {
+	public AccountSavings updateSavAccount(AccountSavings accounts3) {
 		// TODO Auto-generated method stub
-		return accSavDAO.updateSavAccount(accounts);
+		AccountSavings accounts2 = accSavDAO.updateSavAccount(accounts3);
+		Accounts accounts = getAccount(accounts2.getAccount_Number());
+		
+		AccountLog accLog = new AccountLog();
+		
+		accLog.setAnum(accounts.getAccountNumber());
+		accLog.setClosedOn(accounts.getClosedOn());
+		accLog.setCust_ID(accounts.getCust_ID());
+		accLog.setType(accounts.getType());
+		accLog.setCommand("update");
+		accLog.setOpenedOn(accounts.getOpenedOn());
+		
+		accLog.setWithdrawLimit((double)accounts.getAccSav().get(0).getWithdrawLimit());
+		accLog.setBalance(accounts.getAccSav().get(0).getBalance());
+		accLog.setInterset(accounts.getAccSav().get(0).getInterest());
+		
+		accountLogDAO.insertAccLog(accLog);
+		
+		return accounts2;
 	}
 
 	@Override
-	public AccountsChecking updateChkAccount(AccountsChecking accounts) {
+	public AccountsChecking updateChkAccount(AccountsChecking accounts3) {
 		// TODO Auto-generated method stub
-		return accChkDAO.updateChkAccount(accounts);
+		accounts3 = accChkDAO.updateChkAccount(accounts3);
+		
+		Accounts accounts = getAccount(accounts3.getAccNumber());
+		
+		AccountLog accLog = new AccountLog();
+		
+		accLog.setAnum(accounts.getAccountNumber());
+		accLog.setClosedOn(accounts.getClosedOn());
+		accLog.setCust_ID(accounts.getCust_ID());
+		accLog.setType(accounts.getType());
+		accLog.setCommand("update");
+		
+		accLog.setBalance(accounts.getAccChk().get(0).getBalance());
+		accLog.setOverDraft(accounts.getAccChk().get(0).getOverDraft());
+		accLog.setInterset(accounts.getAccChk().get(0).getInterest());
+		
+		accountLogDAO.insertAccLog(accLog);
+		
+		return accounts3;
 	}
 
 	@Override
-	public AccountsLoan updateLoanAccount(AccountsLoan accounts) {
+	public AccountsLoan updateLoanAccount(AccountsLoan accounts2) {
 		// TODO Auto-generated method stub
-		return accLoanDAO.updateLoanAccount(accounts);
+		accounts2 = accLoanDAO.updateLoanAccount(accounts2);
+		
+		Accounts accounts = getAccount(accounts2.getACC_NUM());
+		
+		AccountLog accLog = new AccountLog();
+		
+		accLog.setAnum(accounts.getAccountNumber());
+		accLog.setClosedOn(accounts.getClosedOn());
+		accLog.setCust_ID(accounts.getCust_ID());
+		accLog.setType(accounts.getType());
+		accLog.setCommand("update");
+		
+		accLog.setEMI(accounts.getAccLoan().get(0).getEMI());
+		accLog.setEMICounter(accounts.getAccLoan().get(0).getEMIcounter());
+		accLog.setBalance(accounts.getAccLoan().get(0).getBalance());
+		accLog.setInterset(accounts.getAccLoan().get(0).getInterest());
+		accLog.setLastEMIPayed(accounts.getAccLoan().get(0).getLastEMIPayed());
+		accLog.setAmountPayed(accounts.getAccLoan().get(0).getAmountPayed());
+
+		accountLogDAO.insertAccLog(accLog);
+		
+		return accounts2;
 	}
 
 	@Override

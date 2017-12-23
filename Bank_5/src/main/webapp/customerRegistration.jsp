@@ -56,7 +56,7 @@
         <div class="noteheader"> &nbsp;Register to Online Services </div>
         <div class="spacy">
           <form action="registerCustomer" method="post" name="loginForm" onsubmit="validateFomr()">
-            <p>Enter login details</p>
+            <p>Enter details</p>
             <fieldset>
               <div> <br />
               <label for="txtusername"><div class="fieldtext">First Name:</div></label>
