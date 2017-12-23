@@ -164,11 +164,24 @@ public class CustInfoController {
 		
 		Accounts account  = accountService.getAccount(accountId);
 		
+		request.getSession().setAttribute("acc", account);
+		
 		String str = "";
-		str+= account.toString();
-		str +="<br><br><center><form action=\"viewAccounts\" method=\"post\">\n" + 
+		str +="<div><center><h2>Account</h2></center></div>";
+		str +="<div style=\"text-align: right\"><form action=\"viewAccounts\" method=\"post\">\n" + 
 				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\">\n" + 
-				"  </form></center>";
+				"  </form></div>";		
+		str+= account.toString();		
+		str +="<br><div><br><form method=\"post\" action=\"transaction\">&nbsp&nbsp&nbsp&nbsp<b>If you want to do any transaction, Please fill out the following</b><br><br>&nbsp&nbsp&nbsp     "
+				+ "Enter Amount : <input class=\"getfield\" type=\"number\" name=\"amount\" value=\"Amount\">"
+				+ "<br><br>&nbsp&nbsp&nbsp&nbspSelect Transaction Type : <select style=\"width: 100px;\" name=\"type\">\n" + 
+				"  <option value=\"none\"></option>\n" + 
+				"  <option value=\"Widthdraw\">Widthdraw</option>\n" + 
+				"  <option value=\"Deposit\">Deposit</option>\n" + 	
+				"</select>"
+				+ "<br><br><center><input type=\"submit\" name=\"submit\" value=\"Submit\"></center>"
+				+ "</fom><br><br><br></div>";
+		
 		model.addObject("acclist", str);
 		model.setViewName("customerHome");
 

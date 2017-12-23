@@ -71,6 +71,12 @@
 		text += '</form>';
 		z.innerHTML = text;
 	}
+	function newaccmenu(){
+		var z = document.getElementById("col3");
+		var text = "";
+		
+		z.innerHTML = text;
+	}
 	</script>
 </head>
 <body>
@@ -91,8 +97,9 @@
   <input id="logout" type="submit" name="submit" value="Accounts">
   </form></span> 
   
-  <span class="buttonText" id="nav31"><form action="viewCustLog" method="post">
-  <input id="logout" type="submit" name="submit" value="New Account"></form></span> 
+  <span class="buttonText" id="nav31"><button onclick="newaccmenu()">New Account</button></span> 
+  
+  
   <span class="buttonText" id="nav41"><form action="viewEmpLog" method="post">
   <input id="logout" type="submit" name="submit" value="Loan"></form></span>
   
