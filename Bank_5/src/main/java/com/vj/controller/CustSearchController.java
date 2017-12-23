@@ -1,6 +1,7 @@
 package com.vj.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -28,6 +29,7 @@ public class CustSearchController {
 	@RequestMapping(value = "/searchCust", method = RequestMethod.POST)
 	public ModelAndView EmpUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		
+		int id = Integer.parseInt(request.getParameter("ID1"));
 		String fname = request.getParameter("fname1");
 		String lname = request.getParameter("lname1");
 		String mname = request.getParameter("mname1");
@@ -36,7 +38,8 @@ public class CustSearchController {
 		String email= request.getParameter("email1");
 		String address= request.getParameter("address1");
 		String uname = request.getParameter("uname1");
-
+		
+		int flag = 0;
 		
 		ModelAndView model = new ModelAndView();
 		
@@ -44,6 +47,8 @@ public class CustSearchController {
 			List<Customer> list = customerService.getAllCustomer();
 
 			List<Customer> temp = list;
+			
+			
 
 			if (fname != "" && fname != null) {
 				for(int i = 0 ; i < list.size(); i++) {
@@ -127,7 +132,19 @@ public class CustSearchController {
 			list = temp;
 	//		System.out.println(list.size());
 			
-			if (list.size() > 0) {
+			if (request.getParameter("ID1") != "" && request.getParameter("ID1") != null) {
+				Customer c = customerService.getCustomer(id);
+				if(c != null) {
+					List<Customer> clist = new ArrayList<Customer>();
+					clist.add(c);
+					list = clist;
+				} else {
+					flag = 1;
+				}
+			}
+			
+			
+			if (list.size() > 0 && flag != 1) {
 				String result = "<table>";
 				result +="<tr>\n" + 
 						"		<th>CustId\n</th>\n" + 

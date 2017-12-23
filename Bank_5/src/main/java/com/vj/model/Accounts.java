@@ -128,6 +128,7 @@ public class Accounts implements Serializable{
 
 	public String toString() {
 		String result = "<br><div class=\"info\"><b>Account Number</b></div> : " + getAccountNumber()
+				+ "<br><br><div class=\"info\"><b>Customer ID</b></div> : " + getCust_ID()
 				+ "<br><br><div class=\"info\"><b>Type</b></div> : " + getType()
 				+ "<br><br><div class=\"info\"><b>Opened On</b></div> : " + getOpenedOn()
 				+ "<br><br><div class=\"info\"><b>Status</b></div> : " + getStatus();

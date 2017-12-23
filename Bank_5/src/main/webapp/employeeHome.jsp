@@ -16,6 +16,7 @@
     var text = "";
     text += '<div><center><b>Note : </b>Don\'t fill any values to get a full list of customers.</center></div>';
     text += '<br><form method="post" action="searchCust">';
+    text += '<br><div class="divtext">ID : </div><input class="getfield" type="text" name="ID1"><br>';
     text += '<br><div class="divtext">First Name : </div><input class="getfield" type="text" name="fname1"><br><br>';
     text += '<div class="divtext">Last Name :</div><input class="getfield" type="text" name="lname1"><br><br>';
     text += '<div class="divtext">Middle Name : </div><input class="getfield" type="text" name="mname1"><br><br>';
