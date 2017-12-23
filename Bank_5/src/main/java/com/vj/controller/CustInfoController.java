@@ -261,6 +261,10 @@ public class CustInfoController {
 					str+= "<div>&nbsp&nbsp&nbsp Insuccicient funds.</div><br>";
 				}
 			}
+			
+			if(account.getAccLoan().size()>0) {
+				str+= "<div>&nbsp&nbsp&nbsp Its a Loan acc. You already took the amount, dont't ask for more, instead return the money.</div><br>";
+			}
 		} else {
 			str+= "<div>&nbsp&nbsp&nbsp Invalid input</div";
 		}
