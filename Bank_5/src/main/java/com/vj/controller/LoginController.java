@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
-=======
 import com.vj.model.AccountLog;
->>>>>>> master
 import com.vj.model.Accounts;
 import com.vj.model.Customer;
 import com.vj.model.CustomerLog;
@@ -42,42 +39,6 @@ public class LoginController {
 	@RequestMapping(value = "/loginCutomer", method = RequestMethod.POST)
 	public ModelAndView customerLogin(HttpServletRequest request, HttpServletResponse response) {		
 		
-<<<<<<< HEAD
-	@RequestMapping(value = "/logininto", method = RequestMethod.POST)
-	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) {		
-		System.out.println("In Login meme rrrrrrrrrrrrrrrrrrrrr controller");		
-		String submit = request.getParameter("submit");
-		
-		if(submit.equals("Login_Customer")) {
-			request.setAttribute("type", "customer");
-			String uname = request.getParameter("uname");
-			String pass = request.getParameter("pass");
-			Customer customer=new Customer();
-			customer=customerService.login(uname, pass);
-			if (customer != null) {
-				request.getSession().setAttribute("cust",customer);
-				System.out.println(customer.getAcc());
-				ModelAndView model = new ModelAndView();
-				model.addObject("custname", customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
-				model.addObject("custId", customer.getCustID());
-				//model.addObject("acclist", res);
-				model.addObject("LastLogin", customer.getJoinDate());
-				model.addObject("caddress", customer.getAddress());
-				model.addObject("caltphone", customer.getAlternatePhone());
-				model.addObject("cdob", customer.getDOB());
-				model.addObject("cemail", customer.getEmail());
-				model.addObject("cfname", customer.getFirstName());
-				model.addObject("clname", customer.getLastName());
-				model.addObject("cmname", customer.getMiddleName());
-				model.addObject("cphone", customer.getPhone());
-				model.addObject("cuname", customer.getUserName());
-				model.addObject("cpass", customer.getPassword());
-				model.setViewName("customerhome");
-				return model;
-			} else {
-				return new ModelAndView("home", "model", "no customer found");
-			}
-=======
 		System.out.println("In new Login controller");		
 		
 		String uname = request.getParameter("uname");
@@ -113,7 +74,6 @@ public class LoginController {
 			return emptHome(model,employee);
 		} else {
 			return new ModelAndView("employeeLogin", "model", "no employee found");
->>>>>>> master
 		}
 		
 	} 
@@ -312,7 +272,7 @@ public class LoginController {
 		List<CustomerLog> list = customerService.getAllCustomerLog();
 		
 		if (list.size() > 0) {
-			String result = "<div><center><h2>Customer Logs</h2></center></div><br><table>";
+			String result = "<table>";
 			result +="<tr>\n" + 
 					"		<th>Cust Log ID</th>\n" + 
 					"		<th>Cust ID</th>\n" + 
@@ -346,7 +306,7 @@ public class LoginController {
 		List<AccountLog> list = accountsService.getAllAccountsLogs();
 		
 		if (list.size() > 0) {
-			String result = "<div><center><h2>Account Logs</h2></center></div><br><table>";
+			String result = "<table>";
 			result +="<tr>\n" + 
 					"		<th>Acc Log ID</th>\n" + 
 					"		<th>Acc Num</th>\n" + 
@@ -364,7 +324,6 @@ public class LoginController {
 				result += "</tr>";
 
 			}
-			result +="</table><br><br><div><center><button onclick=\"AccountOption()\">Back</button></center></div>";
 			model.addObject("custlist", result);
 			
 		}else {
@@ -382,7 +341,7 @@ public class LoginController {
 			List<EmployeeLog> list = employeeService.getAllEmployeeLog();
 			
 			if ( list != null && list.size() > 0) {
-				String result = "<div><center><h2>Employee Logs</h2></center></div><br><table>";
+				String result = "<table>";
 				result +="<tr>\n" + 
 						"		<th>Log ID</th>\n" + 
 						"		<th>EMP ID</th>\n" + 
@@ -400,7 +359,6 @@ public class LoginController {
 					result += "</tr>";
 
 				}
-				result +="</table><br><br><div><center><button onclick=\"EmployeeOption()\">Back</button></center></div>";
 				model.addObject("custlist", result);
 				
 			}else {
@@ -410,78 +368,7 @@ public class LoginController {
 			
 			return emptHome(model, employee);
 		}
-		
-		@RequestMapping(value = "/viewEmpList", method = RequestMethod.POST)
-		public ModelAndView getEmpList(HttpServletRequest request, HttpServletResponse response) {
-			ModelAndView model = new ModelAndView();
-			List<Employee> list = employeeService.getAllEmployee();
-			
-			if ( list != null && list.size() > 0) {
-				String result = "<div><center><h2>Employee List</h2></center></div><br><table>";
-				result +="<tr>\n" + 
-						"		<th>EMP ID</th>\n" + 
-						"		<th>F. Name</th>\n" + 
-						"		<th>L. Name</th>\n" + 
-						"		<th>Email</th>\n" + 
-						"		<th>Phone</th>\n" + 
-						"	</tr>";
-				for(int i = 0 ; i < list.size() ; i ++) {
-
-					result += "<tr>";
-					result += "<td><form method=\"post\" action=\"empmyid\">\n" + 
-							"	<input type=\"submit\" name=\"empid\" value=\""+ list.get(i).getEmpID() +"\">" + 
-							"</form></td>" + " <td>" + list.get(i).getFirstName() + "</td> <td>" + list.get(i).getLastName()
-							 + "</td> <td>" + list.get(i).getEmail() + "</td> <td>" + list.get(i).getPhone() + "</td>";
-					result += "</tr>";
-
-				}
-				result +="</table><br><br><div><center><button onclick=\"EmployeeOption()\">Back</button></center></div><br><br>";
-				model.addObject("custlist", result);
-				
-			}else {
-				model.addObject("custlist", "No employees found");
-			}
-			Employee employee = (Employee) request.getSession().getAttribute("emp");
-			
-			return emptHome(model, employee);
-		}
-		//========================get acc list====================================
-		@RequestMapping(value = "/viewAccList", method = RequestMethod.POST)
-		public ModelAndView getAccList(HttpServletRequest request, HttpServletResponse response) {
-			ModelAndView model = new ModelAndView();
-			List<Accounts> list = accountsService.getAllAccounts();
-			
-			if ( list != null && list.size() > 0) {
-				String result = "<div><center><h2>Accounts List</h2></center></div><br><table>";
-				result +="<tr>\n" + 
-						"		<th>Acc Num</th>\n" + 
-						"		<th>Customer ID</th>\n" + 
-						"		<th>Type</th>\n" + 
-						"		<th>Status</th>\n" + 
-						"		<th>Opened On</th>\n" + 
-						"	</tr>";
-				for(int i = 0 ; i < list.size() ; i ++) {
-
-					result += "<tr>";
-					result += "<td><form method=\"post\" action=\"accnumid\">\n" + 
-							"	<input type=\"submit\" name=\"accnum\" value=\""+ list.get(i).getAccountNumber() +"\">" + 
-							"</form></td>" + " <td>" + list.get(i).getCust_ID() + "</td> <td>" + list.get(i).getType()
-							 + "</td> <td>" + list.get(i).getStatus() + "</td> <td>" + list.get(i).getOpenedOn()+ "</td>";
-					result += "</tr>";
-
-				}
-				result +="</table><br><br><div><center><button onclick=\"AccountOption()\">Back</button></center></div><br><br>";
-				model.addObject("custlist", result);
-				
-			}else {
-				model.addObject("custlist", "No employees found");
-			}
-			Employee employee = (Employee) request.getSession().getAttribute("emp");
-			
-			return emptHome(model, employee);
-		}
-	//========end acc list=====================
-		
+	
 	public ModelAndView emptHome(ModelAndView model, Employee employee2) {
 		model.addObject("empname", employee2.getFirstName() + " " + employee2.getMiddleName() + " " + employee2.getLastName());
 		model.addObject("empId", employee2.getEmpID());
@@ -502,11 +389,39 @@ public class LoginController {
 	}
 	
 	public ModelAndView custHome(ModelAndView model, Customer customer2) {
-
+//		List<Accounts> list = customer2.getAcc();
+//		String res = "";
+//		if(list.size() > 0 ) {
+//			res += "<table><tr><th>Account Number</th><th>Balance</th></tr><br>\n";
+//			for(int i = 0 ; i < list.size() ; i++) {
+//				res += "<tr><td><form method=\"post\" action=\"fetchAccInfo\"><input type=\"Submit\" name=\"accId\" value=" +list.get(i).getAccountNumber()+"></form></td>";
+//				res += "<td>";
+//				
+//				System.out.println(list.get(i).getType());
+//				
+//				if (list.get(i).getType().equals("savings") && list.get(i).getAccSav().size() > 0) {
+//				 	res += list.get(i).getAccSav().get(0).getBalance();
+//				}
+//				
+//				if (list.get(i).getType().equals("checking") && list.get(i).getAccChk().size() > 0 ) {
+//					res += list.get(i).getAccChk().get(0).getBalance();
+//				} 
+//				
+//				if (list.get(i).getType().equals("loan") && list.get(i).getAccLoan().size() > 0 ) {
+//					res += list.get(i).getAccLoan().get(0).getBalance();
+//				}
+//				
+//				res +="</td></tr>";
+//			}
+//			res += "</table>";
+//			System.out.println(res);
+//		}	else {
+//			res = "No account associated with this user account";
+//		}	
 		model.addObject("custname",customer2.getFirstName() + " " + customer2.getMiddleName() + " " + customer2.getLastName());
 		model.addObject("custId",customer2.getCustID());
 		model.addObject("LastLogin",customer2.getJoinDate());
-
+//		model.addObject("acclist", res);
 		model.addObject("caddress",customer2.getAddress());
 		model.addObject("caltphone",customer2.getAlternatePhone());
 		model.addObject("cdob",customer2.getDOB());

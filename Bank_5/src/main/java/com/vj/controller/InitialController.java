@@ -96,10 +96,10 @@ public class InitialController {
 				System.out.println(Balance + "   " + withdrawlimit);
 				
 				savings.setBalance(Balance);
-//				savings.setInterest(5.00);
-=======
+
+
 				savings.setInterest(5.00);
->>>>>>> master
+
 				savings.setWithdrawLimit(withdrawlimit);
 				savings.setAccount_Number(account.getAccountNumber());
 				
@@ -135,7 +135,7 @@ public class InitialController {
 				customer = (Customer) request.getSession().getAttribute("cust");
 					
 				account.setCust_ID(customer.getCustID());
-				account.setOpenedOn(new Date());
+//				account.setOpenedOn(new Date());
 				account.setStatus("active");
 				
 				accountService.openAccount(account);
@@ -147,7 +147,7 @@ public class InitialController {
 				checking.setBalance(cBalance);
 				//checking.setInterest(5.0);
 				checking.setOverDraft(overDraft);
-				checking.setLastAccess(new Date());
+//				checking.setLastAccess(new Date());
 				checking.setAccNumber(account.getAccountNumber());
 				
 				accountService.openCheckingAccount(checking);;
@@ -185,7 +185,7 @@ public class InitialController {
 				customer = (Customer) request.getSession().getAttribute("cust");
 					
 				account.setCust_ID(customer.getCustID());
-				account.setOpenedOn(new Date());
+//				account.setOpenedOn(new Date());
 				account.setStatus("active");
 				
 				accountService.openAccount(account);
@@ -198,7 +198,7 @@ public class InitialController {
 				loan.setBalance(loanAmount);
 //				loan.setEMI(loanemi);
 				loan.setAmountPayed(0.0);
-				loan.setLastEMIPayed(new Date());
+//				loan.setLastEMIPayed(new Date());
 				loan.setInterest(5.0);
 				loan.setEMIcounter(0);
 							
