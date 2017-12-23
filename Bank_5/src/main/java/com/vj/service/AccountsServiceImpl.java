@@ -185,7 +185,7 @@ public class AccountsServiceImpl implements AccountsService{
 		
 		accLog.setWithdrawLimit((double)accounts.getAccSav().get(0).getWithdrawLimit());
 		accLog.setBalance(accounts.getAccSav().get(0).getBalance());
-		accLog.setInterset(accounts.getAccSav().get(0).getInterest());
+//		accLog.setInterset(accounts.getAccSav().get(0).getInterest());
 		
 		accountLogDAO.insertAccLog(accLog);
 		
