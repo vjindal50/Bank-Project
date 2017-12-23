@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,10 +46,10 @@ public class Employee implements Serializable{
 	private String UserName;
 	
 	@Column(name = "JoinDate")
-	private Date JoinDate;
+	private String JoinDate;
 	
 	@Column(name = "DOB")
-	private Date DOB;
+	private String DOB;
 	
 	@Column(name = "Status")
 	private String Status;
@@ -137,19 +136,19 @@ public class Employee implements Serializable{
 		UserName = userName;
 	}
 
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return JoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(String joinDate) {
 		JoinDate = joinDate;
 	}
 	
-	public Date getDOB() {
+	public String getDOB() {
 		return DOB;
 	}
 
-	public void setDOB(Date dOB) {
+	public void setDOB(String dOB) {
 		DOB = dOB;
 	}
 
@@ -162,16 +161,16 @@ public class Employee implements Serializable{
 	}
 
 	public String toString() {
-		return "Employee ID : " + getEmpID()
-				+ "\n Employee Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
-				+"\n Phone Number : " + getPhone()
-				+"\n Alternate Phone : " + getAlternatePhone()
-				+"\n Email : " + getEmail()
-				+"\n DOB : " + getDOB()
-				+"\n Address : " + getAddress()
-				+"\n User Name : " + getUserName()
-				+"\n Password : " + getPassword()
-				+"\n JoinDate : " + getJoinDate()
-				+"\n Status : " + getStatus();
+		return "<br><div class=\"info\"><b>Employee ID</b></div> : " + getEmpID()
+				+ "<br><br><div class=\"info\"><b>Full Name</b></div> : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
+				+ "<br><br><div class=\"info\"><b>Phone</b></div> : " + getPhone()
+				+ "<br><br><div class=\"info\"><b>Alt Phone</b></div> : " + getAlternatePhone()
+				+"<br><br><div class=\"info\"><b>Email</b></div> : " + getEmail()
+				+"<br><br><div class=\"info\"><b>DOB</b></div> : " + getDOB()
+				+"<br><br><div class=\"info\"><b>Address</b></div> : " + getAddress()
+				+"<br><br><div class=\"info\"><b>Username</b></div> : " + getUserName()
+				+"<br><br><div class=\"info\"><b>Password</b></div> : " + getPassword()
+				+"<br><br><div class=\"info\"><b>Join Date</b></div> : " + getJoinDate()
+				+"<br><br><div class=\"info\"><b>Status</b></div> : " + getStatus();
 	}
 }

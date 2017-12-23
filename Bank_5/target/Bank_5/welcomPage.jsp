@@ -7,6 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 	<spring:url value="/resources/welcomepageBg.jpg" var="welcomePageBg" />
 	<title>My Bank Application</title>
 	
@@ -54,13 +55,12 @@
 	<script type="text/javascript"></script>
 
 </head>
-<body style="background-image:url('<c:url value="/resources/welcomepageBg.jpg" />')"><center>
+<body style="background-image:url('${welcomePageBg}')"><center>
 	<fieldset><h1>WELCOME TO MY BANK</h1></fieldset>
 	${logoutmsg}
 	<div id="selection">
 		<div class="myButtons"><form action="homeme.html" method="post"><input type="submit" name="submit" value="Customer"></form></div>
 		<div class="myButtons"><form action="homeme.html" method="post"><input type="submit" name="submit" value="Employee"></form></div>
-		<div class="myButtons"><form action="homeme.html" method="post"><input type="submit" name="submit" value="Admin"></form></div>
 	</div>
 </center>
 </body>

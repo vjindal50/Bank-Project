@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,20 +55,20 @@ public class CustomerLog implements Serializable{
 	private String Status;
 	
 	@Column(name = "DelDate")
-	private Date DelDate;
+	private String DelDate;
 	
 	@Column(name = "JoinDate")
-	private Date JoinDate;
+	private String JoinDate;
 	
 	@Column(name = "DOB")
-	private Date DOB;
+	private String DOB;
 	
 	public CustomerLog(){
 		
 	}
 	
 //	public CustomerLog(String FirstName,String LastName,String MiddleName, String Phone,String AlternatePhone,
-//			String Email,String Address,String Password,String UserName,String Command,String Status,Date DelDate){
+//			String Email,String Address,String Password,String UserName,String Command,String Status,String DelString){
 //		this.FirstName=FirstName;
 //		this.LastName=LastName;
 //		this.MiddleName=MiddleName;
@@ -81,7 +80,7 @@ public class CustomerLog implements Serializable{
 //		this.UserName=UserName;
 //		this.Command=Command;
 //		this.Status=Status;
-//		this.DelDate=DelDate;
+//		this.DelString=DelString;
 //		
 //	}
 
@@ -137,19 +136,19 @@ public class CustomerLog implements Serializable{
 		return AlternatePhone;
 	}
 
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return JoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(String joinDate) {
 		JoinDate = joinDate;
 	}
 
-	public Date getDOB() {
+	public String getDOB() {
 		return DOB;
 	}
 
-	public void setDOB(Date dOB) {
+	public void setDOB(String dOB) {
 		DOB = dOB;
 	}
 
@@ -205,28 +204,28 @@ public class CustomerLog implements Serializable{
 		Status = status;
 	}
 
-	public Date getDelDate() {
+	public String getDelDate() {
 		return DelDate;
 	}
 
-	public void setDelDate(Date delDate) {
+	public void setDelString(String delDate) {
 		DelDate = delDate;
 	}
 	
 	public String toString() {
-		return "Log Id : " + getCustLogID()
-				+ "<br>\n Customer ID : " + getCustID()
-				+ "<br>\n First Name : " + getFirstName()
-				+ "<br>\n Middle Name : " + getMiddleName()
-				+ "<br>\n Last Name : " + getLastName()
-				+ "<br>\n Email : " + getEmail()
-				+ "<br>\n Command : " + getCommand()
-				+ "<br>\n Address : " + getAddress()
-				+ "<br>\n Phone : " + getPhone()
-				+ "<br>\n Alt phone : " + getAlternatePhone()
-				+ "<br>\n Status : " + getStatus()
-				+ "<br>\n User Name : " + getUserName()
-				+ "<br>\n Pasword : " + getPassword();
+		return "<div class=\"info\"><b>Log ID</b></div> : " + getCustLogID()
+				+ "<br><div class=\"info\"><br>\n <b>Customer ID</b></div> :" + getCustID()
+				+ "<br><div class=\"info\"><br>\n <b>First Name</b></div> :" + getFirstName()
+				+ "<br><div class=\"info\"><br>\n <b>Middle Name</b></div> :" + getMiddleName()
+				+ "<br><div class=\"info\"><br>\n <b>Last Name</b></div> :" + getLastName()
+				+ "<br><div class=\"info\"><br>\n <b>Email</b></div> :" + getEmail()
+				+ "<br><div class=\"info\"><br>\n <b>Command</b></div> :" + getCommand()
+				+ "<br><div class=\"info\"><br>\n <b>Address</b></div> :" + getAddress()
+				+ "<br><div class=\"info\"><br>\n <b>Phone</b></div> :" + getPhone()
+				+ "<br><div class=\"info\"><br>\n <b>Alt Phone</b></div> :" + getAlternatePhone()
+				+ "<br><div class=\"info\"><br>\n <b>Status</b></div> :" + getStatus()
+				+ "<br><div class=\"info\"><br>\n <b>User Name</b></div> :" + getUserName()
+				+ "<br><div class=\"info\"><br>\n <b>Password</b></div> :" + getPassword();
 	}
 	
 }

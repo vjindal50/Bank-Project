@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +28,7 @@ public class AccountsLoan implements Serializable{
 	private double EMI;
 	
 	@Column(name = "LastEMIPayed")
-	private Date lastEMIPayed;
+	private String lastEMIPayed;
 	
 	@Column(name = "Interset")
 	private double interest;
@@ -66,11 +65,11 @@ public class AccountsLoan implements Serializable{
 		EMI = eMI;
 	}
 
-	public Date getLastEMIPayed() {
+	public String getLastEMIPayed() {
 		return lastEMIPayed;
 	}
 
-	public void setLastEMIPayed(Date lastEMIPayed) {
+	public void setLastEMIPayed(String lastEMIPayed) {
 		this.lastEMIPayed = lastEMIPayed;
 	}
 

@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,13 +35,13 @@ public class AccountLog implements Serializable {
 	private double Interset;
 	
 	@Column(name = "LastAccess")
-	private Date LastAccess;
+	private String LastAccess;
 	
 	@Column(name = "EMI")
 	private double EMI;
 	
 	@Column(name = "LastEMIPayed")
-	private Date LastEMIPayed;
+	private String LastEMIPayed;
 	
 	@Column(name = "EMICounter")
 	private int EMICounter;
@@ -51,16 +50,19 @@ public class AccountLog implements Serializable {
 	private double amountPayed;
 	
 	@Column(name = "OpenedOn")
-	private Date OpenedOn;
+	private String OpenedOn;
 	
 	@Column(name = "ClosedOn")
-	private Date ClosedOn;
+	private String ClosedOn;
 	
 	@Column(name = "Cust_ID")
 	private int Cust_ID;
 	
 	@Column(name = "Type")
 	private String Type;
+	
+	@Column(name = "Command")
+	private String Command;
 	
 	public AccountLog() {}
 
@@ -112,11 +114,11 @@ public class AccountLog implements Serializable {
 		Interset = interset;
 	}
 
-	public Date getLastAccess() {
+	public String getLastAccess() {
 		return LastAccess;
 	}
 
-	public void setLastAccess(Date lastAccess) {
+	public void setLastAccess(String lastAccess) {
 		LastAccess = lastAccess;
 	}
 
@@ -128,11 +130,11 @@ public class AccountLog implements Serializable {
 		EMI = eMI;
 	}
 
-	public Date getLastEMIPayed() {
+	public String getLastEMIPayed() {
 		return LastEMIPayed;
 	}
 
-	public void setLastEMIPayed(Date lastEMIPayed) {
+	public void setLastEMIPayed(String lastEMIPayed) {
 		LastEMIPayed = lastEMIPayed;
 	}
 
@@ -152,19 +154,19 @@ public class AccountLog implements Serializable {
 		this.amountPayed = amountPayed;
 	}
 
-	public Date getOpenedOn() {
+	public String getOpenedOn() {
 		return OpenedOn;
 	}
 
-	public void setOpenedOn(Date openedOn) {
+	public void setOpenedOn(String openedOn) {
 		OpenedOn = openedOn;
 	}
 
-	public Date getClosedOn() {
+	public String getClosedOn() {
 		return ClosedOn;
 	}
 
-	public void setClosedOn(Date closedOn) {
+	public void setClosedOn(String closedOn) {
 		ClosedOn = closedOn;
 	}
 
@@ -184,21 +186,30 @@ public class AccountLog implements Serializable {
 		Type = type;
 	}
 	
+	public String getCommand() {
+		return Command;
+	}
+
+	public void setCommand(String command) {
+		Command = command;
+	}
+
 	public String toString() {
-		return "Log ID : " + getAccLogID()
-				+ "\nAccount Number : " + getAnum()
-				+ "\nBalance : " + getBalance()
-				+ "\nWithdraw Limit : " + getWithdrawLimit()
-				+ "\nOver Draft : " + getOverDraft()
-				+ "\nInterest : " + getInterset()
-				+ "\nLast Access : " + getLastAccess()
-				+ "\nEMI : " + getEMI()
-				+ "\nLast EMI payed : " + getLastEMIPayed()
-				+ "\nEMI counter : " + getEMICounter()
-				+ "\nAmount Payed : " + getAmountPayed()
-				+ "\nOpened On : " + getOpenedOn()
-				+ "\nClosed On : " + getClosedOn()
-				+ "\nCustomer ID : " + getCust_ID()
-				+ "\nAccount type : " + getType();
+		return "<div class=\"info\"><b>Log ID</b></div> : " + getAccLogID()
+				+ "<br><div class=\"info\"><br>\n <b>Account Number</b></div> : " + getAnum()
+				+ "<br><div class=\"info\"><br>\n <b>Balance</b></div> : " + getBalance()
+				+ "<br><div class=\"info\"><br>\n <b>Withdraw Limit</b></div> : " + getWithdrawLimit()
+				+ "<br><div class=\"info\"><br>\n <b>Over Draft Limit</b></div> : " + getOverDraft()
+				+ "<br><div class=\"info\"><br>\n <b>Interest</b></div> : " + getInterset()
+				+ "<br><div class=\"info\"><br>\n <b>Last Accessed</b></div> : " + getLastAccess()
+				+ "<br><div class=\"info\"><br>\n <b>EMI</b></div> : " + getEMI()
+				+ "<br><div class=\"info\"><br>\n <b>Last EMI Payed</b></div> : " + getLastEMIPayed()
+				+ "<br><div class=\"info\"><br>\n <b>No. of EMI Payed</b></div> : " + getEMICounter()
+				+ "<br><div class=\"info\"><br>\n <b>Amount Payed</b></div> : " + getAmountPayed()
+				+ "<br><div class=\"info\"><br>\n <b>Opened On</b></div> : " + getOpenedOn()
+				+ "<br><div class=\"info\"><br>\n <b>Closed On</b></div> : " + getClosedOn()
+				+ "<br><div class=\"info\"><br>\n <b>Customer ID</b></div> : " + getCust_ID()
+				+ "<br><div class=\"info\"><br>\n <b>Account Type</b></div> : " + getType()
+				+ "<br><div class=\"info\"><br>\n <b>Command</b></div> : " + getCommand();
 	}
 }

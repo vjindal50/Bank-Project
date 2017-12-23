@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,10 +26,10 @@ public class Accounts implements Serializable{
 	private int AccountNumber;
 	
 	@Column(name = "OpenedOn")
-	private Date openedOn;
+	private String openedOn;
 	
 	@Column(name = "ClosedOn")
-	private Date closedOn;
+	private String closedOn;
 	
 	@Column(name = "Cust_ID")
 	private int Cust_ID;
@@ -87,19 +86,19 @@ public class Accounts implements Serializable{
 		AccountNumber = accountNumber;
 	}
 
-	public Date getOpenedOn() {
+	public String getOpenedOn() {
 		return openedOn;
 	}
 
-	public void setOpenedOn(Date openedOn) {
+	public void setOpenedOn(String openedOn) {
 		this.openedOn = openedOn;
 	}
 
-	public Date getClosedOn() {
+	public String getClosedOn() {
 		return closedOn;
 	}
 
-	public void setClosedOn(Date closedOn) {
+	public void setClosedOn(String closedOn) {
 		this.closedOn = closedOn;
 	}
 
@@ -128,20 +127,28 @@ public class Accounts implements Serializable{
 	}
 
 	public String toString() {
-		String result = "Account Number : " + getAccountNumber()
-				+ "<br>\nAccount Type : " + getType()
-				+ "<br>\nOpened On : " + getOpenedOn()
-				+ "<br>\nType : " + getType()
-				+ "<br>\nStatus : " + getStatus();
+		String result = "<br><div class=\"info\"><b>Account Number</b></div> : " + getAccountNumber()
+				+ "<br><br><div class=\"info\"><b>Customer ID</b></div> : " + getCust_ID()
+				+ "<br><br><div class=\"info\"><b>Type</b></div> : " + getType()
+				+ "<br><br><div class=\"info\"><b>Opened On</b></div> : " + getOpenedOn()
+				+ "<br><br><div class=\"info\"><b>Status</b></div> : " + getStatus();
 		
 		if (getAccSav().size()>0) {
-			result += "<br>\nSaving Acc Info : " + getAccSav();
+			result += "<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccSav().get(0).getBalance();
+			result += "<br><br><div class=\"info\"><b>Interest</b></div> : " + getAccSav().get(0).getInterest();
+			result += "<br><br><div class=\"info\"><b>Widthdraw Limit</b></div> : " + getAccSav().get(0).getWithdrawLimit();
 		}
 		if (getAccChk().size()>0) {
-			result += "<br>\nChecking Acc Info : " + getAccChk();
+			result += "<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccChk().get(0).getBalance();
+			result += "<br><br><div class=\"info\"><b>Interest</b></div> : " + getAccChk().get(0).getInterest();
+			result += "<br><br><div class=\"info\"><b>Over Draft Limit</b></div> : " + getAccChk().get(0).getOverDraft();
 		}
 		if (getAccLoan().size()>0) {
-			result += "<br>\nLoan Acc Info : " + getAccLoan();
+			result +="<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccLoan().get(0).getBalance();
+			result +="<br><br><div class=\"info\"><b>EMI</b></div> : " + getAccLoan().get(0).getEMI();
+			result +="<br><br><div class=\"info\"><b>Amount Payed</b></div> : " + getAccLoan().get(0).getAmountPayed();
+			result +="<br><br><div class=\"info\"><b>Interest</b></div> : " + getAccLoan().get(0).getInterest();
+			result +="<br><br><div class=\"info\"><b>EMIs Payed</b></div> : " + getAccLoan().get(0).getEMIcounter();
 		}
 				
 		return result;	

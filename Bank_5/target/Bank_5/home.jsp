@@ -7,9 +7,7 @@
 <html>
 <head>
 	<title>Home</title>
-	
-	<spring:url value="/resources/HomePageScript.js" var="employeeHomeScript" />
-	<script type="text/javascript" src="${employeeHomeScript}"></script>
+
 	<script type="text/javascript">
 	function searchCust(){
 		var z = document.getElementById("sidemenucontent");
@@ -50,7 +48,6 @@
 		var z = document.getElementById("sidemenucontent");
 		var text = "";
 		text += '<form method="post" action="updateEmpProfile">';
-		text += '<div class="divtext">ID : </div><input type="text" name="empid" value="${empId}" readonly><br><br>';
 		text += '<div class="divtext">First Name : </div><input type="text" name="fname" value="${efname}"><br><br>';
 		text += '<div class="divtext">Last Name :</div><input type="text" name="lname" value="${elname}"><br><br>';
 		text += '<div class="divtext">Middle Name : </div><input type="text" name="mname" value="${emname}"><br><br>';
@@ -60,7 +57,6 @@
 		text += '<div class="divtext">Address : </div><input type="text" name="address" value="${eaddress}"><br><br>';
 		text += '<div class="divtext">User Name : </div><input type="text" name="uname" value="${euname}"><br><br>';
 		text += '<div class="divtext">Password : </div><input type="Password" name="pass" value="${epass}"><br><br>';
-		text += '<div class="divtext">D.O.B. :</div><input type="Date" name="dob" value="${edob}" readonly><br><br>';
 		text += '<input class="butts" type="submit" name="submit" value="Update">';
 		text += '<input class="butts" type="reset" name="reset" value="Reset">';
 		text += '</form>';
@@ -151,8 +147,10 @@
 			<div class="sidemenuandcontent" id="sidemenu">
 				<div class="sidemenuitem"><button onclick="searchCust()">Search Customer</button></div>
 				<div class="sidemenuitem"><form action="viewCustLog" method="post"><input id="logout" type="submit" name="submit" value="View Customer Log"></form></div>
+				<div class="sidemenuitem"><form action="viewAccLog" method="post"><input id="logout" type="submit" name="submit" value="View Account Log"></form></div>
+				<div class="sidemenuitem"><form action="viewEmpLog" method="post"><input id="logout" type="submit" name="submit" value="View Employee Log"></form></div>
 				<div class="sidemenuitem"><button onclick="viewProfile()">View Profile</button></div>
-				<div class="sidemenuitem"><form action="logout" method="post"><input id="logout" type="submit" name="submit" value="Logout"></form></div>
+				<div class="sidemenuitem"><form action="logoutEmployee" method="post"><input id="logout" type="submit" name="submit" value="Logout"></form></div>
 			</div>
 			<div class="sidemenuandcontent">
 				<div id="sidemenucontent">
@@ -164,6 +162,5 @@
 		</div>
 	</div>
 </center>
-<script type="text/javascript" src="${employeeHomeScript}"></script>
 </body>
 </html>

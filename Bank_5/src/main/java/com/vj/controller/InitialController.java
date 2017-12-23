@@ -26,6 +26,12 @@ import com.vj.service.CustomerService;
 @Controller
 public class InitialController {
 	
+	@Autowired
+    private AccountsService accountService;
+	
+    @Autowired
+    private CustomerService customerService;
+	
     public InitialController() {
         System.out.println("CustomerController()");
     }
@@ -33,16 +39,30 @@ public class InitialController {
     @RequestMapping(value = "/")
     public ModelAndView Accounts(ModelAndView model) throws IOException {
         
-        model.setViewName("welcomPage");
+        model.setViewName("customerLogin");
         return model;
     }
     
-    @Autowired
-    private AccountsService accountService;
+    @RequestMapping(value = "/logoutEmployee", method = RequestMethod.POST)
+	public ModelAndView LogoutEmployee(HttpServletRequest request, HttpServletResponse response) {		
+		System.out.println("In logout employee controller");	
+		request.getSession().setAttribute("emp", null);
+		String submit = request.getParameter("submit");
+		System.out.println(submit);	
+	    return new ModelAndView("employeeLogin","model","successfully logged out");
+		
+	}
 	
-    @Autowired
-    private CustomerService customerService;
-	
+	@RequestMapping(value = "/logoutCustomer", method = RequestMethod.POST)
+	public ModelAndView LogoutCustomer(HttpServletRequest request, HttpServletResponse response) {		
+		System.out.println("In logout cutomer controller");	
+		request.getSession().setAttribute("cust", null);
+		String submit = request.getParameter("submit");
+		System.out.println(submit);	
+	    return new ModelAndView("customerLogin","model","successfully logged out");
+		
+	}
+    
 	@RequestMapping(value = "/savingsaccount", method = RequestMethod.POST)
 	public ModelAndView AddAccounts(HttpServletRequest request, HttpServletResponse response) throws IOException 
 	{
@@ -67,9 +87,8 @@ public class InitialController {
 				customer = (Customer) request.getSession().getAttribute("cust");
 					
 				account.setCust_ID(customer.getCustID());
-				account.setOpenedOn(new Date());
+				account.setOpenedOn(new Date()+"");
 				account.setStatus("active");
-	//			account.setType("Savings");
 				accountService.openAccount(account);
 				
 				double Balance = Double.parseDouble(savingsbalance);
@@ -78,6 +97,7 @@ public class InitialController {
 				
 				savings.setBalance(Balance);
 //				savings.setInterest(5.00);
+>>>>>>> master
 				savings.setWithdrawLimit(withdrawlimit);
 				savings.setAccount_Number(account.getAccountNumber());
 				
@@ -85,8 +105,6 @@ public class InitialController {
 				
 				ModelAndView model = new ModelAndView();
 				model.addObject("adminMsg", "<h1>Your Savings Account No is " + account.getAccountNumber());
-//				model.addObject("model", "Savings");
-//				model.setViewName("customerhome");
 				model.addObject("custname", customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
 				model.addObject("custId", customer.getCustID());
 				model.addObject("LastLogin", customer.getJoinDate());
@@ -95,7 +113,6 @@ public class InitialController {
 				model.addObject("cdob", customer.getDOB());
 				model.addObject("acclist", customer.getAcc());
 				model.addObject("cemail", customer.getEmail());
-				//model.addObject("eeid", customer.getEmpID());
 				model.addObject("cfname", customer.getFirstName());
 				model.addObject("clname", customer.getLastName());
 				model.addObject("cmname", customer.getMiddleName());

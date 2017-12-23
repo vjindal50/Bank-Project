@@ -12,7 +12,7 @@ public interface EmployeeService {
 	public List<EmployeeLog> getAllEmployeeLog();
 	public void deleteEmployee(int empId);
 	public Employee getEmployee(int empId);
-	public EmployeeLog getCustomerLog(int empLogId);
+	public EmployeeLog getEmployeeLog(int empLogId);
 	public Employee updateEmployee(Employee Employee);
 	public Employee login(String uname, String pass);
 }

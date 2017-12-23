@@ -1,0 +1,510 @@
+*
+{
+	margin:0;
+	padding:0;
+}
+
+/* Styles for the body */
+body 
+{
+	font-size: 11px;
+	font-family: Verdana, Arial, Sans-Serif;
+	margin: 0px;
+	padding-left: 50%;
+	color: #000000;
+	clear: both;
+	position: absolute;
+	background: url('images/bggrad2.jpg') repeat-x #999999;
+}
+form{
+	display: inline-block;
+}
+table{
+	width: 450px;
+	text-align: center;
+}
+
+/* Page centering outermost container */
+#container 
+{
+	width: 700px;
+	margin-left: -350px;
+}
+
+/* Header for the site in no-css mode */
+.invisible
+{
+    display: none;
+    visibility: hidden;
+}
+
+/* Style for global paragraphs */
+p
+{
+    margin:0;
+}
+/* Removing list style */
+ul
+{
+	list-style:none;
+}
+
+/* For form inputs */
+fieldset
+{
+    border: none;
+    padding: 0px 3px 3px 3px;
+    margin: 0px;
+}
+
+/* And styling the input as well */
+input
+{
+    border: 1px solid #888;
+    font: 11px/11px verdana, arial, sans-serif;
+    height: 16px;
+    color: #555;
+}
+
+/* Login Reset buttons */
+.button
+{
+  height: 22px;
+  width: 64px;
+  background: #e0e0e0;
+  margin-bottom: 10px;
+}
+
+/* Topmost bar sticking right below the adress bar */
+#topMostBar 
+{
+	height: 50px;
+	margin-bottom:10px;
+	clear:both;
+	background:url(images/topBG2.jpg) no-repeat top;
+}
+
+#topMostInner1
+{
+	float: left;
+	margin-left: 22px;
+	margin-top: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: bolder;
+	color:#777;
+}
+
+#topMostInner2
+{
+	float: left;
+	margin-left: 48px;
+	margin-top: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color:#777;
+}
+
+#topMostInner3
+{
+	float: right;
+	margin-left: 117px;
+	margin-top: 15px;
+	font-family: verdana, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color:#777;
+	padding-right: 19px;
+}
+
+/* Container for main navigation buttons */
+#navcontainer 
+{
+	height:30px;
+}
+
+/* Navigation buttons 1 to 6 */
+
+#nav1, #nav2, #nav3, #nav4, #nav5, #nav6
+{	
+	height: 30px;
+	padding-top:14px;
+	float: left;
+	width: 162px;
+	/*background: url(images/nav4.jpg) no-repeat;*/
+}
+
+#nav11, #nav21, #nav31, #nav41, #nav51, #nav61
+{	
+	height: 30px;
+	padding-top:14px;
+	float: left;
+	width: 112px;
+	background: url(images/nav4.jpg) no-repeat;
+}
+
+#nav4
+{
+	padding-left: 15px;
+	/*width: 126px;
+	background: url(images/nav6.jpg) no-repeat;*/
+}
+
+#nav11
+{
+	width: 124px;
+	background: url(images/nav1.jpg) no-repeat;
+}
+
+#nav31 
+{
+	width: 114px;
+	background: url(images/nav3.jpg) no-repeat;
+}
+
+#nav21 
+{
+	background: url(images/nav2.jpg) no-repeat;
+}
+
+#nav61
+{
+	/*padding-left: 15px;*/
+	width: 126px;
+	background: url(images/nav6.jpg) no-repeat;
+}
+
+/* The text style for the navigation buttons */
+.buttonText 
+{
+	text-align: center;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+/* Style for global links */
+a
+{
+	text-decoration: none;
+	color: #686868;
+}
+input{
+	background: transparent;
+	border: none;
+	font-size: 11px;
+	font-weight: bold;
+	color: #686868;
+	padding-bottom: 3px;
+}
+
+button{
+	background: transparent;
+	border: none;
+	font-size: 12px;
+	font-weight: bold;
+	color: #686868;
+	padding-bottom: 3px;
+}
+
+a:hover 
+{
+	text-decoration: underline;
+	color: #000;
+}
+
+input:hover
+{
+	text-decoration: underline;
+	color: #000;
+	font-weight: bold;
+}
+
+button:hover
+{
+	text-decoration: underline;
+	color: #000;
+	font-weight: bold;
+}
+
+a img
+{
+    border: none;
+    vertical-align: middle;
+}
+
+/* Main content container (first inner) */
+#main 
+{
+	margin-top:5px;
+	padding: 5px 5px 2px 5px;
+	width: 688px;
+	text-align: justify;
+	color: #333;
+	line-height: 1.6em;
+	background-color: #EEE;
+	border: 1px solid #AAA;
+	float: left;
+	clear: both;
+}
+
+/* One full length horizontal container */
+.horizRect
+{
+    width:100%;
+    clear: both;
+    background: #fff;
+
+}
+
+/* Header style for sections and articles */
+.noteheader
+{
+    width:auto;
+    border-bottom: 1px solid #888;
+    color: #222;
+    height: 24px;
+    font-family: verdana;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0px 0px 3px 0px;
+    /*background:url(images/headerBG.jpg) repeat-x #f7f4f7;*/
+}
+
+/* The braggy block of text */
+
+#brag
+{
+	float:left;
+	width: 290px;
+	margin-left: 20px;
+	margin-top: 60px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #555;
+	text-align:center;
+	font-style:italic;
+}
+
+/* advertisement block */
+.adblock
+{
+	width: 440px;
+	border: 1px solid #A9A9A9;
+	background: url('images/mainPic.jpg') 10px 27px no-repeat #fff;
+	color: #000;
+	float: left;
+	padding: 2px;
+	height:auto;
+}
+
+.adblock1a
+{
+	width: 420px;
+	border: 1px solid #A9A9A9;
+	background: url('images/mainPic.jpg') 10px 27px no-repeat #fff;
+	color: #000;
+	float: left;
+	padding: 2px;
+	height:456px;
+}
+
+/* advertisement block 2 (main)  */
+.adblock2
+{
+	width: 682px;
+	border: 1px solid #A9A9A9;
+	background: url('images/mainad.jpg') 10px 27px no-repeat #fff;
+	color: #000;
+	float: left;
+	padding: 2px;
+	height:270px;
+	margin-bottom: 1px;
+}
+
+/* Sidebar block */
+.sideblock
+{
+	width: 235px;
+	border: 1px solid #A9A9A9;
+	background-color: #f8f8f8;
+	color: #663366;
+	float: right;
+	padding: 2px;
+    height: 206px;
+}
+
+.sideblock2
+{
+	width: 255px;
+	border: 1px solid #A9A9A9;
+	background-color: #f8f8f8;
+	color: #663366;
+	float: right;
+	padding: 2px;
+    height: 456px;
+}
+
+/* All those big numbers, 1585, 138 billionm....inside this */
+.imgSlogan
+{
+	width: auto;
+	background-color: transparent;
+	color: #555;
+	margin-bottom:1px;
+	text-align: left;
+	height:161px;
+	padding: 3px 3px 3px 180px;
+}
+
+.imgSlogan2
+{
+	width: auto;
+	background-color: transparent;
+	color: #555;
+	margin-bottom:1px;
+	text-align: left;
+	height:161px;
+	padding: 3px 3px 3px 120px;
+	vertical-align: middle;
+}
+
+.imgSlogan3
+{
+	padding: 10px;
+}
+
+/* Styling the ugly list buttons */
+.imgSlogan li
+{	
+	font: bold 12px/20px arial, verdana, sans-serif;
+}
+
+.imgSlogan2 li
+{	
+	font: bold 12px/20px arial, verdana, sans-serif;
+}
+
+/* A full length container for holding three columns */
+#threecolcontainer
+{
+    width:100%;
+    background-color: #E0E0E0;
+    color: #000;
+}
+
+/* Column 1 of the three columns */
+.col1
+{
+	width: 220px;
+	border: 1px solid #A9A9A9;
+	/*background: url('images/ad1.jpg') 2px 2px no-repeat #F7F4F7;*/
+	color: #000;
+	float: left;
+	padding: 2px;
+	clear: both;
+	margin-top: 1px;
+}
+
+/* Column 2 of the three columns */
+.col3 
+{
+	width: 455px;
+	/* border: 1px solid #A9A9A9; */
+	/*background: url('images/ad3.jpg') 2px 2px no-repeat #E4DCE4;*/
+	color: #663366;
+	float: right;
+	padding: 2px;
+	margin-left:1px;
+	margin-top: 1px;
+}
+
+
+
+/* Column 3 of the three columns */
+.col2 
+{
+	width: 213px;
+	border: 1px solid #A9A9A9;
+	background: url('images/ad2.jpg') 2px 2px no-repeat #F7F4F7;
+	color: #000;
+	float: right;
+	padding: 2px;
+	margin-top: 1px;
+}
+
+/* This should space things out for most text with a small padding */
+.spacy
+{
+    padding: 5px;
+}
+
+/* For the read more links */
+.readmore
+{
+    display: block;
+    clear: both;
+    background: url('images/readmore.jpg') no-repeat;
+    margin-top: 4px;
+}
+
+/* Last but not the least, the footer */
+#footer 
+{
+	background-color: #E4DCE4;
+	color: #888;
+	font-size: 10px;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+	padding-top: 5px;
+	clear: both;
+	width: auto;
+	border-bottom:1px solid #AAA;
+	border-right:1px solid #AAA;
+	border-left:1px solid #AAA;
+	border-top:none;
+}
+ #regsideblock{
+ 	display: inline-block;
+ }
+ .fieldtext{
+ 	display: inline-block;
+ 	width: 80px;
+ }
+#welcome{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.divtext{
+	display: inline-block;
+	width: 140px;
+	text-align: right;
+	margin-right: 20px;
+	font-weight: bold;
+}
+.getfield{
+	background-color: white;
+	/*margin-left: 20px;*/
+}
+.butts, #backbtt{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.info{
+	margin-left: 15px;
+	width: 120px;
+	margin-right: 7px;
+	display: inline-block;
+}
+.miniprofile{
+	display: inline-block;
+	margin-left:5px;
+	width: 90px;
+	font-weight: bold;
+	color:#663366;
+}
+.employeeMenu{
+	margin-left: 25px;
+}

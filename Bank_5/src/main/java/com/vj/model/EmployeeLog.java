@@ -1,7 +1,6 @@
 package com.vj.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,33 +55,36 @@ public class EmployeeLog implements Serializable{
 	private String Status;
 	
 	@Column(name = "LeftDate")
-	private Date LeftDate; 
+	private String LeftDate; 
 	
 	@Column(name = "JoinDate")
-	private Date JoinDate;
+	private String JoinDate;
+	
+	@Column(name = "DOB")
+	private String DOB;
 	
 	public EmployeeLog(){
 		
 	}
 	
-	public EmployeeLog(String FirstName,String LastName,String MiddleName,String Phone,String AlternatePhone,String Email,String Address,String Password,String UserName,String Command,String Status,
-			Date LeftDate,Date JoinDate){
-		this.FirstName=FirstName;
-		this.LastName=LastName;
-		this.MiddleName=MiddleName;
-		this.Phone=Phone;
-		this.AlternatePhone=AlternatePhone;
-		this.Email=Email;
-		this.Address=Address ;
-		this.Password=Password;
-		this.UserName=UserName;
-		this.Command=Command;
-		this.Status=Status;
-		this.LeftDate=LeftDate;
-		this.JoinDate=JoinDate;
-		
-				
-	}
+//	public EmployeeLog(String FirstName,String LastName,String MiddleName,String Phone,String AlternatePhone,String Email,String Address,String Password,String UserName,String Command,String Status,
+//			String LeftString,String JoinString){
+//		this.FirstName=FirstName;
+//		this.LastName=LastName;
+//		this.MiddleName=MiddleName;
+//		this.Phone=Phone;
+//		this.AlternatePhone=AlternatePhone;
+//		this.Email=Email;
+//		this.Address=Address ;
+//		this.Password=Password;
+//		this.UserName=UserName;
+//		this.Command=Command;
+//		this.Status=Status;
+//		this.LeftDate=LeftDate;
+//		this.JoinDate=JoinDate;
+//		
+//				
+//	}
 	
 	public int getEmpLogID() {
 		return EmpLogID;
@@ -188,38 +190,52 @@ public class EmployeeLog implements Serializable{
 		Status = status;
 	}
 
-	public Date getLeftDate() {
+	public String getLeftDate() {
 		return LeftDate;
 	}
 
-	public void setLeftDate(Date leftDate) {
+	public void setLeftString(String leftDate) {
 		LeftDate = leftDate;
 	}
 
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return JoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinString(String joinDate) {
 		JoinDate = joinDate;
 	}
-	
-	
+
+	public String getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(String dOB) {
+		DOB = dOB;
+	}
+
+	public void setLeftDate(String leftDate) {
+		LeftDate = leftDate;
+	}
+
+	public void setJoinDate(String joinDate) {
+		JoinDate = joinDate;
+	}
 
 	public String toString() {
-		return "Employee Log ID : " + getEmpLogID()
-				+ "\nEmployee ID : " + getEmpID()
-				+ "Employee Name : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
-				+ "\nPhone : " + getPhone()
-				+ "\nAlternate Phone : " + getAlternatePhone()
-				+ "\nEmail : " + getEmail()
-				+ "\nAddress : " + getAddress()
-				+ "\nPassword" + getPassword()
-				+ "\nUser Name : " + getUserName()
-				+ "\nCommand : " + getCommand()
-				+ "\nStatus : " + getStatus()
-				+ "\nLeft Date : " + getLeftDate()
-				+ "\nJoin Date : " + getJoinDate();
+		return "<br><div class=\"info\"><b>Log ID</b></div> : " + getEmpLogID()
+				+ "<br><br><div class=\"info\"><b>Employee ID</b></div> : " + getEmpID()
+				+ "<br><br><div class=\"info\"><b>Full Name</b></div> : " + getFirstName() + " " + getMiddleName() + " " + getLastName()
+				+ "<br><br><div class=\"info\"><b>Phone</b></div> : " + getPhone()
+				+ "<br><br><div class=\"info\"><b>Alt Phone</b></div> : " + getAlternatePhone()
+				+ "<br><br><div class=\"info\"><b>Email</b></div> : " + getEmail()
+				+ "<br><br><div class=\"info\"><b>Address</b></div> : " + getAddress()
+				+ "<br><br><div class=\"info\"><b>Password</b></div> : " + getPassword()
+				+ "<br><br><div class=\"info\"><b>User Name</b></div> : " + getUserName()
+				+ "<br><br><div class=\"info\"><b>Command</b></div> : " + getCommand()
+				+ "<br><br><div class=\"info\"><b>Status</b></div> : " + getStatus()
+				+ "<br><br><div class=\"info\"><b>LeftDate</b></div> : " + getLeftDate()
+				+ "<br><br><div class=\"info\"><b>Join Date</b></div> : " + getJoinDate();
 	}
 	
 }

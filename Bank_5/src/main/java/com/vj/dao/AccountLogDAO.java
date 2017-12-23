@@ -9,6 +9,6 @@ public interface AccountLogDAO {
 	
 	public void insertAccLog(AccountLog accountsLog);
 	public List<AccountLog> getAllAcclog();
-	public AccountLog getCustomerLog(int acclogId);
+	public AccountLog getAccLog(int acclogId);
 
 }
