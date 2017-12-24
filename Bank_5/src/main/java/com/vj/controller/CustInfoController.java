@@ -114,10 +114,13 @@ public class CustInfoController {
 		ModelAndView model = new ModelAndView();
 		
 		if(list.size() > 0 ) {
-			res += "<div><center><h2>List of Accounts</h2></center></div><br><table><tr><th>Account Number</th><th>Balance</th></tr><br>\n";
+			res += "<div><center><h2>List of Accounts</h2></center></div><br><table><tr><th>Account Number</th><th>Type</th><th>Balance</th></tr><br>\n";
 			for(int i = 0 ; i < list.size() ; i++) {
 				res += "<tr><td><form method=\"post\" action=\"fetchAccInfo\"><input type=\"Submit\" name=\"accId\" value=" +
 						list.get(i).getAccountNumber()+"></form></td>";
+				
+				
+				res +="<td>"+ list.get(i).getType() +"</td>";
 				res += "<td>";
 				
 				System.out.println(list.get(i).getType());

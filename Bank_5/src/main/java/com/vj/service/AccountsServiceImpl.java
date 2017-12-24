@@ -35,7 +35,7 @@ public class AccountsServiceImpl implements AccountsService{
 	 private AccountsLoanDAO accLoanDAO;
 	 
 	 @Autowired
-	 private AccountLogDAO accountLogDAO;
+	 private AccountLogDAO accountLogDAO; 
 
 	@Override
 	@Transactional
@@ -62,6 +62,9 @@ public class AccountsServiceImpl implements AccountsService{
 		accLog.setWithdrawLimit((double)accounts.getAccSav().get(0).getWithdrawLimit());
 		accLog.setBalance(accounts.getAccSav().get(0).getBalance());
 		accLog.setInterset(accounts.getAccSav().get(0).getInterest());
+		
+		accountLogDAO.insertAccLog(accLog);
+		
 
 	}
 	
@@ -82,6 +85,9 @@ public class AccountsServiceImpl implements AccountsService{
 		accLog.setBalance(accounts.getAccChk().get(0).getBalance());
 		accLog.setOverDraft(accounts.getAccChk().get(0).getOverDraft());
 		accLog.setInterset(accounts.getAccChk().get(0).getInterest());
+		
+		accountLogDAO.insertAccLog(accLog);
+		
 
 	}
 	
@@ -105,6 +111,9 @@ public class AccountsServiceImpl implements AccountsService{
 		accLog.setInterset(accounts.getAccLoan().get(0).getInterest());
 		accLog.setLastEMIPayed(accounts.getAccLoan().get(0).getLastEMIPayed());
 		accLog.setAmountPayed(accounts.getAccLoan().get(0).getAmountPayed());
+		
+		accountLogDAO.insertAccLog(accLog);
+		
 
 	}
 
