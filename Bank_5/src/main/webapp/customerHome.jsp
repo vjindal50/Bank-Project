@@ -28,7 +28,7 @@
 		text += '<div class="divtext"><form action="loanaccount" method="post">';
 		text += '<div class="divtext"><center>Please Enter the Amount</center>';
 		text +=	'<div class="divtext">Amount : </div><input class="getfield" type="text" name="loanbalance"><br><br>';
-		text += '<div class="divtext"><input id="loan" type="submit" name="submit" value="Apply Loan"></form></div><br><br>';
+		text += '<div class="divtext"><input id="loan" type="submit" name="submit" onclick="displayloandetails()" value="Apply Loan"></form></div><br><br>';
 		
 		text += '<br><div class="divtext">Loan Account No : </div>${accloanno}';
 		text += '<br><br><div class="divtext">EMI : </div>${emi}';
@@ -115,7 +115,7 @@
   <span class="buttonText" id="nav31"><button onclick="newaccmenu()">New Account</button></span> 
   
   
-  <span class="buttonText" id="nav41"><button onclick="addloanaccount()">Loan</button>
+  <span class="buttonText" id="nav41"><button onclick="addloanaccount()">Loan</button></span>
   
   
    <span class="buttonText" id="nav51"><button onclick="getFAQs()">FAQs</button></span>

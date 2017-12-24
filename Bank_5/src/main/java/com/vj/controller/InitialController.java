@@ -117,7 +117,7 @@ public class InitialController {
 				model.addObject("caddress", customer.getAddress());
 				model.addObject("caltphone", customer.getAlternatePhone());
 				model.addObject("cdob", customer.getDOB());
-				model.addObject("acclist", customer.getAcc());
+//					
 				model.addObject("cemail", customer.getEmail());
 				model.addObject("cfname", customer.getFirstName());
 				model.addObject("clname", customer.getLastName());
@@ -125,7 +125,7 @@ public class InitialController {
 				model.addObject("cphone", customer.getPhone());
 				model.addObject("cuname", customer.getUserName());
 				model.addObject("cpass", customer.getPassword());
-				model.setViewName("customerhome");
+				model.setViewName("customerHome");
 					
 				return model;
 			}
@@ -166,7 +166,7 @@ public class InitialController {
 				model.addObject("caddress", customer.getAddress());
 				model.addObject("caltphone", customer.getAlternatePhone());
 				model.addObject("cdob", customer.getDOB());
-				model.addObject("acclist", customer.getAcc());
+//				model.addObject("acclist", customer.getAcc());
 				model.addObject("cemail", customer.getEmail());
 				//model.addObject("eeid", customer.getEmpID());
 				model.addObject("cfname", customer.getFirstName());
@@ -175,7 +175,7 @@ public class InitialController {
 				model.addObject("cphone", customer.getPhone());
 				model.addObject("cuname", customer.getUserName());
 				model.addObject("cpass", customer.getPassword());
-				model.setViewName("customerhome");
+				model.setViewName("customerHome");
 					
 				return model;
 			}
@@ -222,8 +222,8 @@ public class InitialController {
 		model.addObject("adminMsg", "<h1>Your loan Account No is " + account.getAccountNumber());
 		
 		
-		AccountsLoan acc = accountService.getLoanAccount(loan.getACC_NUM());
-		String str = acc.toString();
+//		AccountsLoan acc = accountService.getLoanAccount(loan.getACC_NUM());
+//		String str = acc.toString();
 
 		model.addObject("accloanno", loan.getACC_NUM());
 		model.addObject("emi",loan.getEMI());
@@ -236,7 +236,7 @@ public class InitialController {
 		model.addObject("caddress", customer.getAddress());
 		model.addObject("caltphone", customer.getAlternatePhone());
 		model.addObject("cdob", customer.getDOB());
-		model.addObject("acclist", customer.getAcc());
+//		model.addObject("acclist", customer.getAcc());
 		model.addObject("cemail", customer.getEmail());
 		model.addObject("cfname", customer.getFirstName());
 		model.addObject("clname", customer.getLastName());
@@ -244,7 +244,7 @@ public class InitialController {
 		model.addObject("cphone", customer.getPhone());
 		model.addObject("cuname", customer.getUserName());
 		model.addObject("cpass", customer.getPassword());
-		model.setViewName("customerhome");
+		model.setViewName("customerHome");
 			
 		return model;
 	
