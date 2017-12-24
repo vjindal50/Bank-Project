@@ -148,7 +148,7 @@ public class CustInfoController {
 		
 		model = setCustValues(model, customer);
 		
-		model.setViewName("customerHome");
+		model.setViewName("mycusthome");
 		
 		return model;
 	
@@ -189,7 +189,7 @@ public class CustInfoController {
 				+ "</fom><br><br><br></div>";
 		
 		model.addObject("acclist", str);
-		model.setViewName("customerHome");
+		model.setViewName("mycusthome");
 
 		
 		return model;
@@ -287,7 +287,7 @@ public class CustInfoController {
 				+ "</fom><br><br><br></div>";
 		
 		model.addObject("acclist", str);
-		model.setViewName("customerHome");
+		model.setViewName("mycusthome");
 
 		
 		return model;

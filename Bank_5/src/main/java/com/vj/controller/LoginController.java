@@ -477,7 +477,7 @@ public class LoginController {
 		model.addObject("cphone",customer2.getPhone());
 		model.addObject("cuname",customer2.getUserName());
 		model.addObject("cpass",customer2.getPassword());
-		model.setViewName("customerHome");
+		model.setViewName("mycusthome");
 		return model;
 	}
 
