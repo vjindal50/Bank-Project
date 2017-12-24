@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vj.model.AccountSavings;
 import com.vj.model.Accounts;
+import com.vj.model.AccountsChecking;
 import com.vj.model.Customer;
 import com.vj.model.Employee;
 import com.vj.service.AccountsService;
@@ -105,6 +107,8 @@ public class CustInfoController {
 		System.out.println(submit);	
 		String res = "";
 		Customer customer =	(Customer) request.getSession().getAttribute("cust");
+		customer = customerService.getCustomer(customer.getCustID());
+		request.setAttribute("cust", customer);
 		List<Accounts> list = customer.getAcc();
 		System.out.println(list);
 		ModelAndView model = new ModelAndView();
@@ -144,7 +148,7 @@ public class CustInfoController {
 		
 		model = setCustValues(model, customer);
 		
-		model.setViewName("customerHome");
+		model.setViewName("mycusthome");
 		
 		return model;
 	
@@ -153,6 +157,8 @@ public class CustInfoController {
 	@RequestMapping(value = "/fetchAccInfo", method = RequestMethod.POST)
 	public ModelAndView AccountInfo(HttpServletRequest request, HttpServletResponse response) {	
 		
+		System.out.println("in fetch acc controller");
+		
 		Customer customer =	(Customer) request.getSession().getAttribute("cust");
 		System.out.println("in accounts controller");
 		int accountId = Integer.parseInt(request.getParameter("accId"));
@@ -160,12 +166,12 @@ public class CustInfoController {
 		
 		ModelAndView model = new ModelAndView();
 		
-		model = setCustValues(model, customer);
-		
 		Accounts account  = accountService.getAccount(accountId);
 		
 		request.getSession().setAttribute("acc", account);
 		
+		model = setCustValues(model, customer);
+
 		String str = "";
 		str +="<div><center><h2>Account</h2></center></div>";
 		str +="<div style=\"text-align: right\"><form action=\"viewAccounts\" method=\"post\">\n" + 
@@ -173,7 +179,7 @@ public class CustInfoController {
 				"  </form></div>";		
 		str+= account.toString();		
 		str +="<br><div><br><form method=\"post\" action=\"transaction\">&nbsp&nbsp&nbsp&nbsp<b>If you want to do any transaction, Please fill out the following</b><br><br>&nbsp&nbsp&nbsp     "
-				+ "Enter Amount : <input class=\"getfield\" type=\"number\" name=\"amount\" value=\"Amount\">"
+				+ "Enter Amount : <input class=\"getfield\" type=\"number\" step=\"any\" name=\"amount\" required>"
 				+ "<br><br>&nbsp&nbsp&nbsp&nbspSelect Transaction Type : <select style=\"width: 100px;\" name=\"type\">\n" + 
 				"  <option value=\"none\"></option>\n" + 
 				"  <option value=\"Widthdraw\">Widthdraw</option>\n" + 
@@ -183,10 +189,109 @@ public class CustInfoController {
 				+ "</fom><br><br><br></div>";
 		
 		model.addObject("acclist", str);
-		model.setViewName("customerHome");
+		model.setViewName("mycusthome");
 
 		
 		return model;
+	}
+	
+	@RequestMapping(value = "/transaction", method = RequestMethod.POST)
+	public ModelAndView Transaction(HttpServletRequest request, HttpServletResponse response) {	
+		
+		System.out.println("in transaction controller");
+		
+		Customer customer =	(Customer) request.getSession().getAttribute("cust");
+		Accounts account = (Accounts) request.getSession().getAttribute("acc");
+		
+		Double amount = Double.parseDouble(request.getParameter("amount"));
+		String type = request.getParameter("type");
+		
+		ModelAndView model = new ModelAndView();
+		
+		model = setCustValues(model, customer);
+		
+		String str = "";
+		
+		if (type.equals("Deposit")) {
+			if(account.getAccChk().size()>0) {
+				AccountsChecking accc = accountService.getChkAccount(account.getAccountNumber());
+				System.out.println(accc.getBalance() + " and " + amount);
+				System.out.println(accc.getBalance()+amount);
+				accc.setBalance(accc.getBalance() + amount);
+				accountService.updateChkAccount(accc);
+				str+= "<div>&nbsp&nbsp&nbsp Deposit of amount : "+ amount +" was succesfully made.</div><br>";
+			}
+			if(account.getAccSav().size()>0) {
+				AccountSavings accc =accountService.getSavAccount(account.getAccountNumber());
+				accc.setBalance(accc.getBalance() + amount);
+				System.out.println(accc.getBalance() + " and " + amount);
+				System.out.println(accc.getBalance()+amount);
+				System.out.println(accc.getAccount_Number());
+				System.out.println(account.getAccountNumber());
+				
+				accountService.updateSavAccount(accc);
+				str+= "<div>&nbsp&nbsp&nbsp Deposit of amount : "+ amount +" was succesfully made.</div><br>";
+			}
+			if(account.getAccLoan().size()>0) {
+				str+= "<div>&nbsp&nbsp&nbsp EMI cannot be paid here.</div><br>";
+			}
+		} else if (type.equals("Widthdraw")){
+			if(account.getAccChk().size()>0) {
+				AccountsChecking accc = accountService.getChkAccount(account.getAccountNumber());
+				if(accc.getBalance() >= amount) {
+					accc.setBalance(accc.getBalance() - amount);
+					accountService.updateChkAccount(accc);
+					str+= "<div>&nbsp&nbsp&nbsp Widthdrawl of amount : "+ amount +" was succesfully made.</div><br>";
+				} else {
+					str+= "<div>&nbsp&nbsp&nbsp Insuccicient funds.</div><br>";
+				}
+			}
+			
+			if(account.getAccSav().size()>0) {
+				AccountSavings accc = accountService.getSavAccount(account.getAccountNumber());
+				if (accc.getBalance() >= amount) {
+					if(amount <= accc.getWithdrawLimit()) {
+						accc.setBalance(accc.getBalance() - amount);				
+						accountService.updateSavAccount(accc);
+						str+= "<div>&nbsp&nbsp&nbsp Widthdrawl of amount : "+ amount +" was succesfully made.</div><br>";
+					} else {
+						str+= "<div>&nbsp&nbsp&nbsp Exceeded widthdrawl limit of "+ accc.getWithdrawLimit() +"</div><br>";
+					}
+				} else {
+					str+= "<div>&nbsp&nbsp&nbsp Insuccicient funds.</div><br>";
+				}
+			}
+			
+			if(account.getAccLoan().size()>0) {
+				str+= "<div>&nbsp&nbsp&nbsp Its a Loan acc. You already took the amount, dont't ask for more, instead return the money.</div><br>";
+			}
+		} else {
+			str+= "<div>&nbsp&nbsp&nbsp Invalid input</div";
+		}
+		
+		account = accountService.getAccount(account.getAccountNumber());
+		
+		str +="<div><center><h2>Account</h2></center></div>";
+		str +="<div style=\"text-align: right\"><form action=\"viewAccounts\" method=\"post\">\n" + 
+				"  <input id=\"logout\" type=\"submit\" name=\"submit\" value=\"Back\">\n" + 
+				"  </form></div>";		
+		str+= account.toString();		
+		str +="<br><div><br><form method=\"post\" action=\"transaction\">&nbsp&nbsp&nbsp&nbsp<b>If you want to do any transaction, Please fill out the following</b><br><br>&nbsp&nbsp&nbsp     "
+				+ "Enter Amount : <input class=\"getfield\" type=\"number\" step=\"any\" name=\"amount\" required>"
+				+ "<br><br>&nbsp&nbsp&nbsp&nbspSelect Transaction Type : <select style=\"width: 100px;\" name=\"type\">\n" + 
+				"  <option value=\"none\"></option>\n" + 
+				"  <option value=\"Widthdraw\">Widthdraw</option>\n" + 
+				"  <option value=\"Deposit\">Deposit</option>\n" + 	
+				"</select>"
+				+ "<br><br><center><input type=\"submit\" name=\"submit\" value=\"Submit\"></center>"
+				+ "</fom><br><br><br></div>";
+		
+		model.addObject("acclist", str);
+		model.setViewName("mycusthome");
+
+		
+		return model;
+		
 	}
 	
 	public ModelAndView setCustValues(ModelAndView model, Customer c) {

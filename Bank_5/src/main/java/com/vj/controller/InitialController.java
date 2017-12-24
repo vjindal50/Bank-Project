@@ -1,8 +1,6 @@
 package com.vj.controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
  
@@ -11,18 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 //import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.datetime.DateFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.vj.model.AccountLog;
 import com.vj.model.AccountSavings;
 import com.vj.model.Accounts;
-import com.vj.model.AccountsChecking;
-import com.vj.model.AccountsLoan;
 import com.vj.model.Customer;
 import com.vj.service.AccountsService;
 import com.vj.service.CustomerService;
@@ -41,7 +35,7 @@ public class InitialController {
     }
  
     @RequestMapping(value = "/")
-    public ModelAndView Accounts(ModelAndView model) throws IOException {
+    public ModelAndView listCustomer(ModelAndView model) throws IOException {
         
         model.setViewName("customerLogin");
         return model;
@@ -67,27 +61,25 @@ public class InitialController {
 		
 	}
     
-	@RequestMapping(value = "/addaccounts", method = RequestMethod.POST)
-	public ModelAndView AddAccounts(HttpServletRequest request, HttpServletResponse response) throws IOException 
+	@RequestMapping(value = "/savingsaccount", method = RequestMethod.POST)
+	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) throws IOException 
 	{
 		System.out.println("in acc controller");
 		
 		Accounts account = new Accounts();
 		Customer customer = new Customer();
 		AccountSavings savings=new AccountSavings();
-		AccountsChecking checking=new AccountsChecking();
-		AccountsLoan loan=new AccountsLoan();
 		
         System.out.println("In Accounts Controller");
-        String submit = request.getParameter("accounts");
-        System.out.println("submit value of accounts "+submit);
+        String submit = request.getParameter("submit");
+        System.out.println("submit value "+submit);
 		
-			if(submit.equals("savings")) {
+			if(submit.equals("Savings_Account")) {
 				account.setType("savings");
 				
 				System.out.println("type="+account.getType());
-				String savingsbalance = request.getParameter("balance");
-												
+				String balance = request.getParameter("savingsbalance");
+				
 				customer = (Customer) request.getSession().getAttribute("cust");
 					
 				account.setCust_ID(customer.getCustID());
@@ -95,15 +87,12 @@ public class InitialController {
 				account.setStatus("active");
 				accountService.openAccount(account);
 				
-				double Balance = Double.parseDouble(savingsbalance);
+				double Balance = Double.parseDouble(balance);
 				double withdrawlimit = Balance * 0.01;
 				System.out.println(Balance + "   " + withdrawlimit);
 				
 				savings.setBalance(Balance);
-				
-				
 				savings.setInterest(5.00);
-
 				savings.setWithdrawLimit(withdrawlimit);
 				savings.setAccount_Number(account.getAccountNumber());
 				
@@ -125,6 +114,7 @@ public class InitialController {
 				model.addObject("cphone", customer.getPhone());
 				model.addObject("cuname", customer.getUserName());
 				model.addObject("cpass", customer.getPassword());
+<<<<<<< HEAD
 				model.setViewName("customerHome");
 					
 				return model;
@@ -176,12 +166,15 @@ public class InitialController {
 				model.addObject("cuname", customer.getUserName());
 				model.addObject("cpass", customer.getPassword());
 				model.setViewName("customerHome");
+=======
+				model.setViewName("mycusthome");
+>>>>>>> master
 					
 				return model;
 			}
-		
 			return new ModelAndView("error");
     }
+<<<<<<< HEAD
 		
 	@RequestMapping(value = "/loanaccount", method = RequestMethod.POST)
 	public ModelAndView LoanAccounts(HttpServletRequest request, HttpServletResponse response) throws IOException 
@@ -252,5 +245,7 @@ public class InitialController {
 	}
 	
 	
+=======
+>>>>>>> master
 	
 }
