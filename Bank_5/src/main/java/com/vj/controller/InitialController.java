@@ -114,7 +114,7 @@ public class InitialController {
 				model.addObject("cphone", customer.getPhone());
 				model.addObject("cuname", customer.getUserName());
 				model.addObject("cpass", customer.getPassword());
-<<<<<<< HEAD
+
 				model.setViewName("customerHome");
 					
 				return model;
