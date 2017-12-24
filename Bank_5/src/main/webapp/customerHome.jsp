@@ -22,30 +22,19 @@
 		
 		z.innerHTML = text;
 	}
-	function addloanaccount(){
+	function addaccount(){
 		var z = document.getElementById("col3");
 		var text = "";
-		text += '<div class="divtext"><form action="loanaccount" method="post">';
-		text += '<div class="divtext"><center>Please Enter the Amount</center>';
-		text +=	'<div class="divtext">Amount : </div><input class="getfield" type="text" name="loanbalance"><br><br>';
-		text += '<div class="divtext"><input id="loan" type="submit" name="submit" value="Apply Loan"></form></div><br><br>';
 		
-		text += '<br><div class="divtext">Loan Account No : </div>${accloanno}';
-		text += '<br><br><div class="divtext">EMI : </div>${emi}';
-		text += '<br><br><div class="divtext">Interest: </div>${interest}';
+		text += '<div class="divtext"><form action="savingsaccount" method="post">';
+		text +=	'<div class="divtext">Enter Balance : </div><br>';
+		text+='<div class="divtext"></div><input type="text" name="savingsbalance"><input class="butts" type="submit" name="submit" value="Savings_Account"></form></div><br><br>';
+		text += '<div class="divtext"><form action="checkingsaccount" method="post"><input id="checkings" type="submit" name="submit" value="Checkings_Account"></form></div><br><br>';
+		text += '<div class="divtext"><form action="loanaaccount" method="post"><input id="loan" type="submit" name="submit" value="Loan_Account"></form></div><br><br>';
+		
 		z.innerHTML = text;
 		console.log("hey");
 	}
-	function displayloandetails(){
-		var z = document.getElementById("col3");
-		var text = "";
-		text += '<br><div class="divtext">Loan Account No : </div>${accloanno}';
-		text += '<br><br><div class="divtext">EMI : </div>${emi}';
-		text += '<br><br><div class="divtext">Interest: </div>${interest}';
-		
-		z.innerHTML = text;
-	}
-	
 	function viewProfile(){
 		var z = document.getElementById("col3");
 		var text = "";
@@ -85,11 +74,7 @@
 	function newaccmenu(){
 		var z = document.getElementById("col3");
 		var text = "";
-		text += '<div class="divtext"><form action="addaccounts" method="post">';
-		text +=	'<center>Please fill out the details</center><br>';
-		text+='<div class="divtext"><input class="getfield" type="radio" name="accounts" value="savings" checked> Savings <input type="radio" name="accounts" value="Checking" > Checking<br></div>';
-		text+='<div class="divtext">Enter Balance </div><input class="getfield"  type="text" name="balance"><br><br>';
-		text+='<input class="butts1" type="submit" name="submit" value="AddAccount"></form></div><br><br>';
+		
 		z.innerHTML = text;
 	}
 	</script>
@@ -115,12 +100,12 @@
   <span class="buttonText" id="nav31"><button onclick="newaccmenu()">New Account</button></span> 
   
   
-  <span class="buttonText" id="nav41"><button onclick="addloanaccount()">Loan</button>
-  
+  <span class="buttonText" id="nav41"><form action="viewEmpLog" method="post">
+  <input id="logout" type="submit" name="submit" value="Loan"></form></span>
   
    <span class="buttonText" id="nav51"><button onclick="getFAQs()">FAQs</button></span>
    
-    <span class="buttonText" id="nav61"><form action="logoutCustomer" method="post"></span>
+    <span class="buttonText" id="nav61"><form action="logoutCustomer" method="post">
     <input id="logout" type="submit" name="submit" value="Logout"></form></span> </div>
   <div id="main">
     <div class="horizRect">
@@ -148,7 +133,7 @@
       
       <div class="col3" id="col3">
          ${acclist}
-         
+          
       </div>
     </div>
   </div>
