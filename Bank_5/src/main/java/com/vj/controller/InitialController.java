@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.vj.model.AccountSavings;
 import com.vj.model.Accounts;
+import com.vj.model.AccountsChecking;
+import com.vj.model.AccountsLoan;
 import com.vj.model.Customer;
 import com.vj.service.AccountsService;
 import com.vj.service.CustomerService;
@@ -60,26 +62,90 @@ public class InitialController {
 	    return new ModelAndView("customerLogin","model","successfully logged out");
 		
 	}
+	
+	
     
-	@RequestMapping(value = "/savingsaccount", method = RequestMethod.POST)
-	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) throws IOException 
+//	@RequestMapping(value = "/savingsaccount", method = RequestMethod.POST)
+//	public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) throws IOException 
+//	{
+//		System.out.println("in acc controller");
+//		
+//		Accounts account = new Accounts();
+//		Customer customer = new Customer();
+//		AccountSavings savings=new AccountSavings();
+//		
+//        System.out.println("In Accounts Controller");
+//        String submit = request.getParameter("submit");
+//        System.out.println("submit value "+submit);
+//		
+//			if(submit.equals("Savings_Account")) {
+//				account.setType("savings");
+//				
+//				System.out.println("type="+account.getType());
+//				String balance = request.getParameter("savingsbalance");
+//				
+//				customer = (Customer) request.getSession().getAttribute("cust");
+//					
+//				account.setCust_ID(customer.getCustID());
+//				account.setOpenedOn(new Date()+"");
+//				account.setStatus("active");
+//				accountService.openAccount(account);
+//				
+//				double Balance = Double.parseDouble(balance);
+//				double withdrawlimit = Balance * 0.01;
+//				System.out.println(Balance + "   " + withdrawlimit);
+//				
+//				savings.setBalance(Balance);
+//				savings.setInterest(5.00);
+//				savings.setWithdrawLimit(withdrawlimit);
+//				savings.setAccount_Number(account.getAccountNumber());
+//				
+//				accountService.openSavingsAccount(savings);
+//				
+//				ModelAndView model = new ModelAndView();
+//				model.addObject("adminMsg", "<h1>Your Savings Account No is " + account.getAccountNumber());
+//				model.addObject("custname", customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
+//				model.addObject("custId", customer.getCustID());
+//				model.addObject("LastLogin", customer.getJoinDate());
+//				model.addObject("caddress", customer.getAddress());
+//				model.addObject("caltphone", customer.getAlternatePhone());
+//				model.addObject("cdob", customer.getDOB());
+//				model.addObject("acclist", customer.getAcc());
+//				model.addObject("cemail", customer.getEmail());
+//				model.addObject("cfname", customer.getFirstName());
+//				model.addObject("clname", customer.getLastName());
+//				model.addObject("cmname", customer.getMiddleName());
+//				model.addObject("cphone", customer.getPhone());
+//				model.addObject("cuname", customer.getUserName());
+//				model.addObject("cpass", customer.getPassword());
+//				model.setViewName("mycusthome");
+//					
+//				return model;
+//			}
+//			return new ModelAndView("error");
+//    }
+	
+	
+	@RequestMapping(value = "/addaccounts", method = RequestMethod.POST)
+	public ModelAndView AddAccounts(HttpServletRequest request, HttpServletResponse response) throws IOException 
 	{
 		System.out.println("in acc controller");
 		
 		Accounts account = new Accounts();
 		Customer customer = new Customer();
 		AccountSavings savings=new AccountSavings();
+		AccountsChecking checking=new AccountsChecking();
 		
         System.out.println("In Accounts Controller");
-        String submit = request.getParameter("submit");
-        System.out.println("submit value "+submit);
+        String submit = request.getParameter("accounts");
+        System.out.println("submit value of accounts "+submit);
 		
-			if(submit.equals("Savings_Account")) {
+			if(submit.equals("savings")) {
 				account.setType("savings");
 				
 				System.out.println("type="+account.getType());
-				String balance = request.getParameter("savingsbalance");
-				
+				String savingsbalance = request.getParameter("balance");
+												
 				customer = (Customer) request.getSession().getAttribute("cust");
 					
 				account.setCust_ID(customer.getCustID());
@@ -87,12 +153,15 @@ public class InitialController {
 				account.setStatus("active");
 				accountService.openAccount(account);
 				
-				double Balance = Double.parseDouble(balance);
+				double Balance = Double.parseDouble(savingsbalance);
 				double withdrawlimit = Balance * 0.01;
 				System.out.println(Balance + "   " + withdrawlimit);
 				
 				savings.setBalance(Balance);
+				
+				
 				savings.setInterest(5.00);
+
 				savings.setWithdrawLimit(withdrawlimit);
 				savings.setAccount_Number(account.getAccountNumber());
 				
@@ -106,8 +175,62 @@ public class InitialController {
 				model.addObject("caddress", customer.getAddress());
 				model.addObject("caltphone", customer.getAlternatePhone());
 				model.addObject("cdob", customer.getDOB());
+<<<<<<< HEAD
 //					
+=======
+				model.addObject("acclist", accountService.getAccount(savings.getAccount_Number()).toString());
 				model.addObject("cemail", customer.getEmail());
+				model.addObject("cfname", customer.getFirstName());
+				model.addObject("clname", customer.getLastName());
+				model.addObject("cmname", customer.getMiddleName());
+				model.addObject("cphone", customer.getPhone());
+				model.addObject("cuname", customer.getUserName());
+				model.addObject("cpass", customer.getPassword());
+				model.setViewName("mycusthome");
+					
+				return model;
+			}
+			
+			if(submit.equals("Checking")) {
+				account.setType("checking");
+				
+				System.out.println("type="+account.getType());
+				String checkingsbalance = request.getParameter("balance");
+				
+				customer = (Customer) request.getSession().getAttribute("cust");
+					
+				account.setCust_ID(customer.getCustID());
+				account.setOpenedOn(new Date()+"");
+				account.setStatus("active");
+				
+				accountService.openAccount(account);
+				
+				double cBalance = Double.parseDouble(checkingsbalance);
+				double overDraft = cBalance * 0.02;
+				System.out.println(cBalance + "   " + overDraft);
+				
+				checking.setBalance(cBalance);
+				//checking.setInterest(5.0);
+				checking.setOverDraft(overDraft);
+				checking.setLastAccess(new Date()+"");
+				checking.setAccNumber(account.getAccountNumber());
+				
+				accountService.openCheckingAccount(checking);;
+				
+				ModelAndView model = new ModelAndView();
+				model.addObject("adminMsg", "<h2>Account Created Successfully <br>Your Checking Account No is </h2>" + account.getAccountNumber());
+//				model.addObject("model", "Savings");
+//				model.setViewName("mycusthome");
+				model.addObject("custname", customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
+				model.addObject("custId", customer.getCustID());
+				model.addObject("LastLogin", customer.getJoinDate());
+				model.addObject("caddress", customer.getAddress());
+				model.addObject("caltphone", customer.getAlternatePhone());
+				model.addObject("cdob", customer.getDOB());
+				model.addObject("acclist", accountService.getAccount(checking.getAccNumber()).toString());
+>>>>>>> master
+				model.addObject("cemail", customer.getEmail());
+				//model.addObject("eeid", customer.getEmpID());
 				model.addObject("cfname", customer.getFirstName());
 				model.addObject("clname", customer.getLastName());
 				model.addObject("cmname", customer.getMiddleName());
@@ -172,9 +295,13 @@ public class InitialController {
 					
 				return model;
 			}
+		
 			return new ModelAndView("error");
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
 		
 	@RequestMapping(value = "/loanaccount", method = RequestMethod.POST)
 	public ModelAndView LoanAccounts(HttpServletRequest request, HttpServletResponse response) throws IOException 
@@ -198,15 +325,26 @@ public class InitialController {
 		accountService.openAccount(account);
 		
 		double loanAmount = Double.parseDouble(loanamt);
+<<<<<<< HEAD
 		double loanemi = loanAmount /20;
+=======
+		int loanemi = (int) (loanAmount /20);
+>>>>>>> master
 		System.out.println(loanAmount+ "   " +loanemi);
 		
 		loan.setACC_NUM(account.getAccountNumber());
 		loan.setBalance(loanAmount);
+<<<<<<< HEAD
 //		loan.setEMI(loanemi);
 		loan.setAmountPayed(0.0);
 //		loan.setLastEMIPayed(new Date()+"");
 		loan.setInterest(5.0);
+=======
+		loan.setEMI(loanemi);
+		loan.setAmountPayed(0.0);
+//		loan.setLastEMIPayed(new Date()+"");
+//		loan.setInterest(5.0);
+>>>>>>> master
 		loan.setEMIcounter(0);
 					
 		accountService.openLoanAccount(loan);;
@@ -215,8 +353,13 @@ public class InitialController {
 		model.addObject("adminMsg", "<h1>Your loan Account No is " + account.getAccountNumber());
 		
 		
+<<<<<<< HEAD
 //		AccountsLoan acc = accountService.getLoanAccount(loan.getACC_NUM());
 //		String str = acc.toString();
+=======
+		AccountsLoan acc = accountService.getLoanAccount(loan.getACC_NUM());
+		String str = acc.toString();
+>>>>>>> master
 
 		model.addObject("accloanno", loan.getACC_NUM());
 		model.addObject("emi",loan.getEMI());
@@ -229,7 +372,11 @@ public class InitialController {
 		model.addObject("caddress", customer.getAddress());
 		model.addObject("caltphone", customer.getAlternatePhone());
 		model.addObject("cdob", customer.getDOB());
+<<<<<<< HEAD
 //		model.addObject("acclist", customer.getAcc());
+=======
+		model.addObject("acclist", accountService.getAccount(acc.getACC_NUM()).toString());
+>>>>>>> master
 		model.addObject("cemail", customer.getEmail());
 		model.addObject("cfname", customer.getFirstName());
 		model.addObject("clname", customer.getLastName());
@@ -237,14 +384,21 @@ public class InitialController {
 		model.addObject("cphone", customer.getPhone());
 		model.addObject("cuname", customer.getUserName());
 		model.addObject("cpass", customer.getPassword());
+<<<<<<< HEAD
 		model.setViewName("customerHome");
+=======
+		model.setViewName("mycusthome");
+>>>>>>> master
 			
 		return model;
 	
 		
 	}
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> master
 =======
 >>>>>>> master
 	

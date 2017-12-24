@@ -133,17 +133,17 @@ public class Accounts implements Serializable{
 				+ "<br><br><div class=\"info\"><b>Opened On</b></div> : " + getOpenedOn()
 				+ "<br><br><div class=\"info\"><b>Status</b></div> : " + getStatus();
 		
-		if (getAccSav().size()>0) {
+		if (getAccSav() != null && getAccSav().size()>0) {
 			result += "<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccSav().get(0).getBalance();
 			result += "<br><br><div class=\"info\"><b>Interest</b></div> : " + getAccSav().get(0).getInterest();
 			result += "<br><br><div class=\"info\"><b>Widthdraw Limit</b></div> : " + getAccSav().get(0).getWithdrawLimit();
 		}
-		if (getAccChk().size()>0) {
+		if (getAccChk() != null && getAccChk().size()>0) {
 			result += "<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccChk().get(0).getBalance();
 			result += "<br><br><div class=\"info\"><b>Interest</b></div> : " + getAccChk().get(0).getInterest();
 			result += "<br><br><div class=\"info\"><b>Over Draft Limit</b></div> : " + getAccChk().get(0).getOverDraft();
 		}
-		if (getAccLoan().size()>0) {
+		if (getAccLoan() != null && getAccLoan().size()>0) {
 			result +="<br><br><div class=\"info\"><b>Balance</b></div> : " + getAccLoan().get(0).getBalance();
 			result +="<br><br><div class=\"info\"><b>EMI</b></div> : " + getAccLoan().get(0).getEMI();
 			result +="<br><br><div class=\"info\"><b>Amount Payed</b></div> : " + getAccLoan().get(0).getAmountPayed();
