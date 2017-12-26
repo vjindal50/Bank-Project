@@ -157,11 +157,8 @@ public class InitialController {
 				double withdrawlimit = Balance * 0.01;
 				System.out.println(Balance + "   " + withdrawlimit);
 				
-				savings.setBalance(Balance);
-				
-				
-//				savings.setInterest(5.00);
-
+				savings.setBalance(Balance);			
+				savings.setInterest(5.00);
 				savings.setWithdrawLimit(withdrawlimit);
 				savings.setAccount_Number(account.getAccountNumber());
 				
@@ -207,7 +204,7 @@ public class InitialController {
 				System.out.println(cBalance + "   " + overDraft);
 				
 				checking.setBalance(cBalance);
-				//checking.setInterest(5.0);
+				checking.setInterest(5.0);
 				checking.setOverDraft(overDraft);
 				checking.setLastAccess(new Date()+"");
 				checking.setAccNumber(account.getAccountNumber());
@@ -263,7 +260,7 @@ public class InitialController {
 		accountService.openAccount(account);
 		
 		double loanAmount = Double.parseDouble(loanamt);
-		int loanemi = (int) (loanAmount /20);
+		double loanemi =(loanAmount /40);
 		System.out.println(loanAmount+ "   " +loanemi);
 		
 		loan.setACC_NUM(account.getAccountNumber());
@@ -271,7 +268,7 @@ public class InitialController {
 		loan.setEMI(loanemi);
 		loan.setAmountPayed(0.0);
 //		loan.setLastEMIPayed(new Date()+"");
-//		loan.setInterest(5.0);
+		loan.setInterest(5.0);
 		loan.setEMIcounter(0);
 					
 		accountService.openLoanAccount(loan);;
