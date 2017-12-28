@@ -47,7 +47,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public Employee login(String uname, String pass) {
 		List<Employee> list = getAllEmployee();
 		for(int i = 0; i < list.size() ; i++) {
-			if(list.get(i).getUserName().equals(uname) && list.get(i).getPassword().equals(pass)) {
+			if(list.get(i).getUserName().equals(uname) && list.get(i).getPassword().equals(pass) && list.get(i).getStatus().equals("current")) {
 				return list.get(i);
 			}
 		}

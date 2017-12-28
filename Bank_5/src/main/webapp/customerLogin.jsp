@@ -21,7 +21,9 @@
   <div id="navcontainer"> <span class="buttonText" id="nav1"><a href="customerLogin.jsp">Customer Login</a></span> <span class="buttonText" id="nav2"><a href="employeeLogin.jsp">Employee Login</a></span> <span class="buttonText" id="nav3"><a href="customerRegistration.jsp">Customer Registration</a></span> <span class="buttonText" id="nav4"><a href="employeeRegistration.jsp">Employee Registration</a></span> </div>
   <div id="main">
     <div class="horizRect">
-      <div><center>${model}</center></div>
+      <div><center>${model}</center>
+      <center><b>${message}</b></center>
+      </div>
     </div>
     <div class="horizRect">
       <div class="adblock">

@@ -29,7 +29,12 @@ public class CustSearchController {
 	@RequestMapping(value = "/searchCust", method = RequestMethod.POST)
 	public ModelAndView EmpUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		
-		int id = Integer.parseInt(request.getParameter("ID1"));
+		int id = 0;
+		
+		String idstr = request.getParameter("ID1");
+		if(idstr != "" && idstr !=null) {
+			id = Integer.parseInt(idstr);
+		}
 		String fname = request.getParameter("fname1");
 		String lname = request.getParameter("lname1");
 		String mname = request.getParameter("mname1");

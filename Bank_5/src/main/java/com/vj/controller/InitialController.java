@@ -20,6 +20,7 @@ import com.vj.model.Accounts;
 import com.vj.model.AccountsChecking;
 import com.vj.model.AccountsLoan;
 import com.vj.model.Customer;
+import com.vj.model.Employee;
 import com.vj.service.AccountsService;
 import com.vj.service.CustomerService;
  
@@ -157,11 +158,8 @@ public class InitialController {
 				double withdrawlimit = Balance * 0.01;
 				System.out.println(Balance + "   " + withdrawlimit);
 				
-				savings.setBalance(Balance);
-				
-				
+				savings.setBalance(Balance);			
 				savings.setInterest(5.00);
-
 				savings.setWithdrawLimit(withdrawlimit);
 				savings.setAccount_Number(account.getAccountNumber());
 				
@@ -175,9 +173,6 @@ public class InitialController {
 				model.addObject("caddress", customer.getAddress());
 				model.addObject("caltphone", customer.getAlternatePhone());
 				model.addObject("cdob", customer.getDOB());
-<<<<<<< HEAD
-//					
-=======
 				model.addObject("acclist", accountService.getAccount(savings.getAccount_Number()).toString());
 				model.addObject("cemail", customer.getEmail());
 				model.addObject("cfname", customer.getFirstName());
@@ -210,7 +205,7 @@ public class InitialController {
 				System.out.println(cBalance + "   " + overDraft);
 				
 				checking.setBalance(cBalance);
-				//checking.setInterest(5.0);
+				checking.setInterest(5.0);
 				checking.setOverDraft(overDraft);
 				checking.setLastAccess(new Date()+"");
 				checking.setAccNumber(account.getAccountNumber());
@@ -228,7 +223,6 @@ public class InitialController {
 				model.addObject("caltphone", customer.getAlternatePhone());
 				model.addObject("cdob", customer.getDOB());
 				model.addObject("acclist", accountService.getAccount(checking.getAccNumber()).toString());
->>>>>>> master
 				model.addObject("cemail", customer.getEmail());
 				//model.addObject("eeid", customer.getEmpID());
 				model.addObject("cfname", customer.getFirstName());
@@ -237,71 +231,13 @@ public class InitialController {
 				model.addObject("cphone", customer.getPhone());
 				model.addObject("cuname", customer.getUserName());
 				model.addObject("cpass", customer.getPassword());
-
-				model.setViewName("customerHome");
-					
-				return model;
-			}
-			
-			if(submit.equals("Checking")) {
-				account.setType("checking");
-				
-				System.out.println("type="+account.getType());
-				String checkingsbalance = request.getParameter("balance");
-				
-				customer = (Customer) request.getSession().getAttribute("cust");
-					
-				account.setCust_ID(customer.getCustID());
-				account.setOpenedOn(new Date()+"");
-				account.setStatus("active");
-				
-				accountService.openAccount(account);
-				
-				double cBalance = Double.parseDouble(checkingsbalance);
-				double overDraft = cBalance * 0.02;
-				System.out.println(cBalance + "   " + overDraft);
-				
-				checking.setBalance(cBalance);
-				//checking.setInterest(5.0);
-				checking.setOverDraft(overDraft);
-				checking.setLastAccess(new Date()+"");
-				checking.setAccNumber(account.getAccountNumber());
-				
-				accountService.openCheckingAccount(checking);;
-				
-				ModelAndView model = new ModelAndView();
-				model.addObject("adminMsg", "<h2>Account Created Successfully <br>Your Checking Account No is </h2>" + account.getAccountNumber());
-//				model.addObject("model", "Savings");
-//				model.setViewName("customerhome");
-				model.addObject("custname", customer.getFirstName() + " " + customer.getMiddleName() + " " + customer.getLastName());
-				model.addObject("custId", customer.getCustID());
-				model.addObject("LastLogin", customer.getJoinDate());
-				model.addObject("caddress", customer.getAddress());
-				model.addObject("caltphone", customer.getAlternatePhone());
-				model.addObject("cdob", customer.getDOB());
-//				model.addObject("acclist", customer.getAcc());
-				model.addObject("cemail", customer.getEmail());
-				//model.addObject("eeid", customer.getEmpID());
-				model.addObject("cfname", customer.getFirstName());
-				model.addObject("clname", customer.getLastName());
-				model.addObject("cmname", customer.getMiddleName());
-				model.addObject("cphone", customer.getPhone());
-				model.addObject("cuname", customer.getUserName());
-				model.addObject("cpass", customer.getPassword());
-				model.setViewName("customerHome");
-=======
 				model.setViewName("mycusthome");
->>>>>>> master
 					
 				return model;
 			}
 		
 			return new ModelAndView("error");
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> master
 		
 	@RequestMapping(value = "/loanaccount", method = RequestMethod.POST)
 	public ModelAndView LoanAccounts(HttpServletRequest request, HttpServletResponse response) throws IOException 
@@ -325,26 +261,15 @@ public class InitialController {
 		accountService.openAccount(account);
 		
 		double loanAmount = Double.parseDouble(loanamt);
-<<<<<<< HEAD
-		double loanemi = loanAmount /20;
-=======
-		int loanemi = (int) (loanAmount /20);
->>>>>>> master
+		double loanemi =(loanAmount /40);
 		System.out.println(loanAmount+ "   " +loanemi);
 		
 		loan.setACC_NUM(account.getAccountNumber());
 		loan.setBalance(loanAmount);
-<<<<<<< HEAD
-//		loan.setEMI(loanemi);
-		loan.setAmountPayed(0.0);
-//		loan.setLastEMIPayed(new Date()+"");
-		loan.setInterest(5.0);
-=======
 		loan.setEMI(loanemi);
 		loan.setAmountPayed(0.0);
 //		loan.setLastEMIPayed(new Date()+"");
-//		loan.setInterest(5.0);
->>>>>>> master
+		loan.setInterest(5.0);
 		loan.setEMIcounter(0);
 					
 		accountService.openLoanAccount(loan);;
@@ -353,13 +278,8 @@ public class InitialController {
 		model.addObject("adminMsg", "<h1>Your loan Account No is " + account.getAccountNumber());
 		
 		
-<<<<<<< HEAD
-//		AccountsLoan acc = accountService.getLoanAccount(loan.getACC_NUM());
-//		String str = acc.toString();
-=======
 		AccountsLoan acc = accountService.getLoanAccount(loan.getACC_NUM());
 		String str = acc.toString();
->>>>>>> master
 
 		model.addObject("accloanno", loan.getACC_NUM());
 		model.addObject("emi",loan.getEMI());
@@ -372,11 +292,7 @@ public class InitialController {
 		model.addObject("caddress", customer.getAddress());
 		model.addObject("caltphone", customer.getAlternatePhone());
 		model.addObject("cdob", customer.getDOB());
-<<<<<<< HEAD
-//		model.addObject("acclist", customer.getAcc());
-=======
 		model.addObject("acclist", accountService.getAccount(acc.getACC_NUM()).toString());
->>>>>>> master
 		model.addObject("cemail", customer.getEmail());
 		model.addObject("cfname", customer.getFirstName());
 		model.addObject("clname", customer.getLastName());
@@ -384,22 +300,45 @@ public class InitialController {
 		model.addObject("cphone", customer.getPhone());
 		model.addObject("cuname", customer.getUserName());
 		model.addObject("cpass", customer.getPassword());
-<<<<<<< HEAD
-		model.setViewName("customerHome");
-=======
 		model.setViewName("mycusthome");
->>>>>>> master
 			
 		return model;
 	
 		
 	}
-<<<<<<< HEAD
 	
 	
-=======
->>>>>>> master
-=======
->>>>>>> master
+	
+	//New Controller
+	
+	@RequestMapping(value = "/deleteCustProfile", method = RequestMethod.POST)
+	public ModelAndView custUpdate(HttpServletRequest request, HttpServletResponse response) {		
+		System.out.println("In delete profile");		
+
+		String fname = request.getParameter("fname");
+		String lname = request.getParameter("lname");
+		String mname = request.getParameter("mname");
+		String phone = request.getParameter("phone");
+		String altphone= request.getParameter("altphone");
+		String email= request.getParameter("email");
+		String address= request.getParameter("address");
+		String uname = request.getParameter("uname");
+		String pass = request.getParameter("pass");
+
+		Customer customer = (Customer) request.getSession().getAttribute("cust");
+		System.out.println(customer);
+		customer.setStatus("inactive");
+		customer=customerService.updateCustomer(customer);
+		
+		ModelAndView model = new ModelAndView();
+		System.out.println(customer);
+		model.addObject("message", "Your account has been successfully deleted" );
+		model.setViewName("customerLogin");
+		
+		return model;
+	
+	}
+	
+	
 	
 }

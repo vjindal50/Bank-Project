@@ -25,28 +25,11 @@
 	function addloanaccount(){
 		var z = document.getElementById("col3");
 		var text = "";
-<<<<<<< HEAD
-<<<<<<< HEAD:Bank_5/src/main/webapp/customerhome.jsp
-		text += '<div class="divtext"><form action="loanaccount" method="post">';
-		text += '<div class="divtext"><center>Please Enter the Amount</center>';
-		text +=	'<div class="divtext">Amount : </div><input class="getfield" type="text" name="loanbalance"><br><br>';
-		text += '<div class="divtext"><input id="loan" type="submit" name="submit" onclick="displayloandetails()" value="Apply Loan"></form></div><br><br>';
-=======
->>>>>>> master:Bank_5/src/main/webapp/mycusthome.jsp
-		
-		text += '<div class="divtext"><form action="savingsaccount" method="post">';
-		text +=	'<div class="divtext">Enter Balance : </div><br>';
-		text+='<div class="divtext"></div><input type="text" name="savingsbalance"><input class="butts" type="submit" name="submit" value="Savings_Account"></form></div><br><br>';
-		text += '<div class="divtext"><form action="checkingsaccount" method="post"><input id="checkings" type="submit" name="submit" value="Checkings_Account"></form></div><br><br>';
-		text += '<div class="divtext"><form action="loanaaccount" method="post"><input id="loan" type="submit" name="submit" value="Loan_Account"></form></div><br><br>';
-		
-=======
 		text += '<div><center><h2>TAKE LOAN</h2></center></div><br>';
 		text += '<form style="width: 100%;" action="loanaccount" method="post"><div>';
 		text += '<div><h3>&nbsp;&nbsp;&nbsp;Please Enter the following details : </h3></div><br><br>';
 		text +=	'<div class="divtext">Amount : </div><input class="getfield" type="text" name="loanbalance"><br><br><br>';
 		text += '<div><center><input id="loan" type="submit" name="submit" value="Apply Loan"></center></div></div></form><br><br>';
->>>>>>> master
 		z.innerHTML = text;
 		console.log("hey");
 	}
@@ -74,7 +57,9 @@
 		text += '<br><br><div class="divtext">D.O.B : </div>${cdob}';
 		text += '<br><br><div class="divtext">User Name : </div>${cuname}';
 		text += '<br><br><div class="divtext">Password : </div>${cpass}';
-		text += '<br><br><div><center><button class="butts" onclick="updateProfile()">UPDATE PROFILE</button></center></div><br>';
+		text += '<br><br><div><center><button class="butts" onclick="updateProfile()">UPDATE PROFILE</button>';
+		text += '<form action="deleteCustProfile" method="post">';
+		text += '<input id="logout" type="submit" name="submit" value="DELETE PROFILE"></form></center></div><br>';
 		z.innerHTML = text;
 	}
 	function updateProfile(){
@@ -82,15 +67,15 @@
 		var text = "";
 		text += '<div style="text-align: right"><button id="backbtt" onclick="viewProfile()">Back</button></div>';
 		text += '<form method="post" action="updateCustProfile">';
-		text += '<div class="divtext">First Name : </div><input class="getfield" type="text" name="fname" value="${cfname}"><br><br>';
-		text += '<div class="divtext">Last Name :</div><input class="getfield" type="text" name="lname" value="${clname}"><br><br>';
+		text += '<div class="divtext">First Name : </div><input class="getfield" type="text" name="fname" value="${cfname}" required><br><br>';
+		text += '<div class="divtext">Last Name :</div><input class="getfield" type="text" name="lname" value="${clname}" required><br><br>';
 		text += '<div class="divtext">Middle Name : </div><input class="getfield" type="text" name="mname" value="${cmname}"><br><br>';
-		text += '<div class="divtext">Phone : </div><input class="getfield" type="Phone" name="phone" value="${cphone}"><br><br>';
+		text += '<div class="divtext">Phone : </div><input class="getfield" type="Phone" name="phone" value="${cphone}" required><br><br>';
 		text += '<div class="divtext">Alternate Phone : </div><input class="getfield" type="phone" name="altphone" value="${caltphone}"><br><br>';
-		text += '<div class="divtext">Email : </div><input class="getfield" type="Email" name="email" value="${cemail}"><br><br>';
-		text += '<div class="divtext">Address : </div><input class="getfield" type="text" name="address" value="${caddress}"><br><br>';
-		text += '<div class="divtext">User Name : </div><input class="getfield" type="text" name="uname" value="${cuname}"><br><br>';
-		text += '<div class="divtext">Password : </div><input class="getfield" type="Password" name="pass" value="${cpass}"><br><br>';
+		text += '<div class="divtext">Email : </div><input class="getfield" type="Email" name="email" value="${cemail}" required><br><br>';
+		text += '<div class="divtext">Address : </div><input class="getfield" type="text" name="address" value="${caddress}" required><br><br>';
+		text += '<div class="divtext">User Name : </div><input class="getfield" type="text" name="uname" value="${cuname}" required><br><br>';
+		text += '<div class="divtext">Password : </div><input class="getfield" type="Password" name="pass" value="${cpass}" required><br><br>';
 		text += '<center><input class="butts" type="submit" name="submit" value="Update">';
 		text += '<input class="butts" type="reset" name="reset" value="Reset"></center>';
 		text += '</form>';
@@ -130,18 +115,8 @@
   <span class="buttonText" id="nav31"><button onclick="newaccmenu()">New Account</button></span> 
   
   
-<<<<<<< HEAD
-<<<<<<< HEAD:Bank_5/src/main/webapp/customerhome.jsp
   <span class="buttonText" id="nav41"><button onclick="addloanaccount()">Loan</button></span>
   
-=======
-  <span class="buttonText" id="nav41"><form action="viewEmpLog" method="post">
-  <input id="logout" type="submit" name="submit" value="Loan"></form></span>
->>>>>>> master:Bank_5/src/main/webapp/mycusthome.jsp
-=======
-  <span class="buttonText" id="nav41"><button onclick="addloanaccount()">Loan</button></span>
-  
->>>>>>> master
   
    <span class="buttonText" id="nav51"><button onclick="getFAQs()">FAQs</button></span>
    

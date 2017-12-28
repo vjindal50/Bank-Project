@@ -48,7 +48,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public Customer login(String uname, String pass) {
 		List<Customer> list = getAllCustomer();
 		for(int i = 0; i < list.size() ; i++) {
-			if(list.get(i).getUserName().equals(uname) && list.get(i).getPassword().equals(pass)) {
+			if(list.get(i).getUserName().equals(uname) && list.get(i).getPassword().equals(pass) && list.get(i).getStatus().equals("active")) {
 				return list.get(i);
 			}
 		}
