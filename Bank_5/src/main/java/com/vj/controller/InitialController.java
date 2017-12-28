@@ -309,7 +309,7 @@ public class InitialController {
 	
 	
 	
-	//New Controller
+	//New Controller for delete customer
 	
 	@RequestMapping(value = "/deleteCustProfile", method = RequestMethod.POST)
 	public ModelAndView custUpdate(HttpServletRequest request, HttpServletResponse response) {		
