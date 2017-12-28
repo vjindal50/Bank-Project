@@ -136,9 +136,12 @@ public class CustInfoController {
 				if (list.get(i).getType().equals("loan") && list.get(i).getAccLoan().size() > 0 ) {
 					res += list.get(i).getAccLoan().get(0).getBalance();
 				}
-				
+//				res +="<tr><td><form method=\"post\" action=\"deleteAccount\"><input type=\"Submit\" name=\"accId\" value=DeleteAccount";
 				res +="</td></tr>";
 			}
+//			res +="<tr><td>";
+			
+//			res +="</td></tr>";
 			res += "</table>";
 			System.out.println(res);
 			model.addObject("acclist", res);
@@ -189,7 +192,7 @@ public class CustInfoController {
 				"  <option value=\"Deposit\">Deposit</option>\n" + 	
 				"</select>"
 				+ "<br><br><center><input type=\"submit\" name=\"submit\" value=\"Submit\"></center>"
-				+ "</fom><br><br><br></div>";
+				+ "</form><br><br><br></div>";
 		
 		model.addObject("acclist", str);
 		model.setViewName("mycusthome");

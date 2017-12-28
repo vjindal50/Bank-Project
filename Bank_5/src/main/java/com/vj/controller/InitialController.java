@@ -312,18 +312,8 @@ public class InitialController {
 	//New Controller for delete customer
 	
 	@RequestMapping(value = "/deleteCustProfile", method = RequestMethod.POST)
-	public ModelAndView custUpdate(HttpServletRequest request, HttpServletResponse response) {		
+	public ModelAndView custdelete(HttpServletRequest request, HttpServletResponse response) {		
 		System.out.println("In delete profile");		
-
-		String fname = request.getParameter("fname");
-		String lname = request.getParameter("lname");
-		String mname = request.getParameter("mname");
-		String phone = request.getParameter("phone");
-		String altphone= request.getParameter("altphone");
-		String email= request.getParameter("email");
-		String address= request.getParameter("address");
-		String uname = request.getParameter("uname");
-		String pass = request.getParameter("pass");
 
 		Customer customer = (Customer) request.getSession().getAttribute("cust");
 		System.out.println(customer);
@@ -339,6 +329,28 @@ public class InitialController {
 	
 	}
 	
+	/*@RequestMapping(value = "/deleteAccount", method = RequestMethod.POST)
+	public ModelAndView accountDelete(HttpServletRequest request, HttpServletResponse response) {		
+		System.out.println("In delete Account");		
+
+		Customer customer = (Customer) request.getSession().getAttribute("cust");
+		System.out.println(customer);
+//		customer.setStatus("inactive");
+//		customer=customerService.updateCustomer(customer);
+		
+		Accounts account=new Accounts();
+		account.setStatus("inactive");
+		
+		
+		ModelAndView model = new ModelAndView();
+		System.out.println(customer);
+		model.addObject("message", "Your account has been successfully deleted" );
+		model.setViewName("customerLogin");
+		
+		return model;
+	
+	}
+	*/
 	
 	
 }
