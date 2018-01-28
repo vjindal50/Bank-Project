@@ -2,7 +2,10 @@ package com.vj.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,12 +32,7 @@ public class CustSearchController {
 	@RequestMapping(value = "/searchCust", method = RequestMethod.POST)
 	public ModelAndView EmpUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		
-		int id = 0;
-		
 		String idstr = request.getParameter("ID1");
-		if(idstr != "" && idstr !=null) {
-			id = Integer.parseInt(idstr);
-		}
 		String fname = request.getParameter("fname1");
 		String lname = request.getParameter("lname1");
 		String mname = request.getParameter("mname1");
@@ -44,112 +42,105 @@ public class CustSearchController {
 		String address= request.getParameter("address1");
 		String uname = request.getParameter("uname1");
 		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		if(fname != "" && fname != null) {
+			map.put("fname", fname);
+		}
+		if(lname != "" && lname != null) {
+			map.put("lname", lname);
+		}
+		if(mname != "" && mname != null) {
+			map.put("mname", mname);
+		}
+		if(phone != "" && phone != null) {
+			map.put("phone", phone);
+		}
+		if(altphone != "" && altphone != null) {
+			map.put("altphone", altphone);
+		}
+		if(email != "" && email != null) {
+			map.put("email", email);
+		}
+		if(address != "" && address != null) {
+			map.put("address", address);
+		}
+		if(uname != "" && uname != null) {
+			map.put("uname", uname);
+		}
+		if(idstr != "" && idstr != null) {
+			map.put("idstr", idstr);
+		}
+		
+		System.out.println("map is " + map);
+		
 		int flag = 0;
 		
 		ModelAndView model = new ModelAndView();
 		
 		
 			List<Customer> list = customerService.getAllCustomer();
-
-			List<Customer> temp = list;
+			List<Customer> temp = new ArrayList<Customer>();
 			
+			Set<String> set = map.keySet();
 			
-
-			if (fname != "" && fname != null) {
-				for(int i = 0 ; i < list.size(); i++) {
-					if(!list.get(i).getFirstName().equals(fname)) {
-						System.out.print(list.get(i).getFirstName() + " ");
-						System.out.println(!list.get(i).equals(fname));
-						temp.remove(i);
+			for (int i = 0 ; i < list.size(); i++) {
+				flag = 0;
+					if(set.contains("fname")) {
+						if(list.get(i).getFirstName().toLowerCase().equals(map.get("fname").toLowerCase())) {
+							flag++;
+						}
 					}
-				}
-			}
-	
-			list = temp;
-		
-			if(lname != "" && lname != null) {
-				for(int i = 0 ; i < list.size(); i++) {
-					if(!list.get(i).getLastName().equals(lname)) {
-						temp.remove(i);
+					if(set.contains("lname")) {
+						if(list.get(i).getLastName().toLowerCase().equals(map.get("lname").toLowerCase())) {
+							flag++;
+						}
 					}
-				}
-			}
-			list = temp;
-	//		System.out.println(list.size());
-	//		
-			if(mname != "" && mname != null) {
-				for(int i = 0 ; i < list.size(); i++) {	
-					if(!list.get(i).getMiddleName().equals(mname)) {
-						temp.remove(i);
+					if(set.contains("mname")) {
+						if(list.get(i).getMiddleName().toLowerCase().equals(map.get("mname").toLowerCase())) {
+							flag++;
+						}
 					}
-				}
-			}
-			list = temp;
-			System.out.println(list.size());
-	//		
-			if(phone != "" && phone != null) {
-				for(int i = 0 ; i < list.size(); i++) {
-					if(!list.get(i).getPhone().equals(phone)) {
-						temp.remove(i);
+					if(set.contains("phone")) {
+						if(list.get(i).getPhone().equals(map.get("phone"))) {
+							flag++;
+						}
 					}
-				}
-			}
-			list = temp;
-	//		System.out.println(list.size());
-	//		
-			if(altphone != "" && altphone != null) {
-				for(int i = 0 ; i < list.size(); i++) {			
-					if(!list.get(i).getAlternatePhone().equals(altphone)) {
-						temp.remove(i);
+					if(set.contains("altphone")) {
+						if(list.get(i).getAlternatePhone().equals(map.get("altphone"))) {
+							flag++;
+						}
 					}
-				}
-			}
-			list = temp;
-	//		System.out.println(list.size());
-	//		
-			if(email != "" && email != null) {
-				for(int i = 0 ; i < list.size(); i++) {			
-					if(!list.get(i).getEmail().equals(email)) {
-						temp.remove(i);
+					if(set.contains("email")) {
+						if(list.get(i).getEmail().toLowerCase().equals(map.get("email").toLowerCase())) {
+							flag++;
+						}
 					}
-				}
-			}
-			list = temp;
-	//		System.out.println(list.size());
-	//		
-			if(address != "" && address != null) {
-				for(int i = 0 ; i < list.size(); i++) {			
-					if(!list.get(i).getAddress().equals(address)) {
-						list.remove(i);
+					if(set.contains("address")) {
+						if(list.get(i).getAddress().toLowerCase().equals(map.get("address").toLowerCase())) {
+							flag++;
+						}
 					}
-				}
-			}
-			list = temp;
-	//		System.out.println(list.size());
-	//		
-			if(uname != "" && uname != null) {
-				for(int i = 0 ; i < list.size(); i++) {			
-					if(!list.get(i).getUserName().equals(uname)) {
-						list.remove(i);
+					if(set.contains("uname")) {
+						if(list.get(i).getUserName().toLowerCase().equals(map.get("uname").toLowerCase())) {
+							flag++;
+						}
 					}
-				}
-			}
-			list = temp;
-	//		System.out.println(list.size());
-			
-			if (request.getParameter("ID1") != "" && request.getParameter("ID1") != null) {
-				Customer c = customerService.getCustomer(id);
-				if(c != null) {
-					List<Customer> clist = new ArrayList<Customer>();
-					clist.add(c);
-					list = clist;
-				} else {
-					flag = 1;
-				}
+					if(set.contains("idstr")) {
+						if (list.get(i).getCustID() == Integer.parseInt(map.get("idstr"))) {
+							flag++;
+						}
+					}
+					
+					if(flag == set.size()) {
+						temp.add(list.get(i));
+					}
+					
 			}
 			
+			list = temp;		
 			
-			if (list.size() > 0 && flag != 1) {
+			if (list.size() > 0) {
 				String result = "<table>";
 				result +="<tr>\n" + 
 						"		<th>CustId\n</th>\n" + 
@@ -193,5 +184,3 @@ public class CustSearchController {
 	}
 
 }
-
-
